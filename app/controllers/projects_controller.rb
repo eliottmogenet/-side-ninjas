@@ -27,17 +27,16 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    authorize @project
     @user = current_user
     @project = Project.new
+    authorize @project
   end
 
   def create
     @project = Project.new(params_project)
-    @user = current_user
     authorize @project
 
-    @project.user = @user
+    @project.user = current_user
     if @project.save
       Participation.create(project: @project, user: current_user, admin: true, accepted: true)
       redirect_to projects_path

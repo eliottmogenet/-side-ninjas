@@ -13,7 +13,4 @@ class Project < ApplicationRecord
     admin_participations = participations.where(admin: true)
     admin_participations.map { |participation| participation.user}
   end
-
 end
-
-

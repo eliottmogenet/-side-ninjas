@@ -2,16 +2,16 @@ class ParticipationsController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @user = current_user
     @participation = Participation.new
+    authorize @participation
   end
 
   def create
     @participation = Participation.new(params_participation)
-    @user = current_user
+    authorize @participation
     @participation.project = Project.find(params[:project_id])
 
-    @participation.user = @user
+    @participation.user = current_user
     if @participation.save
       redirect_to projects_path
     else
@@ -21,6 +21,7 @@ class ParticipationsController < ApplicationController
 
   def destroy
     @participation = Participation.find(params[:id])
+    authorize @participation
     @participation.destroy
   end
 
