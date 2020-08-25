@@ -1,0 +1,35 @@
+<%= link_to 'Back', project_path %>
+
+<div id="new-form">
+  <%= simple_form_for(@project) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :github_repository %>
+      <%= f.input :trello_link %>
+      <%= f.input :start_date %>
+      <%= f.input :website_link %>
+      <%= f.input :tag %>
+      <%= f.submit %>
+  <% end %>
+</div>
+
+<div id="new-form">
+  <%= simple_form_for [@project, @feature] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.submit %>
+  <% end %>
+</div>
+
+
+<% @features.each do |feature| %>
+<ul>
+  <li>
+  <%= simple_form_for [@project, feature] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.submit %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
