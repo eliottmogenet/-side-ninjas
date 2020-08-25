@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
   end
 
   def show
@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    #Ò@project = Project.find(params[:id])
+    #@project = Project.find(params[:id])
     @features = @project.features
     @feature = Feature.new
   end
@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    authorize @project
     @user = current_user
     @project = Project.new
   end
@@ -34,9 +35,11 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params_project)
     @user = current_user
+    authorize @project
 
     @project.user = @user
     if @project.save
+      Participation.create(project: @project, user: current_user, admin: true, accepted: true)
       redirect_to projects_path
     else
       render :new
@@ -58,5 +61,6 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 end
