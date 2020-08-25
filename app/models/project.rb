@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   has_many :project_languages
   has_many :participations
   has_many :features
+  has_many :languages, through: :project_languages
 
   validates :title, :description, presence: true
   validates :title, uniqueness: true
