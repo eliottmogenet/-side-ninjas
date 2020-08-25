@@ -1,1 +1,18 @@
 // c'est pour les features --> adrien à faire
+.features-background {
+  background-color: $white;
+  border-radius: $border-radius;
+  padding: 30px;
+  position: relative;
+}
+
+.features-title {
+
+}
+
+.features-avatars {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+

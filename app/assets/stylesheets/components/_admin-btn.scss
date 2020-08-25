@@ -1,1 +1,15 @@
 // boutton admin --> adrien à faire
+.admin-btn {
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  width: min-content;
+  height: min-content;
+  margin: 5px 10px;
+  color: $white;
+  text-decoration: none;
+  background-color: $browne;
+  padding: 7px 13px;
+  border-radius: $border-radius;
+}
