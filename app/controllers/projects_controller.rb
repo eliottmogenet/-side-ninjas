@@ -8,10 +8,13 @@ class ProjectsController < ApplicationController
   def show
     # @project = Project.find(params[:id])
     @request_participation = @project.participations.find_by(user: current_user)
+    @features = @project.features
   end
 
   def edit
-    # @project = Project.find(params[:id])
+    #Ò@project = Project.find(params[:id])
+    @features = @project.features
+    @feature = Feature.new
   end
 
   def update

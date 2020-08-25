@@ -25,3 +25,13 @@
                           data: { confirm: "Are you sure?" } %>
   <% end %>
 <% end %>
+
+
+<% @features.each do |feature| %>
+<ul>
+  <li>
+  <%= feature.name %>
+  <%= feature.description %>
+    </li>
+  </ul>
+<% end %>
