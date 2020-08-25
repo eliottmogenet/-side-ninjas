@@ -1,3 +1,4 @@
+
 <h5>All of the components are listed here, you can just open "views/pages/components.html.erb" are take the html
 code --> copie/paste, no cute !</h5>
 
@@ -42,6 +43,15 @@ code --> copie/paste, no cute !</h5>
     <div class="share-the-project-btn">
       <i class="fas fa-share-square"></i>
       <%= link_to "Share the project" %>
+    </div>
+  </li>
+  <li>
+    <p>back</p>
+    <div class="back-btn">
+      <%= link_to root_path do%>
+        <i class="fas fa-long-arrow-alt-left"></i>
+        <p>Back</p>
+      <% end %>
     </div>
   </li>
 </ol>

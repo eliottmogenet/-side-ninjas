@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    #@project = Project.find(params[:id])
+    # @project = Project.find(params[:id])
     @features = @project.features
     @feature = Feature.new
   end
@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   private
 
   def params_project
-    params.require(:project).permit(:title, :description, :github_repository, :trello_link, :start_date, :website_link, :tag)
+    params.require(:project).permit(:title, :description, :github_repository, :trello_link, :start_date, :website_link, :tag, :tag_line)
   end
 
   def set_project
@@ -69,3 +69,4 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 end
+

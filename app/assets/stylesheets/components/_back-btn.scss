@@ -1,0 +1,20 @@
+.back-btn {
+  i {
+    margin-right: 5px;
+    color: $middle-gray;
+  }
+  p {
+    color: $middle-gray;
+    padding: 0px;
+    margin: 0px;
+  }
+  a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
