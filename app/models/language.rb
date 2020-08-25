@@ -4,4 +4,7 @@ class Language < ApplicationRecord
   has_many :user_languages
   has_many :project_languages
   has_one_attached :photo
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
 end
