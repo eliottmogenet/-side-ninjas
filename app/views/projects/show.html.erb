@@ -1,0 +1,14 @@
+<h1><%= @project.title %></h1>
+<%= @project.description %>
+<%= @project.github_repository %>
+<%= @project.trello_link %>
+<%= @project.start_date %>
+<%= @project.website_link %>
+<%= @project.tag %>
+
+<%= link_to 'Back', projects_path %>
+<%= link_to "edit", edit_project_path %>
+<%= link_to "Delete #{@project.title}",
+                        project_path(@project),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>

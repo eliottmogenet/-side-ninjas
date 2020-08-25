@@ -1,0 +1,24 @@
+<h1>Search for a project</h1>
+
+  <% @projects.each do |project|%>
+<div class="project-container">
+  <ul>
+    <li>
+    <%= project.title %>
+    <%= project.description %>
+    <%= project.github_repository %>
+    <%= project.trello_link %>
+    <%= project.start_date %>
+    <%= project.website_link %>
+    <%= project.tag %>
+    <%= link_to "see more", project_path(project)  %>
+    <%= link_to "edit", edit_project_path(project) %>
+    <%= link_to "Delete #{project.title}",
+                        project_path(project),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
+    </li>
+  </ul>
+  <% end %>
+</div>
+<%= link_to  "create a project", new_project_path %>
