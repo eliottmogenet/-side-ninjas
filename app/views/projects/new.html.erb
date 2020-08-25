@@ -1,0 +1,17 @@
+<div class="new-project">
+  <h1>Ajouter un nouveau project</h1>
+  <div id="new-form">
+    <%= simple_form_for (@project) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :github_repository %>
+    <%= f.input :trello_link %>
+    <%= f.input :start_date %>
+    <%= f.input :website_link %>
+    <%= f.input :tag  %>
+    <%= f.submit "Ajouter le project"%>
+    <% end %>
+  </div>
+
+</div>
+<%= link_to 'Back', projects_path %>
