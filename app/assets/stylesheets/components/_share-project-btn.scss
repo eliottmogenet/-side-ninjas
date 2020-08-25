@@ -1,1 +1,29 @@
 // boutton pour partager le projet --> adrien
+.share-the-project-btn {
+  a {
+    text-decoration: none;
+    color: $noir;
+    padding: 0px;
+    margin: 0px;
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
+
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  margin: 5px 10px;
+  padding: 7px 13px;
+  width: fit-content;
+  height: min-content;
+  color: $noir;
+  text-decoration: none;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}

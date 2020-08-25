@@ -1,1 +1,45 @@
 // c'est la box de présentation de la team --> adrien
+.team-box {
+  margin-top: 10px;
+  background-color: $white;
+  padding: 30px;
+  border-radius: $border-radius;
+}
+
+.team-box-title {
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.team-members {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member-infos {
+  display: flex;
+  align-items: center;
+}
+
+.member-skills {
+  margin: 10px 0px;
+}
+
+.one-skill {
+  display: flex;
+}
+
+.member-name-batch {
+  // display: flex;
+  // flex-direction: column;
+  // align-content: center;
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+// . > .second-important-btn {
+//   width: 100%;
+// }

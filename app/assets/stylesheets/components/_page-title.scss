@@ -1,1 +1,22 @@
 // c'est le rectangle bleu en haut de beaucoup de pages --> adrien à faire
+.page-title-box {
+  background-color: $light-blue;
+  border-radius: $border-radius;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title, .under-title {
+  display: flex;
+}
+
+.project-name {
+  margin-left: 7px;
+  color: $saumon;
+}
+
+.project-tag-line {
+  margin-right: 10px;
+}
