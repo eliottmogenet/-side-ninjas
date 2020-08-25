@@ -3,6 +3,8 @@ class Project < ApplicationRecord
   has_many :users, through: :participations
   has_many :project_languages
   has_many :participations
+  has_many :features
+
   validates :title, :description, presence: true
   validates :title, uniqueness: true
   validates :description, length: { minimum: 200 }
@@ -12,5 +14,3 @@ class Project < ApplicationRecord
     admin_participations.map { |participation| participation.user}
   end
 end
-
-

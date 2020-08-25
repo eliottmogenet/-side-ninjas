@@ -12,5 +12,16 @@ class ProjectPolicy < ApplicationPolicy
   def destroy?
     record.admin_users.include?(user)
   end
-end
 
+  def create?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def index?
+    true
+  end
+end

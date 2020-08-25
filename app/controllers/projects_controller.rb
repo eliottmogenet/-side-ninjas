@@ -7,11 +7,14 @@ class ProjectsController < ApplicationController
 
   def show
     # @project = Project.find(params[:id])
+    @request_participation = @project.participations.find_by(user: current_user)
+    @features = @project.features
   end
 
   def edit
-    # @project = Project.find(params[:id])
-
+    #@project = Project.find(params[:id])
+    @features = @project.features
+    @feature = Feature.new
   end
 
   def update
@@ -31,10 +34,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(params_project)
-    @user = current_user
-
-    @project.user = @user
     authorize @project
+
+    @project.user = current_user
     if @project.save
       Participation.create(project: @project, user: current_user, admin: true, accepted: true)
       redirect_to projects_path
@@ -47,7 +49,7 @@ class ProjectsController < ApplicationController
     # @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to projects_path
+    redirect_to projects_path(@project)
   end
 
   private
