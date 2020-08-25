@@ -1,0 +1,13 @@
+<div class="new-participation">
+  <h1>Postuler pour rejoindre ce projet</h1>
+  <div id="new-form">
+    <%= simple_form_for [@project, @participation] do |f| %>
+    <%= f.input :motivation %>
+    <%#= f.input :feature, input_html: {value: @project.features } %>
+    <%= f.input :work_time %>
+    <%= f.submit "Ask to join this project"%>
+    <% end %>
+  </div>
+
+</div>
+<%= link_to 'Back', project_path(@project) %>

@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     # @project = Project.find(params[:id])
+    @request_participation = @project.participations.find_by(user: current_user)
   end
 
   def edit
@@ -43,7 +44,7 @@ class ProjectsController < ApplicationController
     # @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to projects_path
+    redirect_to projects_path(@project)
   end
 
   private

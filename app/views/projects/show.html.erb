@@ -7,8 +7,21 @@
 <%= @project.tag %>
 
 <%= link_to 'Back', projects_path %>
+<%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%= link_to "edit", edit_project_path %>
 <%= link_to "Delete #{@project.title}",
                         project_path(@project),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %>
+<% if @request_participation %>
+  <p>Ma demande de participation à ce projet</p>
+  <% if @request_participation.accepted %>
+      <%= link_to "Leave #{@project.title}", participation_path(@request_participation),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } %>
+  <% else %>
+      <%= link_to "cancel my application", participation_path(@request_participation),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>
