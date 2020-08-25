@@ -3,13 +3,14 @@ class ProjectPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def update?
-      user.admin?
-    end
+  def update?
+    record.admin_users.include?(user)
+  end
 
-    def destroy?
-      user.admin?
-    end
+  def destroy?
+    record.admin_users.include?(user)
   end
 end
+

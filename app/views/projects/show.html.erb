@@ -1,4 +1,5 @@
 <h1><%= @project.title %></h1>
+<%= @project.tag_line %>
 <%= @project.description %>
 <%= @project.github_repository %>
 <%= @project.trello_link %>
@@ -7,8 +8,13 @@
 <%= @project.tag %>
 
 <%= link_to 'Back', projects_path %>
-<%= link_to "edit", edit_project_path %>
+<% if policy(@project).update? %>
+  <%= link_to "edit", edit_project_path %>
+<% end %>
+
+<% if policy(@project).destroy? %>
 <%= link_to "Delete #{@project.title}",
                         project_path(@project),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %>
+<% end %>
