@@ -11,12 +11,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%#= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/left-side-bar' %>
-    <div class="container">
-      <%= yield %>
+    <div class="custom-container">
+      <%= render 'shared/left-side-bar' %>
+      <%#= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
+      <div class="main-info">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

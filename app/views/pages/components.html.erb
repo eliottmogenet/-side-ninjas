@@ -1,52 +1,83 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h5>All of the components are listed here, you can just open "views/pages/components.html.erb" are take the html
+code --> copie/paste, no cute !</h5>
+
+<h3>Of course you have to changes the paths !</h3>
+<h3>Of course the html form depends on the url, be careful !</h3>
 
 <h1>There are the buttons</h1>
 
-<%= link_to "Delete project / Cancel request", root_path, class:"delete-btn" %>
+<ol>
+  <li>
+    <p>Delete a project:</p>
+    <%= link_to "Delete project", root_path, class:"delete-btn" %>
+  </li>
+  <li>
+    <p>Cancel request:</p>
+    <%= link_to "Cancel request", root_path, class:"delete-btn" %>
+  </li>
+  <li>
+    <p>Saves changes:</p>
+    <%= link_to "SAVE CHANGES", root_path, class:"first-important-btn" %>
+  </li>
+  <li>
+    <p>Published a project:</p>
+    <%= link_to "PUBLISH THE PROJECT", root_path, class:"first-important-btn" %>
+  </li>
+  <li>
+    <p>Join a project:</p>
+    <div class="first-important-btn">
+      <i class="fas fa-plus"></i>
+      <%= link_to "JOIN THE PROJECT", root_path %>
+    </div>
+  </li>
+  <li>
+    <p>Invite friends on slack:</p>
+    <div class="second-important-btn">
+      <i class="fab fa-slack"></i>
+      <%= link_to "Invite friends on slack", root_path %>
+    </div>
+  </li>
+  <li>
+    <p>Share the project:</p>
+    <div class="share-the-project-btn">
+      <i class="fas fa-share-square"></i>
+      <%= link_to "Share the project" %>
+    </div>
+  </li>
+</ol>
 
-<div class="admin-btn">
-  <p>Admin</p>
-</div>
+<h1>There are the tags</h1>
 
-<div class="admin-btn">
-  <p>Member</p>
-</div>
+<ol>
+  <li>
+    <p>Admin:</p>
+    <div class="admin-btn">
+      <p>Admin</p>
+    </div>
+  </li>
+  <li>
+    <p>Member:</p>
+    <div class="admin-btn">
+      <p>Member</p>
+    </div>
+  </li>
+  <li>
+    <p>Pending request:</p>
+    <div class="pending-request-btn">
+      <i class="fas fa-hourglass-half"></i>
+      <p>PENDING REQUEST</p>
+    </div>
+  </li>
+  <li>
+    <p>Languages or github notification</p>
+    <div class="skills-btn">
+      <p>HTML</p>
+    </div>
+    <br>
+  </li>
+</ol>
 
-<div class="mt-3">
-  <%= link_to "SAVE CHANGES", root_path, class:"first-important-btn" %>
-  <%= link_to "PUBLISH THE PROJECT", root_path, class:"first-important-btn" %>
-  <div class="first-important-btn">
-    <i class="fas fa-plus"></i>
-    <%= link_to "JOIN THE PROJECT", root_path %>
-  </div>
-</div>
-
-<div class="pending-request-btn">
-  <i class="fas fa-hourglass-half"></i>
-  <p>PENDING REQUEST</p>
-</div>
-
-<div class="second-important-btn">
-  <i class="fab fa-slack"></i>
-  <%= link_to "Invite friends on slack", root_path %>
-</div>
-
-<div class="second-important-btn">
-  <i class="fas fa-plus"></i>
-  <%= link_to "Invite friends on slack", root_path %>
-</div>
-
-<div class="second-important-btn">
-  <p>HTML / CSS</p>
-</div>
-
-<div class="share-the-project-btn">
-  <i class="fas fa-share-square"></i>
-  <%= link_to "Share the project" %>
-</div>
-
-<div class="bg-white py-3 my-3">
+<!-- <div class="bg-white py-3 my-3">
   <div class="skills-btn">
     <i class="fab fa-js-square"></i>
     <p>Vue JS</p>
@@ -56,7 +87,7 @@
     <p>New member</p>
     <i class="fas fa-hands-helping"></i>
   </div>
-</div>
+</div> -->
 
 <h1>There are the features</h1>
 
