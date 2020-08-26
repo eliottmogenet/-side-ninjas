@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :projects
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :projects, through: :participations
-  has_many :user_languages
-  validates :first_name, :last_name, :batch_number, :city, :country, :bootcamp_year, presence: true
+  has_many :user_languages, dependent: :destroy
+  validates :first_name, :last_name, :batch_number, :city, :bootcamp_year, presence: true
 end

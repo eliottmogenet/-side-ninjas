@@ -16,3 +16,13 @@ p {
   font-size: 15px;
 }
 
+body {
+  color: $browne;
+}
+
+
+
+.dropdown-menu {
+  overflow: hidden;
+  border-radius: $border-radius-second;
+}
