@@ -173,7 +173,7 @@
 <%= @project.website_link %>
 <%= @project.tag %>
 
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', session[:history].last %>
 
 <%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%#= link_to "edit", edit_project_path %>
