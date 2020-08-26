@@ -140,5 +140,3 @@ html_project.save!
 ruby_project = ProjectLanguage.new(language_id: ruby.id)
 ruby_project.project = Project.second
 ruby_project.save!
-
-

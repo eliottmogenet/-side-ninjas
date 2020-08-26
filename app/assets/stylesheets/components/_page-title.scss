@@ -1,11 +1,17 @@
 // c'est le rectangle bleu en haut de beaucoup de pages --> adrien à faire
 .page-title-box {
+  margin-top: 10px;
   background-color: $light-blue;
   border-radius: $border-radius;
   padding: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 0px 10px 0px rgba(10, 10, 10, 0.1);
+}
+
+.project-tag-line > p {
+  color: $middle-gray;
 }
 
 .page-title, .under-title {

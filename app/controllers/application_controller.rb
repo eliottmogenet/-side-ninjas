@@ -10,20 +10,22 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :batch_number, :city, :pays, :bootcamp_year, :github_username, :linkedin_username, :slack_username])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :batch_number, :city, :bootcamp_year, :github_username, :linkedin_username, :slack_username])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :batch_number, :city, :pays, :bootcamp_year, :github_username, :linkedin_username, :slack_username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :batch_number, :city, :bootcamp_year, :github_username, :linkedin_username, :slack_username])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
   end
 
   private
 
   def store_history
-      return unless request.get?
-      return if request.xhr?
-      session[:history] ||= []
-      session[:history] << request.fullpath
-      session[:history].delete_at 0 if session[:history].size == 6
+    return unless request.get?
+    return if request.xhr?
+    session[:history] ||= []
+    session[:history] << request.fullpath
+    session[:history].delete_at 0 if session[:history].size == 6
   end
 
   def skip_pundit?

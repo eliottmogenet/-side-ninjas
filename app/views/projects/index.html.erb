@@ -1,5 +1,68 @@
-<h1>Search for a project</h1>
+<div class="search-title-box">
+  <div class="search-title-description">
+    <div class="search-title">
+      <h1>Search a project</h1>
+    </div>
+    <div class="under-title">
+      <div class="project-tag-line">
+        <% if Project.all.count >=2 %>
+          <p><%= Project.all.count %> projects are matching your research.</p>
+        <% elsif Project.all.count == 1 %>
+          <p><%= Project.all.count %> project is matching your research.</p>
+        <% else %>
+          <p> No projects are matching your research.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
+<% @projects.each do |project|%>
+
+<<<<<<< HEAD
+  <div class="row mt-5">
+    <div class="col-8">
+      <div class="resum-project-box">
+        <div class="project-header">
+          <div class="resum-project-title">
+            <h5><%= project.title %></h5>
+          </div>
+          <div class="pending-request-btn">
+            <i class="fas fa-hourglass-half"></i>
+            <p>bla days ago</p>
+          </div>
+        </div>
+        <hr>
+        <div class="resum-project-content">
+          <div class="search-project-description">
+            <h5><%= project.tag_line %></h5>
+            <p><%= project.description %></p>
+          </div>
+          <div class="resum-project-images">
+            <div class="resum-project-pictures">
+              <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large">
+              <img src="https://gal.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2F2018.2F10.2F18.2F2ccbda1a-7cf3-4858-8b56-36840d5b9b19.2Ejpeg/480x480/quality/80/focus-point/1447%2C851/cristiano-ronaldo-dans-la-tourmente-c-est-parti-pour-durer.jpg" class="avatar-large">
+            </div>
+          </div>
+          <div class="bottom-search-project">
+            <div class="resum-project-tags">
+              <% project.project_languages.each do |tag| %>
+                <div class="skills-btn">
+                  <i class="fab fa-js-square"></i>
+                  <p><%= tag %></p>
+                </div>
+              <% end %>
+            </div>
+            <div class="second-important-btn">
+              <i class="fas fa-search"></i>
+              <%= link_to "See details", project_path(project) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+=======
 <%= form_tag projects_path, method: :get do %>
   <%= select_tag :language, options_for_select(@languages, params[:language]),
     multiple: true, class: 'select2-multiple'
@@ -23,15 +86,11 @@
     <%= project.tag %>
     <%= distance_of_time_in_words(project.start_date, Date.today) %> ago
     <%= link_to "see more", project_path(project)  %>
+>>>>>>> master
 
-<% if policy(project).update? %>
-    <%= link_to "edit", edit_project_path(project) %>
 <% end %>
-    </li>
-  </ul>
-  <% end %>
-</div>
-<%= link_to  "create a project", new_project_path %>
+
+
 
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>

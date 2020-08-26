@@ -1,6 +1,68 @@
 <div class="left-side-bar">
+
   <div class="side-bar-logo">
     <%= render 'shared/logo' %>
   </div>
-  <hr>
+
+  <div class="user-actions">
+
+    <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['index', 'show'].include?(params[:action]) %>">
+      <i class="fas fa-search"></i>
+      <%= link_to "Search", projects_path %>
+    </div>
+    <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['new'].include?(params[:action]) %>">
+      <i class="fas fa-plus"></i>
+      <%= link_to "Create", new_project_path %>
+    </div>
+    <div class="btn-user-action <%= "active" if params[:controller] == "dashboard" && ['index'].include?(params[:action]) %>">
+      <i class="fas fa-tasks"></i>
+      <%= link_to "Manage", root_path %>
+    </div>
+
+  </div>
+
+  <div class="user-cation-logout">
+    <div class="back-btn">
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <p>Log out</p>
+      <% end %>
+    </div>
+  </div>
+
 </div>
+
+
+
+<!--
+<div class="left-side-bar">
+  <div class="sidebar-content">
+    <div class="side-bar-logo">
+      <%#= render 'shared/logo' %>
+    </div>
+    <hr>
+    <div class="user-actions">
+      <div class="btn-user-action">
+        <i class="fas fa-search"></i>
+        <%#= link_to "Search", projects_path %>
+      </div>
+      <div class="btn-user-action">
+        <i class="fas fa-plus"></i>
+        <%#= link_to "Create", new_project_path %>
+      </div>
+      <div class="btn-user-action">
+        <i class="fas fa-tasks"></i>
+        <%#= link_to "Manage", root_path %>
+      </div>
+    </div>
+    <div class="user-cation-logout">
+      <div class="back-btn">
+        <%#= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt"></i>
+          <p>Log out</p>
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</div> -->
+
