@@ -1,5 +1,12 @@
 <h1>Search for a project</h1>
 
+<%= form_tag projects_path, method: :get do %>
+  <%= select_tag :language, options_for_select(@languages, params[:language]),
+    prompt: "Select a language", multiple: true
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
   <% @projects.each do |project|%>
 <div class="project-container">
   <ul>
@@ -25,3 +32,5 @@
 
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+

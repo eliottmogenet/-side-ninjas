@@ -1,3 +1,11 @@
+
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
 Participation.destroy_all
@@ -122,5 +130,13 @@ angular = Language.new(name: "Angular")
 angular_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Font_Awesome_5_brands_angular.svg/1200px-Font_Awesome_5_brands_angular.svg.png")
 angular.photo.attach(io: angular_user, filename: 'angular_file.png')
 angular.save!
+
+ProjectLanguage.destroy_all
+
+html_project = ProjectLanguage.new(project_id: 1, language_id: html.id)
+html_project.save!
+
+ruby_project = ProjectLanguage.new(project_id: 2, language_id: ruby.id)
+ruby_project.save!
 
 
