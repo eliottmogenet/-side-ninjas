@@ -9,8 +9,11 @@
 @import "font-awesome";
 
 // Your CSS partials
+@import 'select2/dist/css/select2';
 @import "components/index";
 @import "pages/index";
+
+
 
 p {
   font-size: 15px;
