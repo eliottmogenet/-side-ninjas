@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :participations
   has_many :projects, through: :participations
   has_many :user_languages
-  validates :first_name, :last_name, :batch_number, presence: true
+  validates :first_name, :last_name, :batch_number, :city, :country, :bootcamp_year, presence: true
 end
