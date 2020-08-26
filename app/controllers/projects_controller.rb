@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     @languages = Language.pluck(:name)
     @projects = policy_scope(Project)
     if params[:language].present?
-      @projects = @projects.joins(project_languages: :language).where(languages: {name: params[:language]})
+      @projects = @projects.joins(project_languages: :language).where(languages: { name: params[:language] })
     end
     if params[:sort].present?
       @projects = @projects.order(start_date: params[:sort])
