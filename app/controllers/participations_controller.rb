@@ -20,9 +20,13 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
+    @project = Participation.find(params[:id]).project
+    # raise
     @participation = Participation.find(params[:id])
     authorize @participation
     @participation.destroy
+
+    redirect_to project_path(@project)
   end
 
   private
