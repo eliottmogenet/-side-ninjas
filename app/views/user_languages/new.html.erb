@@ -1,0 +1,34 @@
+<div class="container" data-controller="languages">
+  <div class="row p-5">
+    <% @languages.each do |language| %>
+      <div class="col-3 image-select" data-id="<%= language.id %>" data-action="click->languages#checkLanguage">
+        <%= cl_image_tag language.photo.key, height: 100, width: 100, crop: :fill, class: "m-3" %>
+        <%= language.name %>
+      </div>
+    <% end %>
+  </div>
+    <%#= language.name %>
+
+
+  <%= simple_form_for @user_language do |f| %>
+    <%#= f.association :language, label_method: :photo, as: :check_boxes, :input_html => {:multiple => true} %>
+
+
+    <%= f.association :language,
+       :as => :check_boxes,
+       item_wrapper_tag: :div,
+       item_wrapper_class: "image-select d-none",
+       # :collection => @languages,
+       :label => false,
+       :inline_label => false,
+       include_blank: false,
+       include_hidden: false,
+       :input_html => {multiple: true, data: {target: "languages.checkbox"} },
+       # :label_method => lambda { |b| cl_image_tag(b.photo.key)},
+       value_method: :id %>
+
+
+
+    <%= f.submit "coucou" %>
+  <% end %>
+</div>
