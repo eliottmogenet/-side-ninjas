@@ -21,7 +21,6 @@ class ParticipationsController < ApplicationController
 
   def destroy
     @project = Participation.find(params[:id]).project
-    # raise
     @participation = Participation.find(params[:id])
     authorize @participation
     @participation.destroy
