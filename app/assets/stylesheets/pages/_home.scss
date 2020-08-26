@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+.image-select img {
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.image-active img {
+  opacity: 1 !important;
+}

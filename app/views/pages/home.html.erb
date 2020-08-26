@@ -1,6 +1,18 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+<% @languages.each do |language| %>
+  <%= language.name %>
+  <%= cl_image_tag language.photo.key, height: 20, width: 20, crop: :fill %>
+<% end %>
+
+
+<% current_user.user_languages.each do |user_language| %>
+<%= user_language.language.name %>
+<% end %>
+
+<hr>
+
 <h1>There are the buttons</h1>
 
 <%= link_to "Delete project / Cancel request", root_path, class:"delete-btn" %>
@@ -283,3 +295,4 @@
 
 
 
+>>>>>>> master
