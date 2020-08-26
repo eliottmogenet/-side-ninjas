@@ -34,3 +34,6 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 import "controllers"
+import { initSelect2 } from '../components/init_select2';
+
+initSelect2();
