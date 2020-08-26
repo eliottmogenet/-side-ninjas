@@ -2,8 +2,8 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :users, through: :participations
   has_many :project_languages
-  has_many :participations
-  has_many :features
+  has_many :participations, dependent: :destroy
+  has_many :features, dependent: :destroy
   has_many :languages, through: :project_languages
 
   validates :title, :description, presence: true
