@@ -133,10 +133,12 @@ angular.save!
 
 ProjectLanguage.destroy_all
 
-html_project = ProjectLanguage.new(project_id: 1, language_id: html.id)
+html_project = ProjectLanguage.new(language_id: html.id)
+html_project.project = Project.first
 html_project.save!
 
-ruby_project = ProjectLanguage.new(project_id: 2, language_id: ruby.id)
+ruby_project = ProjectLanguage.new(language_id: ruby.id)
+ruby_project.project = Project.second
 ruby_project.save!
 
 
