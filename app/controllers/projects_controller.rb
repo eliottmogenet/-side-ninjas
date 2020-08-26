@@ -60,6 +60,7 @@ class ProjectsController < ApplicationController
     redirect_to projects_path(@project)
   end
 
+
   private
 
   def params_project

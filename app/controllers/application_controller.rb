@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  after_action :store_history
   include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -16,6 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def store_history
+      return unless request.get?
+      return if request.xhr?
+      session[:history] ||= []
+      session[:history] << request.fullpath
+      session[:history].delete_at 0 if session[:history].size == 6
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

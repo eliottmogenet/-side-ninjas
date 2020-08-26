@@ -2,12 +2,12 @@
 
 <%= form_tag projects_path, method: :get do %>
   <%= select_tag :language, options_for_select(@languages, params[:language]),
-    prompt: "Select a language", multiple: true, class: 'select2'
+    multiple: true, class: 'select2-multiple'
   %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-
+<%= link_to "Reset", projects_path %>
 
 
   <% @projects.each do |project|%>
@@ -19,9 +19,9 @@
     <%= project.description %>
     <%= project.github_repository %>
     <%= project.trello_link %>
-    <%= project.start_date %>
     <%= project.website_link %>
     <%= project.tag %>
+    <%= distance_of_time_in_words(project.start_date, Date.today) %> ago
     <%= link_to "see more", project_path(project)  %>
 
 <% if policy(project).update? %>
@@ -35,5 +35,4 @@
 
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-
 
