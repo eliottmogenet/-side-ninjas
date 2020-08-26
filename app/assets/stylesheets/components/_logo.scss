@@ -1,0 +1,28 @@
+.side-bar-logo {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.logo {
+  margin-top: 10px;
+  margin-left: 2px;
+  display: flex;
+  color: $white;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+.side-word-logo {
+  p {
+    color: $browne;
+  }
+  background-color: $white;
+  padding: 0px 5px;
+  border-radius: 5px;
+  margin: 0px 2px;
+}

@@ -1,7 +1,7 @@
 <div class="new-project">
   <h1>Ajouter un nouveau project</h1>
   <div id="new-form">
-    <%= simple_form_for (@project) do |f| %>
+    <%= simple_form_for (@project), remote: true do |f| %>
     <%= f.input :title %>
     <%= f.input :tag_line %>
     <%= f.input :description %>

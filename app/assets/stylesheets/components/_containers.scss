@@ -1,0 +1,36 @@
+.custom-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+// #pages-home {
+//   .custom-container {
+//     display: block;
+//   }
+// }
+
+
+.left-side-bar {
+  background-color: $browne;
+  width: 150px;
+  flex-shrink: 0;
+
+  hr {
+    border: 0.1px solid $white;
+  }
+}
+
+.side-bar-logo {
+  margin: 20% 10%;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+
+.main-info {
+  margin: 50px;
+  flex-grow: 1;
+}
