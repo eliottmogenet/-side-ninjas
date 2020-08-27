@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
+    @languages = Language.pluck(:name)
     @projects = policy_scope(Project)
     if params[:language].present?
       @projects = @projects.joins(project_languages: :language).where(languages: { name: params[:language] })
@@ -18,7 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    #@project = Project.find(params[:id])
+    # @project = Project.find(params[:id])
     @features = @project.features
     @feature = Feature.new
   end
@@ -38,9 +39,10 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
-  def create
+  def create #on créé un nouveau projet / une participation pour le current_user et des project_languages
     @project = Project.new(params_project)
     authorize @project
+
 
     @project.user = current_user
     if @project.save
@@ -58,10 +60,11 @@ class ProjectsController < ApplicationController
     redirect_to projects_path(@project)
   end
 
+
   private
 
   def params_project
-    params.require(:project).permit(:title, :description, :github_repository, :trello_link, :start_date, :website_link, :tag)
+    params.require(:project).permit(:title, :description, :github_repository, :trello_link, :start_date, :website_link, :tag, :tag_line)
   end
 
   def set_project
@@ -69,3 +72,4 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 end
+

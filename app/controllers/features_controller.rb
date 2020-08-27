@@ -5,14 +5,15 @@ class FeaturesController < ApplicationController
     # @project = Project.find(params[:project_id])
     @user = current_user
     @feature = Feature.new
+    authorize @feature
   end
 
   def create
     # @project = Project.find(params[:project_id])
     @user = current_user
     @feature = Feature.new(params_feature)
-
     @feature.project = @project
+    authorize @feature
     if @feature.save
       redirect_to project_path(@project)
     else
@@ -23,13 +24,14 @@ class FeaturesController < ApplicationController
   def edit
     # @project = Project.find(params[:project_id])
     @feature = Feature.new
+    authorize @feature
   end
 
   def update
     # @project = Project.find(params[:project_id])
     @feature = Feature.find(params[:id])
     @feature.update(params_feature)
-
+    authorize @feature
     @feature.save
 
     redirect_to projects_path(@project)
@@ -37,6 +39,7 @@ class FeaturesController < ApplicationController
 
   def destroy
     @feature = Feature.find(params[:id])
+    authorize @feature
     @feature.destroy
 
     redirect_to projects_path(@project)

@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :users, through: :participations
-  has_many :project_languages
+  has_many :project_languages, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :features, dependent: :destroy
   has_many :languages, through: :project_languages
@@ -12,6 +12,6 @@ class Project < ApplicationRecord
 
   def admin_users
     admin_participations = participations.where(admin: true)
-    admin_participations.map { |participation| participation.user}
+    admin_participations.map { |participation| participation.user }
   end
 end
