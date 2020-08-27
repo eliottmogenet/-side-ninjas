@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   validates :title, uniqueness: true
   validates :description, length: { minimum: 200 }
 
-  accepts_nested_attributes_for :features
+  accepts_nested_attributes_for :features, reject_if: :all_blank
 
   def admin_users
     admin_participations = participations.where(admin: true)

@@ -121,10 +121,12 @@
     </div>
 </div>
 
-  <% @project.features.each_with_index do |feature, index| %>
+  <%= f.simple_fields_for :features do |feature| %>
+    <% index = 0 %>
+    <%= feature.input_field :id, class: "d-none" %>
     <div class="features-background">
       <div class="features-title">
-        <h5>Main feature #<%= index + 1 %>: <%= feature.name %></h5>
+        <h5>Main feature #<%= index + 1 %>: <%= feature.input :name %></h5>
       </div>
       <hr>
       <div class="features-logos">
@@ -134,10 +136,10 @@
         </div>
       </div>
       <div class="features-description">
-        <p><%= feature.description %></p>
+        <p><%= feature.input :description %></p>
       </div>
       <div class="features-languages">
-        <% feature.feature_languages.each do |language| %>
+        <% feature.object.feature_languages.each do |language| %>
           <% if language.languages.frameworks.nil? %>
             <div class="skills-btn">
               <i class="fab fa-js-square"></i>
@@ -154,6 +156,7 @@
         <% end %>
       </div>
     </div>
+    <% index += 1 %>
   <% end %>
 <!-- Below, end of simple_form -->
 <% end %>
