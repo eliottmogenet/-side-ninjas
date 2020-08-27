@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'components', to: "pages#components"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :projects, only: [:index, :show, :edit, :update, :create, :new, :destroy]
-  resources :user_languages, only: [:new, :create, :edit, :update]
+  resources :user_languages, only: [:index, :new, :create, :edit, :update]
 
   resources :projects, only: [:index, :show, :edit, :update, :create, :new, :destroy] do
     resources :participations, only: [:new, :create]

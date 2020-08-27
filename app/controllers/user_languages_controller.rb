@@ -1,4 +1,10 @@
 class UserLanguagesController < ApplicationController
+
+  def index
+    @user_languages = policy_scope(UserLanguage)
+    @user_languages = current_user.user_languages
+  end
+
   def new
     @languages = Language.all
     @user_language = UserLanguage.new
@@ -7,17 +13,24 @@ class UserLanguagesController < ApplicationController
 
   def create
     current_user.user_languages.destroy_all
-    language_params[:language_id].each do |id|
-      @user_language = UserLanguage.new(user: current_user, language: Language.find(id.to_i))
-      authorize @user_language
-      unless @user_language.save!
-        render :new
-        return false
+    if params["user_language"].present?
+      language_params[:language_id].each do |id|
+        @user_language = UserLanguage.new(user: current_user, language: Language.find(id.to_i))
+        authorize @user_language
+        unless @user_language.save!
+          render :new
+          return false
+        end
       end
+      redirect_to user_languages_path
+    else
+      @languages = Language.all
+      @user_language = UserLanguage.new
+      authorize @user_language
+      render :new
     end
-
-    redirect_to root_path
   end
+
 
   def edit
     @user_language = UserLanguage.find(params[:id])
