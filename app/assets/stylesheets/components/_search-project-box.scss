@@ -1,8 +1,12 @@
 .search-project-description {
   p, h5 {
     color: $middle-gray;
+    overflow: scroll;
+    max-width: 600px;
+    max-height: 100px;
   }
 }
+
 
 .bottom-search-project {
   display: flex;
