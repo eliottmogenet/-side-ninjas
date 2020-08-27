@@ -72,14 +72,22 @@
   </div>
 <% end %>
 
+<%= form_tag projects_path, method: :get do %>
+  <%= select_tag :language, options_for_select(@languages, params[:language]),
+    multiple: true, class: 'select2-multiple'
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+>>>>>>> master
+<% end %>
+
 
 
 <%= link_to "Reset", projects_path %>
 
-
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 
-<style>
+
+<!-- <style>
     .select2-container--default .select2-selection--multiple {
     border: none;
     background-color: #F2F7FC;
@@ -92,13 +100,5 @@
     padding: 6px;
     color: #514A5A;
 }
-</style>
-
-
-
-
-
-
-
-
+</style> -->
 
