@@ -1,13 +1,14 @@
 <div class="back-btn">
   <%= link_to projects_path do%>
     <i class="fas fa-long-arrow-alt-left"></i>
-    <p>Back</p>
+    <p><%= link_to 'Back', session[:history].last %></p>
   <% end %>
 </div>
 
 <div class="page-title-box">
   <div class="page-title-description">
     <div class="page-title">
+      <!-- if participation est accepted = true -->
       <h1>Join</h1>
       <div class="project-name">
         <h1><%= @project.title %></h1>
@@ -17,8 +18,11 @@
       <div class="project-tag-line">
         <p><%= @project.tag_line %></p>
       </div>
-      <% if current_user = @project.user %>
-        <%= link_to "Delete project", root_path, class:"delete-btn" %>
+      <% if policy(@project).destroy? %>
+        <%= link_to "Delete #{@project.title}",
+                        project_path(@project),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
   </div>
@@ -160,34 +164,11 @@
 <% end %>
 
 
-
-
-
-
-<h1><%= @project.title %></h1>
-<%= @project.tag_line %>
-<%= @project.description %>
-<%= @project.github_repository %>
-<%= @project.trello_link %>
-<%= @project.start_date %>
-<%= @project.website_link %>
-<%= @project.tag %>
-
-<%= link_to 'Back', session[:history].last %>
-
 <%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%#= link_to "edit", edit_project_path %>
 
 <% if policy(@project).update? %>
   <%= link_to "edit", edit_project_path %>
-<% end %>
-
-<% if policy(@project).destroy? %>
-
-<%= link_to "Delete #{@project.title}",
-                        project_path(@project),
-                        method: :delete,
-                        data: { confirm: "Are you sure?" } %>
 <% end %>
 
 <% if @request_participation %>

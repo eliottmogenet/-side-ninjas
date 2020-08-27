@@ -28,6 +28,30 @@ class ParticipationsController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def edit
+    @project = Participation.find(params[:id]).project
+    @participation = Participation.find(params[:id])
+    authorize @participation
+  end
+
+  def accept
+    @participation = Participation.find(params[:id])
+    authorize @participation
+
+    @participation.accepted = true
+    @participation.save
+  end
+
+
+  def refuse
+    @participation = Participation.find(params[:id])
+    authorize @participation
+
+    @participation.accepted = false
+    @participation.save
+  end
+
+
   private
 
   def params_participation
