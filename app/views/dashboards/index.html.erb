@@ -1,5 +1,5 @@
 <div class="back-btn">
-  <%= link_to root_path do%>
+  <%= link_to projects_path do%>
     <i class="fas fa-long-arrow-alt-left"></i>
     <p>Back</p>
   <% end %>
@@ -60,8 +60,8 @@
                 <% end %>
               </div>
                 <div class="modify-btn">
-                  <i class="fas fa-pen"></i>
-                  <%= link_to root_path do%>
+                  <%= link_to edit_project_path(project) do%>
+                    <i class="fas fa-pen"></i>
                   <% end %>
                 </div>
             </div>

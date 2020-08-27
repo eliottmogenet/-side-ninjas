@@ -7,16 +7,16 @@
   <div class="user-actions">
 
     <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['index', 'show'].include?(params[:action]) %>">
-      <i class="fas fa-search"></i>
+      <i class="fas fa-search mr-2"></i>
       <%= link_to "Search", projects_path %>
     </div>
     <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['new'].include?(params[:action]) %>">
-      <i class="fas fa-plus"></i>
+      <i class="fas fa-plus mr-2"></i>
       <%= link_to "Create", new_project_path %>
     </div>
     <div class="btn-user-action <%= "active" if params[:controller] == "dashboard" && ['index'].include?(params[:action]) %>">
-      <i class="fas fa-tasks"></i>
-      <%= link_to "Manage", root_path %>
+      <i class="fas fa-tasks mr-2"></i>
+      <%= link_to "Manage", dashboards_path %>
     </div>
 
   </div>
