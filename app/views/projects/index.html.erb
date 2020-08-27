@@ -11,13 +11,14 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
+<%= link_to "Reset", projects_path %>
 
     <div class="under-title">
       <div class="project-tag-line">
-        <% if Project.all.count >=2 %>
-          <p><%= Project.all.count %> projects are matching your research.</p>
-        <% elsif Project.all.count == 1 %>
-          <p><%= Project.all.count %> project is matching your research.</p>
+        <% if @projects.all.count >=2 %>
+          <p><%= @projects.all.count %> projects are matching your research.</p>
+        <% elsif @projects.all.count == 1 %>
+          <p><%= @projects.all.count %> project is matching your research.</p>
         <% else %>
           <p> No projects are matching your research.</p>
         <% end %>
@@ -54,10 +55,10 @@
           </div>
           <div class="bottom-search-project">
             <div class="resum-project-tags">
-              <% project.project_languages.each do |tag| %>
+              <% project.project_languages.each do |project_language| %>
                 <div class="skills-btn">
                   <i class="fab fa-js-square"></i>
-                  <p><%= tag %></p>
+                  <p><% project_language.language.name %></p>
                 </div>
               <% end %>
             </div>
@@ -72,22 +73,11 @@
   </div>
 <% end %>
 
-<%= form_tag projects_path, method: :get do %>
-  <%= select_tag :language, options_for_select(@languages, params[:language]),
-    multiple: true, class: 'select2-multiple'
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
->>>>>>> master
-<% end %>
-
-
-
-<%= link_to "Reset", projects_path %>
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
 
 
-<!-- <style>
+<style>
     .select2-container--default .select2-selection--multiple {
     border: none;
     background-color: #F2F7FC;
@@ -100,5 +90,5 @@
     padding: 6px;
     color: #514A5A;
 }
-</style> -->
+</style>
 

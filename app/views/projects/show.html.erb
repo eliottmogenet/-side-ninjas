@@ -1,15 +1,15 @@
 <div class="back-btn">
-  <%= link_to projects_path do%>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <p><%= link_to 'Back', session[:history].last %></p>
-  <% end %>
+    <p><i class="fas fa-long-arrow-alt-left"></i> <%= link_to 'Back', session[:history].last %></p>
 </div>
 
 <div class="page-title-box">
   <div class="page-title-description">
     <div class="page-title">
+      <!--<%# if current_user = @request_participations.user && @request_participations.user != true %>-->
+
       <!-- if participation est accepted = true -->
       <h1>Join</h1>
+      <!--<% #end %>-->
       <div class="project-name">
         <h1><%= @project.title %></h1>
       </div>
@@ -55,10 +55,10 @@
           </div>
         </div>
         <div class="resum-project-tags">
-          <% @project.project_languages.each do |tag| %>
+          <% @project.project_languages.each do |project_languages| %>
             <div class="skills-btn">
               <i class="fab fa-js-square"></i>
-              <p><%= tag %></p>
+              <p><%= project_language.language.name  %></p>
             </div>
           <% end %>
         </div>
@@ -171,18 +171,14 @@
   <%= link_to "edit", edit_project_path %>
 <% end %>
 
-<% if @request_participation %>
   <p>Ma demande de participation à ce projet</p>
-  <% if @request_participation.accepted %>
       <%= link_to "Leave #{@project.title}", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
-  <% else %>
+
       <%= link_to "cancel my application", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
-  <% end %>
-<% end %>
 
 
 <% @features.each do |feature| %>
