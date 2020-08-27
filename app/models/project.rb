@@ -10,6 +10,8 @@ class Project < ApplicationRecord
   validates :title, uniqueness: true
   validates :description, length: { minimum: 200 }
 
+  accepts_nested_attributes_for :features
+
   def admin_users
     admin_participations = participations.where(admin: true)
     admin_participations.map { |participation| participation.user }
