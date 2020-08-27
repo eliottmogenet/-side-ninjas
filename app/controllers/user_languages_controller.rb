@@ -44,7 +44,7 @@ class UserLanguagesController < ApplicationController
     @user_language.level = params["user_language"]["level"]
     @user_language.update(language_params)
 
-
+    redirect_to user_languages_path
 
   end
 

@@ -6,5 +6,5 @@
 
 // import { fetchGitUserProfile } from './users'
 
-fetchGitUserProfile(`${user.github_username}`)
+// fetchGitUserProfile(`${user.github_username}`)
 // fetchGitUserProfile(`${user.github_username}`)

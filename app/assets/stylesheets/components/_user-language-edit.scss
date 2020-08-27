@@ -1,0 +1,24 @@
+.container-edit {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  border-radius: 25px;
+}
+
+.image-select {
+  opacity: 0.5;
+}
+
+.image-active {
+  opacity: 1 !important;
+}
+
+.user-language-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.levels-user-language {
+  cursor: pointer;
+}

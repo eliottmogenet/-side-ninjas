@@ -28,12 +28,12 @@ import "controllers"
 import { initSelect2 } from '../components/init_select2';
 
 
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   initSelect2();
+
   // Call your functions here, e.g:
   // initSelect2();
 });

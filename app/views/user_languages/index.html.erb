@@ -1,19 +1,61 @@
 <div class="container-index">
-   <div class="select-your-skills">
-    <h1> Select your skills</h1>
-    <p> complete at least 4 web languages you want to improve</p>
+      <div class="page-title-box">
+    <div class="page-title-description">
+      <div class="page-title">
+        <h1>Select</h1>
+        <div class="project-name">
+          <h1>your skills</h1>
+        </div>
+      </div>
+      <div class="under-title">
+        <div class="project-tag-line">
+          <p>complete at least 4 web languages you want to improve.</p>
+        </div>
+      </div>
     </div>
+    <div class="first-important-btn">
+      <%= link_to "Create account", projects_path %>
+    </div>
+  </div>
 
   <% @user_languages.each do |user_language| %>
-    <div class="languages-card">
+    <div class="languages-card" data-controller="languages-level">
       <div class="languages-selected">
         <%= user_language.language.name %>
         <%= cl_image_tag user_language.language.photo.key, crop: :fill, class: "language-image" %>
       </div>
-      <div class="edit-languages">
-        <p>You did not select your level yet!</p>
-        <%= link_to "Edit your level now!", edit_user_language_path(user_language), class: "btn btn-primary" %>
+      <div class="edit-languages" data-target="languages-level.editLanguages">
+        <% if user_language.level.present? %>
+          Your level: <%= user_language.level %>
+        <% else %>
+          <p>You did not select your level yet!</p>
+        <% end %>
+        <div class="btn btn-primary edit-btn"
+             data-action="click->languages-level#cardReplace"
+          >
+            Edit your level now!
+        </div>
       </div>
+      <div class="container-edit" style="display: none;" data-controller="levels" data-target="languages-level.editContainer">
+        <div class="choose-your-level">
+          <p>Select my level</p>
+
+          <% UserLanguage::LEVELS.each do |level| %>
+            <div class="levels-user-language image-select" data-id="<%= level %>" data-target="levels.clickable" data-action="click->levels#checkLevel">
+              <%= level %>
+            </div>
+          <% end %>
+
+
+
+          <%= simple_form_for user_language do |f| %>
+          <div class="level-form d-none">
+            <%= f.input :level, collection: UserLanguage::LEVELS , as: :radio_buttons, :input_html => {data: {target: "levels.radio_button"} } %>
+            </div>
+            <%= f.button :submit, class: "submit-btn"  %>
+          <% end %>
+          </div>
+        </div>
     </div>
   <% end %>
 </div>

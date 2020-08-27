@@ -1,12 +1,13 @@
 <div class="container-edit" data-controller="levels">
   <div class="user-language-edit">
-    <%= @user_language.language.name %> <%= cl_image_tag @user_language.language.photo.key, crop: :fill, class: "language-image" %>
+    <%= @user_language.language.name %>
+    <%= cl_image_tag @user_language.language.photo.key, crop: :fill, class: "language-image" %>
   </div>
-  <div class="choose-your-level"></div>
+  <div class="choose-your-level">
     <p>Select my level</p>
 
     <% UserLanguage::LEVELS.each do |level| %>
-      <div class="levels-user-language" data-id="<%= level %>" data-action="click->levels#checkLevel">
+      <div class="levels-user-language image-select" data-id="<%= level %>" data-target="levels.clickable" data-action="click->levels#checkLevel">
         <%= level %>
       </div>
     <% end %>
@@ -19,5 +20,5 @@
       </div>
       <%= f.button :submit, class: "submit-btn"  %>
     <% end %>
+    </div>
   </div>
-</div>
