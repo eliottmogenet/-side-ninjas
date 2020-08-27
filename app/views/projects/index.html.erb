@@ -3,6 +3,15 @@
     <div class="search-title">
       <h1>Search a project</h1>
     </div>
+
+<%= form_tag projects_path, method: :get do %>
+  <%= select_tag :language, options_for_select(@languages, params[:language]),
+    multiple: true, class: 'select2-multiple'
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
     <div class="under-title">
       <div class="project-tag-line">
         <% if Project.all.count >=2 %>
@@ -70,7 +79,6 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to "Reset", projects_path %>
-
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
 
