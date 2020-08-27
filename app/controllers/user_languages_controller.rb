@@ -38,11 +38,19 @@ class UserLanguagesController < ApplicationController
   end
 
   def update
+    # TODO
+    @user_language = UserLanguage.find(params[:id])
+    authorize @user_language
+    @user_language.level = params["user_language"]["level"]
+    @user_language.update(language_params)
+
+
+
   end
 
   private
 
   def language_params
-    params.require(:user_language).permit(language_id: [])
+    params.require(:user_language).permit( :level, language_id: [])
   end
 end

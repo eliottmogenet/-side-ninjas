@@ -6,4 +6,5 @@ channels.keys().forEach(channels)
 
 import { fetchGitUserProfile } from './users'
 
+
 fetchGitUserProfile(`${user.github_username}`)
