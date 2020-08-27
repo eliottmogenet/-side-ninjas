@@ -29,7 +29,7 @@
   <% if current_user != @project.user %>
     <div class="first-important-btn">
       <i class="fas fa-plus"></i>
-      <%= link_to "JOIN THE PROJECT", root_path %>
+      <%= link_to "JOIN THE PROJECT", new_project_participation_path(@project) %>
     </div>
   <% end %>
 </div>
