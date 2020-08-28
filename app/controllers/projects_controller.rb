@@ -47,7 +47,6 @@ class ProjectsController < ApplicationController
 
     @project.user = current_user
     if @project.save
-      Participation.create(project: @project, user: current_user, admin: true, accepted: true)
       redirect_to projects_path
     else
       render :new
