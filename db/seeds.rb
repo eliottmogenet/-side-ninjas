@@ -78,7 +78,6 @@ ruby_user = URI.open("https://img.favpng.com/4/13/16/ruby-on-rails-logo-programm
 ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
-
 python = Language.new(name: "Python")
 python_user = URI.open("https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png")
 python.photo.attach(io: python_user, filename: 'python_file.png')
