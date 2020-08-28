@@ -13,10 +13,12 @@
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%#= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <%#= render 'shared/flashes' %>
     <div class="custom-container">
       <%#= render 'shared/left-side-bar' %>
       <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
+
+      <div class="main-info <%= "with-sidebar" unless controller.controller_name == "pages" && controller.action_name == "home" %>">
         <div class="user-avatar-profil">
           <div class="dropdown">
             <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
