@@ -23,7 +23,7 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-user = User.new(email: "user@user.com", password: "azerty", first_name: "user-first-name", last_name: "user-last-name", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
 user.save!
 
 PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alecia_beck_vignette.jpg", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/aleksin_vig.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allia_avatar.png",
@@ -48,6 +48,21 @@ PICTURE_PROJECT = [
   "https://www.projectsmart.co.uk/img/pm-workflow.png",
   "https://previews.123rf.com/images/mrhighsky/mrhighsky1603/mrhighsky160300124/56405493-project-management-tag-cloud.jpg",
   "https://thumbs.dreamstime.com/z/vector-software-development-project-coding-technology-vector-conceptual-software-development-project-coding-technology-paint-brush-102626382.jpg"
+]
+
+PROJECT_TAG_LINE = [
+  "The new digital photo tool",
+  "The 'Zapier for Blockchain'",
+  "A better way to make video",
+  "The best tool to make research online"
+]
+
+PROJECT_DESCRIPTION = [
+  "Digital photo frame right in your Mac’s menu bar. Bring little moments of pleasure to your day! Decide which of your photos you'd like to see and, just like a digital photo frame, be pleasantly surprised with a new photos.",
+  "The 'Zapier for Blockchain'. PARSIQ serves as a bridge between blockchains and off-chain applications. Monitor and track any events or digital asset transfers on various blockchains in real-time at scale, build triggerable workflows.",
+  "Story Creator is a simple online video editing tool for digital creators. You can think of Canva as Photoshop for dummies while Story Creator is After Effects for dummies.",
+  "Workomo shows you everything important about People, just before you Meet, right inside Chrome. With one click, you can see a person's professional background, areas of common interest as well as talking points that help you forge a personal connection.",
+  " How do you research and think through important decisions? Open browser tabs, files in Dropbox, a whiteboard… Muse offers a new way. It turns your iPad into a spatial canvas for research notes, PDFs, screenshots, sketches, and bookmarks."
 ]
 
 puts "Creating 11 languages"
@@ -138,7 +153,7 @@ puts "Creating your users/projects/..."
 
   project_title_one = Faker::Commerce.unique.product_name
 
-  project_user_first = Project.new(title: project_title_one, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title_one}.github-repository.com", trello_link: "https://#{project_title_one}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title_one}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+  project_user_first = Project.new(title: project_title_one, description: PROJECT_DESCRIPTION.sample, github_repository: "https://#{project_title_one}.github-repository.com", trello_link: "https://#{project_title_one}-trello.fr", start_date: Faker::Date.between(from: '2019-09-23', to: '2020-09-25'), website_link: "https://#{project_title_one}-heroku-app.com", tag_line: PROJECT_TAG_LINE.sample, tag: Faker::Commerce.department(max: 1))
 
   (1..3).to_a.sample.times do
 
@@ -188,7 +203,7 @@ puts "Creating your users/projects/..."
 
       project_title = Faker::Commerce.unique.product_name
 
-      project_user_second = Project.new(title: project_title, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title}.github-repository.com", trello_link: "https://#{project_title}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+      project_user_second = Project.new(title: project_title, description: PROJECT_DESCRIPTION.sample, github_repository: "https://#{project_title}.github-repository.com", trello_link: "https://#{project_title}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title}-heroku-app.com", tag_line: PROJECT_TAG_LINE.sample, tag: Faker::Commerce.department(max: 1))
 
       (1..3).to_a.sample.times do
 
