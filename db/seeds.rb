@@ -79,12 +79,12 @@ ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
 sql = Language.new(name: "SQL")
-sql_user = URI.open("https://e7.pngegg.com/pngimages/750/507/png-clipart-database-server-computer-icons-microsoft-sql-server-database-miscellaneous-angle.png")
+sql_user = URI.open("https://img2.freepng.fr/20180802/vty/kisspng-clip-art-microsoft-azure-sql-database-microsoft-sq-skills-5b63119fd6c064.4634905815332192318796.jpg")
 sql.photo.attach(io: sql_user, filename: 'sql_file.png')
 sql.save!
 
 python = Language.new(name: "Python")
-python_user = URI.open("https://img2.freepng.fr/20180320/fkq/kisspng-angle-text-symbol-brand-other-python-5ab0c09b32b4d1.7494578715215330832077.jpg")
+python_user = URI.open("https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png")
 python.photo.attach(io: python_user, filename: 'python_file.png')
 python.save!
 
@@ -175,7 +175,7 @@ puts "Creating your users/projects/..."
 
     user_second = User.new(first_name: first_name_two, last_name: last_name_two, batch_number: rand(300...442), email: "#{first_name_two}.#{last_name_two}@gmail.com", password: "#{first_name_two}-#{last_name_two}", city: city_two, pays: country_two, bootcamp_year: rand(2010...2021), github_username: "#{first_name_two}-github", linkedin_username: "#{first_name_two}-linkedin", slack_username: "#{first_name_two}-slack")
     user_second_url = PICTURE_USER.sample
-    file_user_second = URI.URI.open(user_second_url)
+    file_user_second = URI.open(user_second_url)
     user_second.photo.attach(io: file_user_second, filename: 'photo_user.png')
     user_second.save!
 
