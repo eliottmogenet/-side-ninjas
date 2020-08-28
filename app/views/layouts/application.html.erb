@@ -27,6 +27,7 @@
             </div>
           </div>
         </div>
+      <div class="main-info <%= "with-sidebar" unless controller.controller_name == "pages" && controller.action_name == "home" %>">
         <%= yield %>
       </div>
     </div>

@@ -1,6 +1,9 @@
-<div class="back-btn">
-    <p><i class="fas fa-long-arrow-alt-left"></i> <%= link_to 'Back', session[:history].last %></p>
-</div>
+
+
+  <%= link_to session[:history].last do%>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    <p>Back</p>
+  <% end %>
 
 <div class="page-title-box">
   <div class="page-title-description">
@@ -22,13 +25,13 @@
       <% end %>
     </div>
   </div>
-  <% if @request_participation.accepted = false %>
+  <%# if @request_participation.accepted = false %>
     <div class="first-important-btn">
       <i class="fas fa-plus"></i>
       <%= link_to "JOIN THE PROJECT", new_project_participation_path(@project) %>
     </div>
-  <% else %>
-  <% end %>
+  <%# else %>
+  <%# end %>
 </div>
 
 <div class="row mt-5">
@@ -45,16 +48,19 @@
           <p><%= @project.description %></p>
         </div>
         <div class="resum-project-images">
-          <p>Photos of the project</p>
-          <div class="resum-project-pictures">
-            <img src="https://mfr-azay.fr/wp-content/uploads/2019/06/Coding5-e1560407537967.jpg" class="resum-project-photos">
-            <img src="https://i.ytimg.com/vi/v9Xse_PDmH0/maxresdefault.jpg" class="resum-project-photos">
-          </div>
+          <% if @project.photo.attached? %>
+            <p>Photos of the project</p>
+            <div class="resum-project-pictures">
+              <% @project.photo.each do |photo| %>
+                <%= cl_image_tag photo.key, class: "resum-project-photos" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
         <div class="resum-project-tags">
           <% @project.project_languages.each do |p_language| %>
             <div class="skills-btn">
-              <i class="fab fa-js-square"></i>
+              <%= cl_image_tag p_language.language.photo.key, class: "language-tag-img" %>
               <p><%= p_language.language.name %></p>
             </div>
           <% end %>
@@ -62,6 +68,7 @@
       </div>
     </div>
   </div>
+</div>
   <div class="col-4">
     <div class="team-box">
       <div class="team-box-title">
@@ -69,25 +76,28 @@
       </div>
       <hr>
       <div class="team-members">
+        <div class="members-container">
         <% @project.participations.each do |participation| %>
-          <div class="resum-member">
-            <div class="member-infos">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Zinedine_Zidane_by_Tasnim_01.jpg" class="avatar-large">
-              <div class="member-name-batch">
-                <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
-                <p>#Batch <%= participation.user.batch_number %> <%= participation.user.bootcamp_year %> (<%= participation.user.city %>)</p>
-              </div>
-              <div class="admin-btn">
-                <% if @project.user.id == participation.user.id %>
-                  <p>Admin</p>
-                <% else %>
-                  <p>Member</p>
-                <% end %>
+            <div class="resum-member">
+              <div class="member-infos">
+                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <div class="member-name-batch">
+                  <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
+                  <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
+                </div>
+                <div class="admin-btn">
+                  <% if @project.user.id == participation.user.id %>
+                    <p>Admin</p>
+                  <% else %>
+                    <p>Member</p>
+                  <% end %>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
             <div class="member-skills">
               <% participation.user.user_languages.each do |user_language| %>
-                  <%# if @project.languages.includes?(user_language.language) %>
                     <div class="one-skill">
                       <div class="skills-btn">
                         <i class="fab fa-js-square"></i>
@@ -98,19 +108,19 @@
                         <p><%= user_language.level %></p>
                       </div>
                     </div>
-                  <%# end  %>
-             <% end %>
+                    <div class="skills-btn">
+                      <i class="fab fa-js-square"></i>
+                        <p><%= language.level %></p>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
-        <div class="second-important-btn">
+        </div>
+        <div class="second-important-btn mt-4">
           <i class="fab fa-slack"></i>
           <%= link_to "Invite friends on slack", root_path %>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <% @project.features.each_with_index do |feature, index| %>
   <div class="features-background">
@@ -144,9 +154,10 @@
   </div>
 <% end %>
 
-
-<%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
+<%# if user.participation.accepted != true %>
+  <%#=# link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%#= link_to "edit", edit_project_path %>
+<%# end %>
 
 <% if policy(@project).update? %>
   <%= link_to "edit", edit_project_path %>

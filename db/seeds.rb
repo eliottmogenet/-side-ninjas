@@ -6,11 +6,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 require 'open-uri'
 
-Participation.destroy_all
-Project.destroy_all
-User.destroy_all
 
 # PICTURE_PROJECT = ["https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/2vr8_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/droide_arbitre_he2_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/droiderqvig.jpg",
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/droide_dx11_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/t0b4_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/bf4f_vignette.png",
@@ -19,6 +17,14 @@ User.destroy_all
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/R3DO_avatar.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/zero_vignette.png",
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/z9v86_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/tyth_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/e10_vignette.jpg",
 # "https://i.pinimg.com/originals/fa/16/42/fa164207f82b769dec7719b3156355e3.jpg"]
+ProjectLanguage.destroy_all
+Language.destroy_all
+Participation.destroy_all
+Project.destroy_all
+User.destroy_all
+
+user = User.new(email: "user@user.com", password: "azerty", first_name: "user-first-name", last_name: "user-last-name", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+user.save!
 
 PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alecia_beck_vignette.jpg", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/aleksin_vig.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allia_avatar.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/althu_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alys_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Ansinvignette.png",
@@ -32,53 +38,20 @@ PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnag
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alec_efran_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alis_saro_bakvalen_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alison_dawn_vignette.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allium_avatar.png"]
 
-BOOLEAN_PARTICIPATION = ["true", "nil", "false"]
+PICTURE_PROJECT = [
+  "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
+  "https://lh3.googleusercontent.com/proxy/-HNMm0iU16y-_ivcWc0kIlHdhCrvuMYo6l6WaWN4I5dGMTEiI_7rsNkrq9xG1lkzyxLhY-i_l7pdDFFru8hrNAybs6lqzYJ8BxAqS1-PH-dAHwf7",
+  "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",
+  "https://image.slidesharecdn.com/schmagestionintgredeprojetetdechangement-151204020453-lva1-app6892/95/schma-gestion-intgre-de-projet-et-de-changement-1-638.jpg?cb=1449279509",
+  "https://comitatus.fr/wp-content/uploads/2017/01/processus_strategique.jpg",
+  "https://alterydea.com/wp-content/uploads/2013/12/schema-logo.gif",
+  "https://www.projectsmart.co.uk/img/pm-workflow.png",
+  "https://previews.123rf.com/images/mrhighsky/mrhighsky1603/mrhighsky160300124/56405493-project-management-tag-cloud.jpg",
+  "https://previews.123rf.com/images/jiriperina/jiriperina1501/jiriperina150100024/35079891-gestion-de-projet-schéma-produit-d-affaires-development-vector-illustration.jpg",
+  "https://thumbs.dreamstime.com/z/vector-software-development-project-coding-technology-vector-conceptual-software-development-project-coding-technology-paint-brush-102626382.jpg"
+]
 
-
-require 'faker'
-
-puts "Creating 50 users, projects and participations"
-
-20.times do
-
-  user = User.new(first_name: Faker::Name.unique.first_name, last_name: Faker::Name.unique.name, batch_number: rand(300...442), email: Faker::Internet.unique.email, password: ('a'..'z').to_a.sample(8).join, city: Faker::Name.unique.name, pays: Faker::Address.country, bootcamp_year: rand(2010...2021), github_username: Faker::Internet.domain_name, linkedin_username: Faker::Name.unique.name, slack_username: Faker::Name.unique.name)
-  user_url = PICTURE_USER.sample
-  file_user = open(user_url)
-  user.photo.attach(io: file_user, filename: 'photo_user.png')
-  user.save
-
-  (1..5).to_a.sample.times do
-
-    project = Project.new(title: Faker::Name.unique.first_name, description: Faker::Lorem.paragraphs, github_repository: Faker::Name.unique.name, trello_link: Faker::Name.unique.name, start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: Faker::Internet.domain_name, tag: Faker::Name.unique.name)
-    project.user = user
-    project.save
-
-  end
-
-  user_two = User.new(first_name: Faker::Name.unique.first_name, last_name:Faker::Name.unique.name, batch_number: rand(300...442), email: Faker::Internet.unique.email, password: ('a'..'z').to_a.sample(8).join, city: Faker::Name.unique.name, pays: Faker::Address.country, bootcamp_year: rand(2010...2021), github_username: Faker::Internet.domain_name, linkedin_username: Faker::Name.unique.name, slack_username: Faker::Name.unique.name)
-  user_two_url = PICTURE_USER.sample
-  file_user_two = open(user_two_url)
-  user_two.photo.attach(io: file_user_two, filename: 'photo_user_two.png')
-  user_two.save
-
-  (1..5).to_a.sample.times do
-
-    project_two = Project.new(title: Faker::Name.unique.first_name, description: Faker::Lorem.paragraphs, github_repository: Faker::Name.unique.name, trello_link: Faker::Name.unique.name, start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: Faker::Internet.domain_name, tag: Faker::Name.unique.name)
-    project_two.user = user_two
-    project_two.save
-
-    # ALL_PROJECT = Project.all.sample
-
-    participation = Participation.new(accepted: true, motivation: Faker::Lorem.paragraphs, work_time: Faker::Name.unique.name, admin: false)
-    participation.user = user
-    participation.project = Project.where(user: user_two).sample
-    # participation.project = project_two
-    participation.save
-  end
-
-end
-
-Language.destroy_all
+puts "Creating 11 languages"
 
 html = Language.new(name: "HTML/CSS")
 html_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Font_Awesome_5_brands_html5.svg/1200px-Font_Awesome_5_brands_html5.svg.png")
@@ -87,11 +60,12 @@ html.save!
 
 php = Language.new(name: "PHP")
 php_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Font_Awesome_5_brands_php.svg/1279px-Font_Awesome_5_brands_php.svg.png")
-php.photo.attach(io: php_user, filename: 'php_file.png')
+# php_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Font_Awesome_5_brands_php.svg/1279px-Font_Awesome_5_brands_php.svg.png")
+php.photo.attach(io: php_user, filename: 'php_file.svg')
 php.save!
 
 c = Language.new(name: "C++")
-c_user = URI.open("https://img.favpng.com/8/18/6/c-programming-language-logo-computer-programming-png-favpng-mpuXd11Ye3fT7N8FTMjb7FHQy.jpg")
+c_user = URI.open("https://or-formation.com/uploads/img/produits/52.png")
 c.photo.attach(io: c_user, filename: 'c_file.png')
 c.save!
 
@@ -131,12 +105,120 @@ angular_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/a/
 angular.photo.attach(io: angular_user, filename: 'angular_file.png')
 angular.save!
 
-ProjectLanguage.destroy_all
+puts "Finish !"
 
-html_project = ProjectLanguage.new(language_id: html.id)
-html_project.project = Project.first
-html_project.save!
+LANGUAGES = [html, php, c, js, ruby, sql, python, react, swift, angular]
 
-ruby_project = ProjectLanguage.new(language_id: ruby.id)
-ruby_project.project = Project.second
-ruby_project.save!
+
+BOOLEAN_PARTICIPATION = ["true", "nil", "false"]
+
+country_city = {
+  "France" => ["Paris", "Rennes", "Nantes"],
+  "England" => ["London"],
+  "Spain" => ["Barcelona", "Madrid"],
+  "Italie" => ["Turin", "Roma"],
+  "USA" => ["New York", "Miami"]
+}
+
+
+puts "Creating your users/projects/..."
+
+1.times do
+
+  first_name_one = Faker::Name.unique.first_name
+  last_name_one = Faker::Name.unique.last_name
+
+  country = country_city.keys.sample
+  city = country_city[country].sample
+
+  user_first = User.new(first_name: first_name_one, last_name: last_name_one, batch_number: rand(300...442), email: "#{first_name_one}.#{last_name_one}@gmail.com", password: "#{first_name_one}-#{last_name_one}", city: city, pays: country, bootcamp_year: rand(2010...2021), github_username: "#{first_name_one}-github", linkedin_username: "#{first_name_one}-linkedin", slack_username: "#{first_name_one}-slack")
+  user_first_url = PICTURE_USER.sample
+  file_user_first = open(user_first_url)
+  user_first.photo.attach(io: file_user_first, filename: 'photo_user.png')
+  user_first.save!
+
+  project_title_one = Faker::Commerce.unique.product_name
+
+  project_user_first = Project.new(title: project_title_one, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title_one}.github-repository.com", trello_link: "https://#{project_title_one}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title_one}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+
+  (1..3).to_a.sample.times do
+
+    project_user_url = PICTURE_PROJECT.sample
+    file_project_user = open(project_user_url)
+    project_user_first.photo.attach(io: file_project_user, filename: 'photo_user.png')
+
+  end
+
+  project_user_first.user = user_first
+  project_user_first.save!
+
+  puts "Creating some project languages"
+
+  LANGUAGES.sample(rand(2..4)).each do |language|
+
+    the_project_language = ProjectLanguage.new()
+    the_project_language.language = language
+    the_project_language.project = project_user_first
+    the_project_language.save!
+
+  end
+
+  puts "Finish !"
+
+  (1..4).to_a.sample.times do
+
+    first_name_two = Faker::Name.unique.first_name
+    last_name_two = Faker::Name.unique.last_name
+
+    country_two = country_city.keys.sample
+    city_two = country_city[country_two].sample
+
+    user_second = User.new(first_name: first_name_two, last_name: last_name_two, batch_number: rand(300...442), email: "#{first_name_two}.#{last_name_two}@gmail.com", password: "#{first_name_two}-#{last_name_two}", city: city_two, pays: country_two, bootcamp_year: rand(2010...2021), github_username: "#{first_name_two}-github", linkedin_username: "#{first_name_two}-linkedin", slack_username: "#{first_name_two}-slack")
+    user_second_url = PICTURE_USER.sample
+    file_user_second = open(user_second_url)
+    user_second.photo.attach(io: file_user_second, filename: 'photo_user.png')
+    user_second.save!
+
+    participation = Participation.new(accepted: true, motivation: Faker::Lorem.paragraph(sentence_count: 3), work_time: Faker::Lorem.paragraph(sentence_count: 1), admin: false)
+    participation.user = user_second
+    participation.project = project_user_first
+    participation.save!
+
+    (1..2).to_a.sample.times do
+
+      project_title = Faker::Commerce.unique.product_name
+
+      project_user_second = Project.new(title: project_title, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title}.github-repository.com", trello_link: "https://#{project_title}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+
+      (1..3).to_a.sample.times do
+
+        project_user_second_url = PICTURE_PROJECT.sample
+        file_project_user_second = open(project_user_second_url)
+        project_user_second.photo.attach(io: file_project_user_second, filename: 'photo_user.png')
+
+      end
+
+      project_user_second.user = user_second
+      project_user_second.save!
+
+      puts "Creating some project languages"
+
+      LANGUAGES.sample(rand(2..4)).each do |language|
+
+        the_project_two_language = ProjectLanguage.new()
+        the_project_two_language.language = language
+        the_project_two_language.project = project_user_second
+        the_project_two_language.save
+      end
+
+      puts "Finish !"
+
+    end
+  end
+
+end
+
+puts "Finished !"
+
+
+

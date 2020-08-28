@@ -1,0 +1,41 @@
+.select-your-skills {
+  background-color: $light-blue;
+  border-radius: 25px;
+}
+
+.col-form-label {
+  display: none;
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 12px;
+  background-color: #FEDEE4;
+  color: #FA91A4;
+  padding: 7px 13px;
+}
+
+.languages-selection {
+  background-color: white;
+  border-radius: 25px;
+}
+
+.image-select img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+.image-active img {
+  opacity: 1 !important;
+}
+
+.language-tag-img {
+  width: 30px;
+  height: 30px;
+  border-radius: $border-radius;
+  margin-right: 20px;
+  object-fit: cover;
+  object-position: center;
+}

@@ -1,0 +1,25 @@
+.languages-card {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  justify-content: space-around;
+  height: 25%;
+  border-radius: 25px;
+
+}
+
+.language-image {
+  height: 50px;
+  width: 50px;
+}
+
+
+.container-index {
+  height: 100vh;
+}
+
+.languages-selected {
+  display: flex;
+  flex-direction: column;
+}
