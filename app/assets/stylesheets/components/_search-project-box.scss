@@ -11,6 +11,11 @@
 .bottom-search-project {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  .resum-project-tags {
+    margin-top: 0px;
+  }
 }
 
 .project-header {

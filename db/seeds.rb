@@ -23,6 +23,9 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
+user = User.new(email: "user@user.com", password: "azerty", first_name: "user-first-name", last_name: "user-last-name", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+user.save!
+
 PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alecia_beck_vignette.jpg", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/aleksin_vig.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allia_avatar.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/althu_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alys_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Ansinvignette.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Ansivvignette.png",
@@ -35,6 +38,17 @@ PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnag
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alec_efran_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alis_saro_bakvalen_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alison_dawn_vignette.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allium_avatar.png"]
 
+PICTURE_PROJECT = [
+  "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
+  "https://lh3.googleusercontent.com/proxy/-HNMm0iU16y-_ivcWc0kIlHdhCrvuMYo6l6WaWN4I5dGMTEiI_7rsNkrq9xG1lkzyxLhY-i_l7pdDFFru8hrNAybs6lqzYJ8BxAqS1-PH-dAHwf7",
+  "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",
+  "https://image.slidesharecdn.com/schmagestionintgredeprojetetdechangement-151204020453-lva1-app6892/95/schma-gestion-intgre-de-projet-et-de-changement-1-638.jpg?cb=1449279509",
+  "https://comitatus.fr/wp-content/uploads/2017/01/processus_strategique.jpg",
+  "https://alterydea.com/wp-content/uploads/2013/12/schema-logo.gif",
+  "https://www.projectsmart.co.uk/img/pm-workflow.png",
+  "https://previews.123rf.com/images/mrhighsky/mrhighsky1603/mrhighsky160300124/56405493-project-management-tag-cloud.jpg",
+  "https://thumbs.dreamstime.com/z/vector-software-development-project-coding-technology-vector-conceptual-software-development-project-coding-technology-paint-brush-102626382.jpg"
+]
 
 puts "Creating 11 languages"
 
@@ -125,6 +139,15 @@ puts "Creating your users/projects/..."
   project_title_one = Faker::Commerce.unique.product_name
 
   project_user_first = Project.new(title: project_title_one, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title_one}.github-repository.com", trello_link: "https://#{project_title_one}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title_one}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+
+  (1..3).to_a.sample.times do
+
+    project_user_url = PICTURE_PROJECT.sample
+    file_project_user = open(project_user_url)
+    project_user_first.photo.attach(io: file_project_user, filename: 'photo_user.png')
+
+  end
+
   project_user_first.user = user_first
   project_user_first.save!
 
@@ -165,6 +188,15 @@ puts "Creating your users/projects/..."
       project_title = Faker::Commerce.unique.product_name
 
       project_user_second = Project.new(title: project_title, description: Faker::Lorem.paragraph(sentence_count: 5), github_repository: "https://#{project_title}.github-repository.com", trello_link: "https://#{project_title}-trello.fr", start_date: Faker::Date.between(from: '2012-09-23', to: '2020-09-25'), website_link: "https://#{project_title}-heroku-app.com", tag_line: Faker::Lorem.paragraph(sentence_count: 1), tag: Faker::Commerce.department(max: 1))
+
+      (1..3).to_a.sample.times do
+
+        project_user_second_url = PICTURE_PROJECT.sample
+        file_project_user_second = open(project_user_second_url)
+        project_user_second.photo.attach(io: file_project_user_second, filename: 'photo_user.png')
+
+      end
+
       project_user_second.user = user_second
       project_user_second.save!
 

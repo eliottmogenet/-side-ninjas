@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   validates :title, :description, presence: true
   validates :title, uniqueness: true
   validates :description, length: { minimum: 10 }
+  has_many_attached :photo
 
   after_save :add_creator_to_participants
 
