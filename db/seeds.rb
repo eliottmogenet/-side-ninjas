@@ -158,6 +158,7 @@ puts "Creating your users/projects/..."
   (1..3).to_a.sample.times do
 
     project_user_url = PICTURE_PROJECT.sample
+    p project_user_url
     puts project_user_url
     file_project_user = URI.open(project_user_url)
     project_user_first.photo.attach(io: file_project_user, filename: 'photo_user.png')
@@ -208,6 +209,7 @@ puts "Creating your users/projects/..."
       (1..3).to_a.sample.times do
 
         project_user_second_url = PICTURE_PROJECT.sample
+        p project_user_url
         file_project_user_second = URI.open(project_user_second_url)
         project_user_second.photo.attach(io: file_project_user_second, filename: 'photo_user.png')
 
