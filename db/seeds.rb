@@ -79,7 +79,7 @@ ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
 sql = Language.new(name: "SQL")
-sql_user = URI.open("https://image.flaticon.com/icons/svg/149/149749.svg")
+sql_user = URI.open("https://static.thenounproject.com/png/36146-200.png")
 sql.photo.attach(io: sql_user, filename: 'sql_file.png')
 sql.save!
 
