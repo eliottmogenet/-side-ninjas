@@ -48,16 +48,17 @@
           </div>
           <div class="resum-project-images">
             <div class="resum-project-pictures">
-              <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large">
-              <img src="https://gal.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2F2018.2F10.2F18.2F2ccbda1a-7cf3-4858-8b56-36840d5b9b19.2Ejpeg/480x480/quality/80/focus-point/1447%2C851/cristiano-ronaldo-dans-la-tourmente-c-est-parti-pour-durer.jpg" class="avatar-large">
+              <% project.participations.each do |participation| %>
+                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+              <% end %>
             </div>
           </div>
           <div class="bottom-search-project">
             <div class="resum-project-tags">
               <% project.project_languages.each do |tag| %>
                 <div class="skills-btn">
-                  <i class="fab fa-js-square"></i>
-                  <p><%= tag %></p>
+                  <%= cl_image_tag tag.language.photo.key, class: "language-tag-img" %>
+                  <p><%= tag.language.name %></p>
                 </div>
               <% end %>
             </div>

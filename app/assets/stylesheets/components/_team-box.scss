@@ -1,9 +1,15 @@
 // c'est la box de présentation de la team --> adrien
+.members-container {
+  height: 300px;
+  overflow-y: scroll;
+}
+
 .team-box {
   background-color: $white;
   padding: 30px;
   border-radius: $border-radius;
   box-shadow: 0px 0px 10px 0px rgba(10, 10, 10, 0.1);
+  height: 510px;
 }
 
 .team-box-title {
