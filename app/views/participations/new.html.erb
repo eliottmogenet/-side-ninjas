@@ -5,9 +5,20 @@
     <%= f.input :motivation %>
     <%#= f.input :feature, input_html: {value: @project.features } %>
     <%= f.input :work_time %>
-    <%= f.submit "Ask to join this project"%>
+    <%#= f.submit "Ask to join this project" %>
+    <%= button_tag class: "search-btn" do %>
+        <i class="fas fa-search mr-2"></i>
+        Ask to join this project
+      <% end %>
     <% end %>
   </div>
 
 </div>
-<%= link_to 'Back', project_path(@project) %>
+
+<div class="back-btn mt-3">
+  <%= link_to project_path(@project) do%>
+    <i class="fas fa-long-arrow-alt-left"></i>
+    <p>Back</p>
+  <% end %>
+</div>
+
