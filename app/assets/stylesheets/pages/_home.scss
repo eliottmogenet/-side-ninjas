@@ -1,1 +1,59 @@
 // Specific CSS for your home-page
+.title-home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  h1 {
+    color: #fc536f;
+  }
+}
+
+.items-home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.item-home {
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+  max-width: 250px;
+  min-width: 300px;
+  min-height: 160px;
+}
+
+.discover-side {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.background-title-home {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.background-items-homes {
+  background-color: #ffdee4;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
