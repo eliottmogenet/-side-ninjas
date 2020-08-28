@@ -7,4 +7,9 @@ class Language < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  # def range
+  #  SELECT * FROM language ORDER BY name ASC;
+  # end
 end
+

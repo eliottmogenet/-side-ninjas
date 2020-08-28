@@ -8,7 +8,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "radio_button", "clickable" ]
+  static targets = [ "radio_button", "clickable", "languagesCard", "createAccountButton" ]
 
   // connect() {
   //   console.log('Language displayed !')
@@ -29,5 +29,10 @@ export default class extends Controller {
         radio_button.checked = !radio_button.checked;
       }
     })
+
+
+    const actives = document.querySelectorAll('.image-active')
+    //console.log (document.querySelectorAll('.image-active'))
+    const cards = this.languagesCradTarget
+    })
   }
-}

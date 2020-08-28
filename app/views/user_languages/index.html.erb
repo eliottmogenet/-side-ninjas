@@ -1,10 +1,10 @@
-<div class="container-index">
+<div class="container-index" data-controller="levels" >
       <div class="page-title-box">
     <div class="page-title-description">
       <div class="page-title">
         <h1>Select</h1>
         <div class="project-name">
-          <h1>your skills</h1>
+          <h1>your level</h1>
         </div>
       </div>
       <div class="under-title">
@@ -13,13 +13,13 @@
         </div>
       </div>
     </div>
-    <div class="first-important-btn">
-      <%= link_to "Create account", projects_path %>
+    <div class="first-important-btn"  data-target="levels.createAccountButton">
+      <%= link_to "Create account", projects_path, class: "btn btn-primary"%>
     </div>
   </div>
 
-  <% @user_languages.each do |user_language| %>
-    <div class="languages-card" data-controller="languages-level">
+  <% @user_languages.sort_by { |ul| ul.language.name }.each do |user_language| %>
+    <div class="languages-card" data-controller="languages-level" data-target="levels.languagesCard">
       <div class="languages-selected">
         <%= user_language.language.name %>
         <%= cl_image_tag user_language.language.photo.key, crop: :fill, class: "language-image" %>
@@ -36,7 +36,7 @@
             Edit your level now!
         </div>
       </div>
-      <div class="container-edit" style="display: none;" data-controller="levels" data-target="languages-level.editContainer">
+      <div class="container-edit" style="display: none;"data-target="languages-level.editContainer">
         <div class="choose-your-level">
           <p>Select my level</p>
 
