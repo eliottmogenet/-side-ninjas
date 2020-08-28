@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @languages = Language.pluck(:name)
-    @projects = policy_scope(Project)
+    @projects = policy_scope(Project)#.includes(:project_languages)
     if params[:language].present?
       @projects = @projects.joins(project_languages: :language).where(languages: { name: params[:language] })
     end
