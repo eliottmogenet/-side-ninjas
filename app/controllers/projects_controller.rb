@@ -22,11 +22,12 @@ class ProjectsController < ApplicationController
     # @project = Project.find(params[:id])
     @features = @project.features
     @feature = Feature.new
+    @project.features.build
   end
 
   def update
     # @project = Project.find(params[:id])
-    @project.update(params_project)
+    @project.assign_attributes(params_project)
     @project.user = current_user
     @project.save
 
@@ -63,7 +64,15 @@ class ProjectsController < ApplicationController
   private
 
   def params_project
-    params.require(:project).permit(:title, :description, :github_repository, :trello_link, :start_date, :website_link, :tag, :tag_line)
+    params.require(:project).permit(
+      :title, :description,
+      :github_repository, :trello_link,
+      :start_date, :website_link,
+      :tag, :tag_line,
+      features_attributes: [
+        :name, :description, :id
+      ]
+    )
   end
 
   def set_project
