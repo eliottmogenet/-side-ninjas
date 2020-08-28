@@ -79,7 +79,7 @@ ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
 sql = Language.new(name: "SQL")
-sql_user = URI.open("https://img2.freepng.fr/20180330/cqe/kisspng-database-computer-icons-sql-clip-art-database-5abeae9c6d0318.0591958115224459804465.jpg")
+sql_user = URI.open("https://img.favpng.com/6/1/20/database-scalable-vector-graphics-icon-png-favpng-PkBkcG149sqKVaDSrSpD6aaXX.jpg")
 sql.photo.attach(io: sql_user, filename: 'sql_file.png')
 sql.save!
 
