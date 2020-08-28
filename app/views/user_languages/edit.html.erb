@@ -1,0 +1,24 @@
+<div class="container-edit" data-controller="levels">
+  <div class="user-language-edit">
+    <%= @user_language.language.name %>
+    <%= cl_image_tag @user_language.language.photo.key, crop: :fill, class: "language-image" %>
+  </div>
+  <div class="choose-your-level">
+    <p>Select my level</p>
+
+    <% UserLanguage::LEVELS.each do |level| %>
+      <div class="levels-user-language image-select" data-id="<%= level %>" data-target="levels.clickable" data-action="click->levels#checkLevel">
+        <%= level %>
+      </div>
+    <% end %>
+
+
+
+    <%= simple_form_for @user_language do |f| %>
+    <div class="level-form d-none">
+      <%= f.input :level, collection: UserLanguage::LEVELS , as: :radio_buttons, :input_html => {data: {target: "levels.radio_button"} } %>
+      </div>
+      <%= f.button :submit, class: "submit-btn"  %>
+    <% end %>
+    </div>
+  </div>

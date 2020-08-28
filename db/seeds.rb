@@ -45,11 +45,12 @@ html.save!
 
 php = Language.new(name: "PHP")
 php_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Font_Awesome_5_brands_php.svg/1279px-Font_Awesome_5_brands_php.svg.png")
-php.photo.attach(io: php_user, filename: 'php_file.png')
+# php_user = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Font_Awesome_5_brands_php.svg/1279px-Font_Awesome_5_brands_php.svg.png")
+php.photo.attach(io: php_user, filename: 'php_file.svg')
 php.save!
 
 c = Language.new(name: "C++")
-c_user = URI.open("https://img.favpng.com/8/18/6/c-programming-language-logo-computer-programming-png-favpng-mpuXd11Ye3fT7N8FTMjb7FHQy.jpg")
+c_user = URI.open("https://or-formation.com/uploads/img/produits/52.png")
 c.photo.attach(io: c_user, filename: 'c_file.png')
 c.save!
 

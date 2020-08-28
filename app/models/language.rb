@@ -1,8 +1,8 @@
 class Language < ApplicationRecord
-  has_many :frameworks
-  has_many :feature_languages
-  has_many :user_languages
-  has_many :project_languages
+  has_many :frameworks, dependent: :destroy
+  has_many :feature_languages, dependent: :destroy
+  has_many :user_languages, dependent: :destroy
+  has_many :project_languages, dependent: :destroy
   has_one_attached :photo
 
   validates :name, presence: true

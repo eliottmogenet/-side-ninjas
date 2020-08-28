@@ -1,11 +1,17 @@
 <div class="container" data-controller="languages">
-  <div class="row p-5">
-    <% @languages.each do |language| %>
-      <div class="col-3 image-select" data-id="<%= language.id %>" data-action="click->languages#checkLanguage">
-        <%= cl_image_tag language.photo.key, height: 100, width: 100, crop: :fill, class: "m-3" %>
-        <%= language.name %>
+  <div class="select-your-skills">
+    <h1> Select your skills</h1>
+    <p> complete at least 4 web languages you want to improve</p>
+    </div>
+    <div class="languages-selection">
+      <div class="row p-5">
+        <% @languages.each do |language| %>
+          <div class="col-3 image-select" data-id="<%= language.id %>" data-action="click->languages#checkLanguage">
+            <%= cl_image_tag language.photo.key, crop: :fill, class: "" %>
+            <%= language.name %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
   </div>
     <%#= language.name %>
 
@@ -27,8 +33,9 @@
        # :label_method => lambda { |b| cl_image_tag(b.photo.key)},
        value_method: :id %>
 
+    <%= button_tag type: 'submit', class: "submit-btn" do %>
+      Next step <i class="fas fa-arrow-right"></i>
+    <% end %>
 
-
-    <%= f.submit "coucou" %>
   <% end %>
 </div>
