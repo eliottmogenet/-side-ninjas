@@ -78,10 +78,10 @@ ruby_user = URI.open("https://img.favpng.com/4/13/16/ruby-on-rails-logo-programm
 ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
-sql = Language.new(name: "SQL")
-sql_user = URI.open("https://img2.freepng.fr/20180330/cqe/kisspng-database-computer-icons-sql-clip-art-database-5abeae9c6d0318.0591958115224459804465.jpg")
-sql.photo.attach(io: sql_user, filename: 'sql_file.png')
-sql.save!
+# sql = Language.new(name: "SQL")
+# sql_user = URI.open("https://img2.freepng.fr/20180330/cqe/kisspng-database-computer-icons-sql-clip-art-database-5abeae9c6d0318.0591958115224459804465.jpg")
+# sql.photo.attach(io: sql_user, filename: 'sql_file.png')
+# sql.save!
 
 python = Language.new(name: "Python")
 python_user = URI.open("https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png")
