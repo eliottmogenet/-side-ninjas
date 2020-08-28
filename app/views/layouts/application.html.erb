@@ -14,17 +14,19 @@
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%#= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <% if user_signed_in? %>
+      <div class="user-avatar-profil">
+        <div class="dropdown">
+          <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="custom-container">
       <%#= render 'shared/left-side-bar' %>
       <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
-        <div class="user-avatar-profil">
-          <div class="dropdown">
-            <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </div>
-        </div>
       <div class="main-info <%= "with-sidebar" unless controller.controller_name == "pages" && controller.action_name == "home" %>">
         <%= yield %>
       </div>

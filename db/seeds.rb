@@ -47,7 +47,6 @@ PICTURE_PROJECT = [
   "https://alterydea.com/wp-content/uploads/2013/12/schema-logo.gif",
   "https://www.projectsmart.co.uk/img/pm-workflow.png",
   "https://previews.123rf.com/images/mrhighsky/mrhighsky1603/mrhighsky160300124/56405493-project-management-tag-cloud.jpg",
-  "https://previews.123rf.com/images/jiriperina/jiriperina1501/jiriperina150100024/35079891-gestion-de-projet-schéma-produit-d-affaires-development-vector-illustration.jpg",
   "https://thumbs.dreamstime.com/z/vector-software-development-project-coding-technology-vector-conceptual-software-development-project-coding-technology-paint-brush-102626382.jpg"
 ]
 
