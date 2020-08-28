@@ -8,10 +8,26 @@ class Project < ApplicationRecord
 
   validates :title, :description, presence: true
   validates :title, uniqueness: true
-  validates :description, length: { minimum: 200 }
+  validates :description, length: { minimum: 10 }
+  has_many_attached :photo
+
+  after_save :add_creator_to_participants
+
+  accepts_nested_attributes_for :features, reject_if: :all_blank
 
   def admin_users
     admin_participations = participations.where(admin: true)
     admin_participations.map { |participation| participation.user }
+  end
+
+  def add_creator_to_participants
+    Participation.create(
+      accepted: true,
+      motivation: "Project Owner",
+      work_time: "Project Owner",
+      admin: true,
+      user: self.user,
+      project: self
+    )
   end
 end

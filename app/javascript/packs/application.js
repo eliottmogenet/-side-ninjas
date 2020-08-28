@@ -26,6 +26,13 @@ require("channels")
 import "bootstrap";
 import "controllers"
 import { initSelect2 } from '../components/init_select2';
+import { loadDynamicBannerText } from '../components/banner';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
 
 
 // Internal imports, e.g:
