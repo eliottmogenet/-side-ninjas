@@ -27,10 +27,16 @@
       <% end %>
     </div>
   </div>
+
   <% if current_user != @project.user %>
     <div class="first-important-btn">
-      <i class="fas fa-plus"></i>
-      <%= link_to "JOIN THE PROJECT", new_project_participation_path(@project) %>
+      <% if  @project.participations.map(&:user).include?(current_user) %>
+        <%= link_to "Cancel my application", participation_path(@request_participation),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+      <% else %>
+        <%= link_to "JOIN THE PROJECT", new_project_participation_path(@project) %>
+      <% end %>
     </div>
   <% end %>
 </div>
@@ -81,7 +87,11 @@
         <% @project.participations.each do |participation| %>
             <div class="resum-member">
               <div class="member-infos">
-                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <% if participation.user.photo.attached? %>
+                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                  <% else %>
+                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                  <% end %>
                 <div class="member-name-batch">
                   <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
                   <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
