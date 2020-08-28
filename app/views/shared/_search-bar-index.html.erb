@@ -1,0 +1,23 @@
+
+<div class="search-bar-box">
+  <div class="search-bar-filters">
+    <h4>Filters</h4>
+    <%= form_tag projects_path, method: :get do %>
+      <%= select_tag :language, options_for_select(@languages, params[:language]),
+        multiple: true, class: 'select2-multiple'
+      %>
+    </div>
+    <div class="search-bar-buttons">
+      <div class="share-the-project-btn">
+        <i class="fas fa-undo-alt"></i>
+        <%= link_to "Reset" %>
+      </div>
+      <!-- <div class="search-btn"> -->
+      <%= button_tag class: "search-btn" do %>
+        <i class="fas fa-search mr-2"></i>
+        Search
+      <% end %>
+    <% end %>
+    <!-- </div> -->
+  </div>
+</div>

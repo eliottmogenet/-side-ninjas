@@ -3,7 +3,7 @@ import 'select2';
 
 const initSelect2 = () => {
   $('.select2-multiple').select2({
-    placeholder: "Select languages you want to improve"
+    placeholder: "Select skills to improve ▼"
   });
 };
 

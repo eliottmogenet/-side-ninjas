@@ -58,7 +58,7 @@
             </div>
           <% end %>
         </div>
-        <div class="resum-project-tags">
+        <div class="<%= (controller.controller_name == "projects" && controller.action_name == "index") ? "resum-project-tags" : "resum-project-tags-show" %>">
           <% @project.project_languages.each do |tag| %>
             <div class="skills-btn">
               <%= cl_image_tag tag.language.photo.key, class: "language-tag-img" %>
@@ -80,7 +80,9 @@
         <% @project.participations.each do |participation| %>
             <div class="resum-member">
               <div class="member-infos">
-                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <% if participation.user.photo.attached? %>
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <% end %>
                 <div class="member-name-batch">
                   <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
                   <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
@@ -169,8 +171,6 @@
   </div>
 <% end %>
 
-
-<%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%#= link_to "edit", edit_project_path %>
 
 <% if policy(@project).update? %>

@@ -6,6 +6,11 @@
   box-shadow: 0px 0px 10px 0px rgba(10, 10, 10, 0.1);
 }
 
+.resum-project-description {
+  height: 100px;
+  overflow-y: scroll;
+}
+
 .resum-project-images {
   overflow-x: scroll;
 }
@@ -39,10 +44,18 @@
   object-position: center;
 }
 
+.resum-project-tags-show {
+  display: flex;
+  margin-top: 30px;
+  overflow-x: scroll;
+  width: 90%;
+}
+
 .resum-project-tags {
   display: flex;
   margin-top: 30px;
   overflow-x: scroll;
+  width: 293px;
 }
 
 .skills-btn {

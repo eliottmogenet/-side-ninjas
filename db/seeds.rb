@@ -132,7 +132,7 @@ puts "Creating your users/projects/..."
 
   user_first = User.new(first_name: first_name_one, last_name: last_name_one, batch_number: rand(300...442), email: "#{first_name_one}.#{last_name_one}@gmail.com", password: "#{first_name_one}-#{last_name_one}", city: city, pays: country, bootcamp_year: rand(2010...2021), github_username: "#{first_name_one}-github", linkedin_username: "#{first_name_one}-linkedin", slack_username: "#{first_name_one}-slack")
   user_first_url = PICTURE_USER.sample
-  file_user_first = open(user_first_url)
+  file_user_first = URI.open(user_first_url)
   user_first.photo.attach(io: file_user_first, filename: 'photo_user.png')
   user_first.save!
 
@@ -143,7 +143,8 @@ puts "Creating your users/projects/..."
   (1..3).to_a.sample.times do
 
     project_user_url = PICTURE_PROJECT.sample
-    file_project_user = open(project_user_url)
+    puts project_user_url
+    file_project_user = URI.open(project_user_url)
     project_user_first.photo.attach(io: file_project_user, filename: 'photo_user.png')
 
   end
@@ -174,7 +175,7 @@ puts "Creating your users/projects/..."
 
     user_second = User.new(first_name: first_name_two, last_name: last_name_two, batch_number: rand(300...442), email: "#{first_name_two}.#{last_name_two}@gmail.com", password: "#{first_name_two}-#{last_name_two}", city: city_two, pays: country_two, bootcamp_year: rand(2010...2021), github_username: "#{first_name_two}-github", linkedin_username: "#{first_name_two}-linkedin", slack_username: "#{first_name_two}-slack")
     user_second_url = PICTURE_USER.sample
-    file_user_second = open(user_second_url)
+    file_user_second = URI.URI.open(user_second_url)
     user_second.photo.attach(io: file_user_second, filename: 'photo_user.png')
     user_second.save!
 
@@ -192,7 +193,7 @@ puts "Creating your users/projects/..."
       (1..3).to_a.sample.times do
 
         project_user_second_url = PICTURE_PROJECT.sample
-        file_project_user_second = open(project_user_second_url)
+        file_project_user_second = URI.open(project_user_second_url)
         project_user_second.photo.attach(io: file_project_user_second, filename: 'photo_user.png')
 
       end

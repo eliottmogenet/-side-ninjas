@@ -1,1 +1,25 @@
 // c'est pour la recherche de projets --> adrien à faire
+
+.search-bar-box {
+  margin-left: 150px;
+  background-color: $light-blue;
+  flex-grow: 1;
+  padding-left: 50px;
+  padding-top: 120px;
+}
+
+.search-bar-buttons {
+  margin-top: 75px;
+}
+
+.search-btn {
+  background-color: $saumon;
+  color: $white;
+  width:  min-content;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+  padding: 7px 13px;
+  border: none;
+}
+
