@@ -46,7 +46,9 @@
     <div class="resum-project-box">
       <div class="resum-project-title">
         <h5><%= @project.title %></h5>
-        <h5><i class="fab fa-github"></i>
+        <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
+          <h5><i class="fab fa-github"></i>
+        <% end %>
         <h5><i class="fas fa-tv"></i>
 
       </div>
@@ -65,7 +67,7 @@
             </div>
           <% end %>
         </div>
-        <div class="resum-project-tags">
+        <div class="<%= (controller.controller_name == "projects" && controller.action_name == "index") ? "resum-project-tags" : "resum-project-tags-show" %>">
           <% @project.project_languages.each do |tag| %>
             <div class="skills-btn">
               <%= cl_image_tag tag.language.photo.key, class: "language-tag-img" %>
@@ -88,10 +90,10 @@
             <div class="resum-member">
               <div class="member-infos">
                 <% if participation.user.photo.attached? %>
-                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
-                  <% else %>
-                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
-                  <% end %>
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <% else %>
+                  <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                <% end %>
                 <div class="member-name-batch">
                   <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
                   <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
@@ -182,23 +184,21 @@
   </div>
 <% end %>
 
-
-<%= link_to "Ask to join this project", new_project_participation_path(@project)  %>
 <%#= link_to "edit", edit_project_path %>
 
-<% if policy(@project).update? %>
-  <%= link_to "edit", edit_project_path %>
-<% end %>
+<%# if policy(@project).update? %>
+  <%#= link_to "edit", edit_project_path %>
+<%# end %>
 
-<% if @request_participation %>
-  <p>Ma demande de participation à ce projet</p>
-  <% if @request_participation.accepted %>
-      <%= link_to "Leave #{@project.title}", participation_path(@request_participation),
+<%# if @request_participation %>
+  <!-- <p>Ma demande de participation à ce projet</p> -->
+  <%# if @request_participation.accepted %>
+      <%#= link_to "Leave #{@project.title}", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
-  <% else %>
-      <%= link_to "cancel my application", participation_path(@request_participation),
+  <%# else %>
+      <%#= link_to "cancel my application", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %>

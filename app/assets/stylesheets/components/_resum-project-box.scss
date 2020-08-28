@@ -7,9 +7,11 @@
 }
 
 .resum-project-description {
-  overflow: scroll;
-  max-width: 600px;
-  max-height: 100px;
+  height: 100px;
+  overflow-y: scroll;
+  // overflow: scroll;
+  // max-width: 600px;
+  // max-height: 100px;
 }
 
 .resum-project-images {
@@ -45,10 +47,18 @@
   object-position: center;
 }
 
+.resum-project-tags-show {
+  display: flex;
+  margin-top: 30px;
+  overflow-x: scroll;
+  width: 90%;
+}
+
 .resum-project-tags {
   display: flex;
   margin-top: 30px;
   overflow-x: scroll;
+  width: 293px;
 }
 
 .skills-btn {
