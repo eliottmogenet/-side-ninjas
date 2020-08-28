@@ -5,11 +5,7 @@
 <div class="page-title-box">
   <div class="page-title-description">
     <div class="page-title">
-      <!--<%# if current_user = @request_participations.user && @request_participations.user != true %>-->
-
-      <!-- if participation est accepted = true -->
       <h1>Join</h1>
-      <!--<% #end %>-->
       <div class="project-name">
         <h1><%= @project.title %></h1>
       </div>
@@ -26,11 +22,12 @@
       <% end %>
     </div>
   </div>
-  <% if current_user != @project.user %>
+  <% if @request_participation.accepted = false %>
     <div class="first-important-btn">
       <i class="fas fa-plus"></i>
       <%= link_to "JOIN THE PROJECT", new_project_participation_path(@project) %>
     </div>
+  <% else %>
   <% end %>
 </div>
 
@@ -55,10 +52,10 @@
           </div>
         </div>
         <div class="resum-project-tags">
-          <% @project.project_languages.each do |project_languages| %>
+          <% @project.project_languages.each do |p_language| %>
             <div class="skills-btn">
               <i class="fab fa-js-square"></i>
-              <p><%= project_language.language.name  %></p>
+              <p><%= p_language.language.name %></p>
             </div>
           <% end %>
         </div>
@@ -89,33 +86,20 @@
               </div>
             </div>
             <div class="member-skills">
-              <% participation.user.user_languages.each do |language| %>
-                <% if language.languages.frameworks.nil? %>
-                  <div class="one-skill">
-                    <div class="skills-btn">
-                      <i class="fab fa-js-square"></i>
-                      <p><%= language.languages.name %></p>
-                    </div>
-                    <div class="skills-btn">
-                      <i class="fab fa-js-square"></i>
-                      <p><%= language.level %></p>
-                    </div>
-                  </div>
-                <% else %>
-                  <% language.languages.frameworks.each do |framework| %>
+              <% participation.user.user_languages.each do |user_language| %>
+                  <%# if @project.languages.includes?(user_language.language) %>
                     <div class="one-skill">
                       <div class="skills-btn">
                         <i class="fab fa-js-square"></i>
-                        <p><%= language.languages.name %> <%= language.languages.framework.name %></p>
+                        <p><%= user_language.language.name %></p>
                       </div>
                       <div class="skills-btn">
                         <i class="fab fa-js-square"></i>
-                        <p><%= language.level %></p>
+                        <p><%= user_language.level %></p>
                       </div>
                     </div>
-                  <% end %>
-                <% end %>
-              <% end %>
+                  <%# end  %>
+             <% end %>
             </div>
           </div>
         <% end %>
@@ -144,20 +128,17 @@
       <p><%= feature.description %></p>
     </div>
     <div class="features-languages">
-      <% feature.feature_languages.each do |language| %>
-        <% if language.languages.frameworks.nil? %>
-          <div class="skills-btn">
+      <% feature.feature_languages.each do |f_language| %>
+        <div class="skills-btn">
+          <i class="fab fa-js-square"></i>
+          <p><% f_language.language.name %></p>
+        </div>
+        <%# f_language.language.frameworks.each do |framework| %>
+          <!-- <div class="skills-btn">
             <i class="fab fa-js-square"></i>
-            <p><% language.languages.name %></p>
+            <p><%#= framework.name %></p>
           </div>
-        <% else %>
-          <% language.languages.frameworks.each do |framework| %>
-          <div class="skills-btn">
-            <i class="fab fa-js-square"></i>
-            <p><% language.languages.name %> <%= language.languages.framework %></p>
-          </div>
-          <% end %>
-        <% end %>
+        <%# end %> -->
       <% end %>
     </div>
   </div>
@@ -171,14 +152,17 @@
   <%= link_to "edit", edit_project_path %>
 <% end %>
 
-  <p>Ma demande de participation à ce projet</p>
-      <%= link_to "Leave #{@project.title}", participation_path(@request_participation),
+  <p> Ma demande de participation à ce projet</p>
+
+<% if @request_participation %>
+  <%= link_to "Leave #{@project.title}", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
 
-      <%= link_to "cancel my application", participation_path(@request_participation),
+  <%= link_to "cancel my application", participation_path(@request_participation),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
+<% end %>
 
 
 <% @features.each do |feature| %>

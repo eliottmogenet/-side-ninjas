@@ -13,10 +13,11 @@
 
   <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%#= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+    <%#= render 'shared/flashes' %>
     <div class="custom-container">
       <%#= render 'shared/left-side-bar' %>
       <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
+
       <div class="main-info <%= "with-sidebar" unless controller.controller_name == "pages" && controller.action_name == "home" %>">
         <div class="user-avatar-profil">
           <div class="dropdown">
