@@ -79,12 +79,12 @@ ruby.photo.attach(io: ruby_user, filename: 'ruby_file.png')
 ruby.save!
 
 sql = Language.new(name: "SQL")
-sql_user = URI.open("https://e7.pngegg.com/pngimages/750/507/png-clipart-database-server-computer-icons-microsoft-sql-server-database-miscellaneous-angle.png")
+sql_user = URI.open("https://img2.freepng.fr/20180802/vty/kisspng-clip-art-microsoft-azure-sql-database-microsoft-sq-skills-5b63119fd6c064.4634905815332192318796.jpg")
 sql.photo.attach(io: sql_user, filename: 'sql_file.png')
 sql.save!
 
 python = Language.new(name: "Python")
-python_user = URI.open("https://img2.freepng.fr/20180320/fkq/kisspng-angle-text-symbol-brand-other-python-5ab0c09b32b4d1.7494578715215330832077.jpg")
+python_user = URI.open("https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png")
 python.photo.attach(io: python_user, filename: 'python_file.png')
 python.save!
 
