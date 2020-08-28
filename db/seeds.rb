@@ -84,7 +84,7 @@ sql.photo.attach(io: sql_user, filename: 'sql_file.png')
 sql.save!
 
 python = Language.new(name: "Python")
-python_user = URI.open("https://img2.freepng.fr/20180320/fkq/kisspng-angle-text-symbol-brand-other-python-5ab0c09b32b4d1.7494578715215330832077.jpg")
+python_user = URI.open("https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png")
 python.photo.attach(io: python_user, filename: 'python_file.png')
 python.save!
 
