@@ -1,5 +1,4 @@
 <div class="new-participation">
-  <h1>Postuler pour rejoindre ce projet</h1>
   <div id="new-form">
     <%= simple_form_for [@project, @participation] do |f| %>
     <%= f.input :motivation %>
@@ -15,10 +14,5 @@
 
 </div>
 
-<div class="back-btn mt-3">
-  <%= link_to project_path(@project) do%>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <p>Back</p>
-  <% end %>
-</div>
+
 

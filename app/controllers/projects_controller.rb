@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
     # @project = Project.find(params[:id])
     @request_participation = @project.participations.find_by(user: current_user)
     @features = @project.features
+    @participation = Participation.new
   end
 
   def edit
@@ -36,6 +37,7 @@ class ProjectsController < ApplicationController
 
   def new
     @user = current_user
+    @languages = Language.all
     @project = Project.new
     authorize @project
   end
@@ -47,7 +49,7 @@ class ProjectsController < ApplicationController
 
     @project.user = current_user
     if @project.save
-      redirect_to projects_path
+      redirect_to project_path(@project)
     else
       render :new
     end
@@ -69,6 +71,7 @@ class ProjectsController < ApplicationController
       :github_repository, :trello_link,
       :start_date, :website_link,
       :tag, :tag_line,
+      photos: [],
       features_attributes: [
         :name, :description, :id
       ]
