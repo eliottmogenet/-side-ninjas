@@ -10,6 +10,8 @@
     <%= f.input :start_date %>
     <%= f.input :website_link %>
     <%= f.input :tag  %>
+    <%= f.association :languages %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Ajouter le project"%>
     <% end %>
   </div>

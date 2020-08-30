@@ -5,14 +5,11 @@ class Project < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :features, dependent: :destroy
   has_many :languages, through: :project_languages
-
   validates :title, :description, presence: true
   validates :title, uniqueness: true
   validates :description, length: { minimum: 10 }
-  has_many_attached :photo
-
+  has_many_attached :photos
   after_save :add_creator_to_participants
-
   accepts_nested_attributes_for :features, reject_if: :all_blank
 
   def admin_users

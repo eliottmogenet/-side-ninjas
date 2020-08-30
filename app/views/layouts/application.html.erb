@@ -17,7 +17,8 @@
     <% if user_signed_in? && controller.controller_name != "pages"%>
       <div class="user-avatar-profil">
         <div class="dropdown">
-          <img src="https://tel.img.pmdstatic.net/fit/https.3A.2F.2Fprd2-tel-epg-img.2Es3-eu-west-1.2Eamazonaws.2Ecom.2FproviderPerson.2Fg70096985ac51ebe8.2Ejpeg/300x300/quality/80/eric-zemmour.jpeg" class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= cl_image_tag current_user.photo.key, class: "avatar-large mr-3 avatar-large dropdown-toggle", id: "navbarDropdown" %>
+          <!-- <img src="https://tel.img.pmdstatic.net/fit/https.3A.2F.2Fprd2-tel-epg-img.2Es3-eu-west-1.2Eamazonaws.2Ecom.2FproviderPerson.2Fg70096985ac51ebe8.2Ejpeg/300x300/quality/80/eric-zemmour.jpeg" class="avatar-large dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
