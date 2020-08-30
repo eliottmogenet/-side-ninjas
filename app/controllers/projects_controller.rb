@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
     # @project = Project.find(params[:id])
     @request_participation = @project.participations.find_by(user: current_user)
     @features = @project.features
+    @participation = Participation.new
   end
 
   def edit
