@@ -42,7 +42,6 @@ PICTURE_PROJECT = [
   "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
   "https://lh3.googleusercontent.com/proxy/-HNMm0iU16y-_ivcWc0kIlHdhCrvuMYo6l6WaWN4I5dGMTEiI_7rsNkrq9xG1lkzyxLhY-i_l7pdDFFru8hrNAybs6lqzYJ8BxAqS1-PH-dAHwf7",
   "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",
-  "https://image.slidesharecdn.com/schmagestionintgredeprojetetdechangement-151204020453-lva1-app6892/95/schma-gestion-intgre-de-projet-et-de-changement-1-638.jpg?cb=1449279509",
   "https://comitatus.fr/wp-content/uploads/2017/01/processus_strategique.jpg",
   "https://alterydea.com/wp-content/uploads/2013/12/schema-logo.gif",
   "https://www.projectsmart.co.uk/img/pm-workflow.png",
