@@ -12,6 +12,9 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </div>
+        <div class="name-user-avatar">
+          <p class="user-name-avatar mt-1" style="color: white"><%= current_user.first_name %> <%= current_user.last_name %></p>
+        </div>
       </div>
     <% end %>
   </div>
