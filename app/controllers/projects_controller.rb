@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
 
   def show
     # @project = Project.find(params[:id])
+    @chatroom = Chatroom.new
     @request_participation = @project.participations.find_by(user: current_user)
     @features = @project.features
     @participation = Participation.new
