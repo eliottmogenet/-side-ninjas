@@ -8,7 +8,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "radio_button", "clickable" ]
+  static targets = [ "radio_button", "clickable"]
 
   // connect() {
   //   console.log('Language displayed !')
@@ -28,6 +28,6 @@ export default class extends Controller {
       if (radio_button.value === currentId) {
         radio_button.checked = !radio_button.checked;
       }
-    })
+    });
   }
 }

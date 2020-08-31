@@ -36,6 +36,12 @@ PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnag
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alec_efran_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alis_saro_bakvalen_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alison_dawn_vignette.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allium_avatar.png"]
 
+user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
+user_url = PICTURE_USER.sample
+file_user = URI.open(user_url)
+user.photo.attach(io: file_user, filename: 'photo_user.png')
+user.save!
+
 PICTURE_PROJECT = [
   "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
   "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",

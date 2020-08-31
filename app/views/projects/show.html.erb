@@ -1,5 +1,5 @@
 <div class="back-btn">
-  <%= link_to session[:history].last do%>
+  <%= link_to projects_path do%>
     <i class="fas fa-long-arrow-alt-left"></i>
     <p>Back</p>
   <% end %>
@@ -9,10 +9,10 @@
   <div class="page-title-description">
     <div class="page-title">
       <!-- if participation est accepted = true -->
-      <h1>Join</h1>
-      <div class="project-name">
-        <h1><%= @project.title %></h1>
-      </div>
+          <h1>Join</h1>
+          <div class="project-name">
+            <h1><%= @project.title %></h1>
+          </div>
     </div>
     <div class="under-title">
       <div class="project-tag-line">
@@ -23,6 +23,7 @@
                         project_path(@project),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %>
+        <%= link_to "Edit #{@project.title}",edit_project_path(@project)%>
       <% end %>
     </div>
   </div>
@@ -57,6 +58,14 @@
         <div class="resum-project-description">
           <p><%= @project.description %></p>
         </div>
+        <div class="web-link">
+          <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
+            <h5><i class="fab fa-github"></i></h5>
+          <% end %>
+          <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
+            <h5><i class="fas fa-tv"></i></h5>
+          <% end %>
+        </div>
         <div class="resum-project-images">
           <% if @project.photos.attached? %>
             <p>Photos of the project</p>
@@ -67,6 +76,7 @@
             </div>
           <% end %>
         </div>
+
         <div class="<%= (controller.controller_name == "projects" && controller.action_name == "index") ? "resum-project-tags" : "resum-project-tags-show" %>">
           <% @project.project_languages.each do |tag| %>
             <div class="skills-btn">

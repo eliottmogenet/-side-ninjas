@@ -1,10 +1,10 @@
-<div class="container-index">
+<div class="container-index" data-controller="levels" >
       <div class="page-title-box">
     <div class="page-title-description">
       <div class="page-title">
         <h1>Select</h1>
         <div class="project-name">
-          <h1>your skills</h1>
+          <h1>your level</h1>
         </div>
       </div>
       <div class="under-title">
@@ -14,29 +14,33 @@
       </div>
     </div>
     <div class="first-important-btn">
-      <%= link_to "Create account", projects_path %>
+      <%= link_to "Create account", projects_path, class: "btn btn-primary #{'disabled' unless @all_user_languages_with_a_level}" %>
     </div>
   </div>
 
-  <% @user_languages.each do |user_language| %>
+  <% @user_languages.sort_by { |ul| ul.language.name }.each do |user_language| %>
     <div class="languages-card" data-controller="languages-level">
       <div class="languages-selected">
         <%= user_language.language.name %>
         <%= cl_image_tag user_language.language.photo.key, crop: :fill, class: "language-image" %>
       </div>
       <div class="edit-languages" data-target="languages-level.editLanguages">
+        <div>
         <% if user_language.level.present? %>
           Your level: <%= user_language.level %>
         <% else %>
           <p>You did not select your level yet!</p>
         <% end %>
+        </div>
+        <div>
         <div class="btn btn-primary edit-btn"
              data-action="click->languages-level#cardReplace"
           >
             Edit your level now!
         </div>
       </div>
-      <div class="container-edit" style="display: none;" data-controller="levels" data-target="languages-level.editContainer">
+      </div>
+      <div class="container-edit" style="display: none;"data-target="languages-level.editContainer">
         <div class="choose-your-level">
           <p>Select my level</p>
 

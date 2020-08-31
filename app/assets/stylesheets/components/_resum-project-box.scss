@@ -7,7 +7,7 @@
 }
 
 .resum-project-description {
-  height: 100px;
+  height: 130px;
   overflow-y: scroll;
   // overflow: scroll;
   // max-width: 600px;
@@ -20,7 +20,7 @@
 
 .resum-project-title {
   display: flex;
-  align-items: center;
+  // align-items: center;
   h5 {
     padding: 0px;
     margin: 0px;
@@ -58,9 +58,18 @@
   display: flex;
   margin-top: 30px;
   overflow-x: scroll;
-  width: 293px;
+  max-width: 618px;
 }
 
 .skills-btn {
   margin-right: 5px;
+}
+
+.web-link {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  i {
+    font-size: 30px;
+  }
 }
