@@ -1,7 +1,14 @@
+<div class="chatroom-list">
+  <ol>
+    <% @chatrooms.each do |chatroom| %>
+      <%# raise %>
+      <li>
+        <%#= render 'chatrooms/show', chatroom: chatroom %>
+      </li>
+    <% end %>
+  </ol>
+</div>
 
-<ol>
-  <% @chatrooms.each do |chatroom| %>
-    <%# raise %>
-    <li><%= link_to "blaaaaaa", chatroom_path(chatroom) %></li>
-  <% end %>
-</ol>
+<div class="chatroom-content">
+  <%= render 'chatrooms/show', chatroom: @chatrooms.last %>
+</div>
