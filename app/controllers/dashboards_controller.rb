@@ -4,9 +4,10 @@ class DashboardsController < ApplicationController
 
   def index
     user_participations = current_user.participations
-    @projects = user_participations.map do |participation|
-      participation.project
-    end
+    # @projects = user_participations.map do |participation|
+    #   participation.project
+    # end
+    @participations = current_user.participations
     skip_authorization
   end
 end
