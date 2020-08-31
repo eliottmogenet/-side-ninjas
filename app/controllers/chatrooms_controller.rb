@@ -3,12 +3,17 @@ class ChatroomsController < ApplicationController
   def index
     @user = current_user
     @chatrooms = policy_scope(Chatroom)
+
   end
 
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
     authorize @chatroom
+    respond_to do |format|
+      format.json { render_to_string "chatrooms/show", chatroom: @chatroom }.to_json
+      format.html
+    end
   end
 
   def create
