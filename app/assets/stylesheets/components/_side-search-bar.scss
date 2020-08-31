@@ -1,11 +1,14 @@
 // c'est pour la recherche de projets --> adrien à faire
 
 .search-bar-box {
-  margin-left: 150px;
+  margin-left: 220px;
   background-color: $light-blue;
   flex-grow: 1;
+  min-width: 310px;
   padding-left: 50px;
   padding-top: 120px;
+  position: fixed;
+  height: 100vh;
   // position: fixed;
   // height: 100vh;
 }
