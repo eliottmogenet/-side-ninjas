@@ -24,6 +24,9 @@ Project.destroy_all
 User.destroy_all
 
 user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
+user_url = PICTURE_USER.sample
+file_user = URI.open(user_url)
+user.photo.attach(io: file_user, filename: 'photo_user.png')
 user.save!
 
 PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alecia_beck_vignette.jpg", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/aleksin_vig.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allia_avatar.png",
