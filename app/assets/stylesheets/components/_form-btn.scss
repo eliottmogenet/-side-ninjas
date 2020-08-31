@@ -1,0 +1,19 @@
+.create-btn {
+  background-color: $saumon;
+  color: $white;
+  width:  fit-content;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+  padding: 7px 13px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-control {
+  border: none;
+  width: 100%;
+}
+

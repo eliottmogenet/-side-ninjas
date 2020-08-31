@@ -31,7 +31,7 @@
 }
 
 .resum-project-title {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .resum-project-pictures {
@@ -72,4 +72,11 @@
   i {
     font-size: 30px;
   }
+}
+
+.github {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
