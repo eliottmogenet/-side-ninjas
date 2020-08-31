@@ -27,22 +27,24 @@ import "bootstrap";
 import "controllers"
 import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
+import { initChatroomCable } from '../channels/chatroom_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
+  initSelect2();
   loadDynamicBannerText();
+  initChatroomCable();
 });
 
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-document.addEventListener('turbolinks:load', () => {
-  initSelect2();
+// document.addEventListener('turbolinks:load', () => {
 
-  // Call your functions here, e.g:
-  // initSelect2();
-});
+//   // Call your functions here, e.g:
+//   // initSelect2();
+// });
 
 

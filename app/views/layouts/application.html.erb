@@ -27,7 +27,9 @@
     <% end %>
     <div class="custom-container">
       <%#= render 'shared/left-side-bar' %>
-      <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
+      <% if user_signed_in? %>
+        <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
+      <% end %>
       <%= render "shared/search-bar-index" if controller.controller_name == "projects" && controller.action_name == "index" %>
       <div class="main-info <%= "with-search-sidebar" if controller.controller_name == "projects" && controller.action_name == "index" %> <%= "with-sidebar" unless (controller.controller_name == "pages" && controller.action_name == "home") || (controller.controller_name == "projects" && controller.action_name == "index") %>">
         <%= yield %>

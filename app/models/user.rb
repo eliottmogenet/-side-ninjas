@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :projects, through: :participations
   has_many :user_languages, dependent: :destroy
+  has_many :chatroom_users, dependent: :destroy
+  has_many :chatrooms, through: :chatroom_users
 
   has_one_attached :photo
 
