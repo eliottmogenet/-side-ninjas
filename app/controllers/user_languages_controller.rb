@@ -3,6 +3,8 @@ class UserLanguagesController < ApplicationController
   def index
     @user_languages = policy_scope(UserLanguage)
     @user_languages = current_user.user_languages
+
+    @all_user_languages_with_a_level = @user_languages.all? { |user_language| user_language.level.present? }
   end
 
   def new

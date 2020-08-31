@@ -21,5 +21,13 @@
 
 .languages-selected {
   display: flex;
+  flex-direction: column ;
+  justify-content: space-around;
+}
+
+.edit-languages {
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
+
 }
