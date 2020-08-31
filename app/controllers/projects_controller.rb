@@ -2,13 +2,26 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @languages = Language.pluck(:name)
     @projects = policy_scope(Project)#.includes(:project_languages)
+
+    # array of uniques city names ordered by city name where users have created a project
+    @all_cities = User.joins(:projects).order(:city).pluck(:city).uniq
+
+    @all_batch_number = User.joins(:projects).order(:batch_number).pluck(:batch_number).uniq
+
+    # FILTERING
     if params[:language].present?
       @projects = @projects.joins(project_languages: :language).where(languages: { name: params[:language] })
     end
-    if params[:sort].present?
-      @projects = @projects.order(start_date: params[:sort])
+    # TODO: filter by city
+    if params[:user].present?
+      @projects = @projects.joins(participations: :user).where(participations: { admin: true, users: { city: params[:user] }})
+    end
+
+    if params[:batch].present?
+      @projects = @projects.joins(participations: :user).where(participations: { admin: true, users: { batch_number: params[:batch] }})
     end
   end
 

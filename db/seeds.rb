@@ -23,11 +23,6 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
-user_url = PICTURE_USER.sample
-file_user = URI.open(user_url)
-user.photo.attach(io: file_user, filename: 'photo_user.png')
-user.save!
 
 PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alecia_beck_vignette.jpg", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/aleksin_vig.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allia_avatar.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/althu_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alys_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Ansinvignette.png",
@@ -43,7 +38,6 @@ PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnag
 
 PICTURE_PROJECT = [
   "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
-  "https://lh3.googleusercontent.com/proxy/-HNMm0iU16y-_ivcWc0kIlHdhCrvuMYo6l6WaWN4I5dGMTEiI_7rsNkrq9xG1lkzyxLhY-i_l7pdDFFru8hrNAybs6lqzYJ8BxAqS1-PH-dAHwf7",
   "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",
   "https://image.slidesharecdn.com/schmagestionintgredeprojetetdechangement-151204020453-lva1-app6892/95/schma-gestion-intgre-de-projet-et-de-changement-1-638.jpg?cb=1449279509",
   "https://comitatus.fr/wp-content/uploads/2017/01/processus_strategique.jpg",
@@ -67,6 +61,12 @@ PROJECT_DESCRIPTION = [
   "Workomo shows you everything important about People, just before you Meet, right inside Chrome. With one click, you can see a person's professional background, areas of common interest as well as talking points that help you forge a personal connection.",
   " How do you research and think through important decisions? Open browser tabs, files in Dropbox, a whiteboard… Muse offers a new way. It turns your iPad into a spatial canvas for research notes, PDFs, screenshots, sketches, and bookmarks."
 ]
+
+user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
+user_url = PICTURE_USER.sample
+file_user = URI.open(user_url)
+user.photo.attach(io: file_user, filename: 'photo_user.png')
+user.save!
 
 puts "Creating 11 languages"
 
@@ -164,7 +164,7 @@ puts "Creating your users/projects/..."
     p project_user_url
     puts project_user_url
     file_project_user = URI.open(project_user_url)
-    project_user_first.photo.attach(io: file_project_user, filename: 'photo_user.png')
+    project_user_first.photos.attach(io: file_project_user, filename: 'photo_user.png')
 
   end
 
@@ -212,9 +212,9 @@ puts "Creating your users/projects/..."
       (1..3).to_a.sample.times do
 
         project_user_second_url = PICTURE_PROJECT.sample
-        p project_user_url
+        p project_user_second_url
         file_project_user_second = URI.open(project_user_second_url)
-        project_user_second.photo.attach(io: file_project_user_second, filename: 'photo_user.png')
+        project_user_second.photos.attach(io: file_project_user_second, filename: 'photo_user.png')
 
       end
 
