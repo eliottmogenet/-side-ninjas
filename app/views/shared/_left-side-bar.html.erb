@@ -34,6 +34,12 @@
     </div>
   </div>
 
+
+    <div class="user-talks">
+      <%# raise %>
+      <%= link_to "Conversations", user_chatrooms_path(current_user) %>
+    </div>
+
   <div class="user-cation-logout">
     <div class="back-btn">
       <%= link_to destroy_user_session_path, method: :delete do %>

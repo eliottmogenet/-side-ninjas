@@ -45,8 +45,6 @@ user.save!
 PICTURE_PROJECT = [
   "https://www.digitalcorner-wavestone.com/wp-content/uploads/2019/04/1_wxC3mcax_8XXR16ppuWYCQ.jpeg",
   "https://lionsurmer.com/wp-content/uploads/2013/06/pui-schema.jpg",
-  "https://image.slidesharecdn.com/schmagestionintgredeprojetetdechangement-151204020453-lva1-app6892/95/schma-gestion-intgre-de-projet-et-de-changement-1-638.jpg?cb=1449279509",
-  "https://comitatus.fr/wp-content/uploads/2017/01/processus_strategique.jpg",
   "https://alterydea.com/wp-content/uploads/2013/12/schema-logo.gif",
   "https://www.projectsmart.co.uk/img/pm-workflow.png",
   "https://previews.123rf.com/images/mrhighsky/mrhighsky1603/mrhighsky160300124/56405493-project-management-tag-cloud.jpg",
@@ -67,6 +65,12 @@ PROJECT_DESCRIPTION = [
   "Workomo shows you everything important about People, just before you Meet, right inside Chrome. With one click, you can see a person's professional background, areas of common interest as well as talking points that help you forge a personal connection.",
   " How do you research and think through important decisions? Open browser tabs, files in Dropbox, a whiteboard… Muse offers a new way. It turns your iPad into a spatial canvas for research notes, PDFs, screenshots, sketches, and bookmarks."
 ]
+
+user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
+user_url = PICTURE_USER.sample
+file_user = URI.open(user_url)
+user.photo.attach(io: file_user, filename: 'photo_user.png')
+user.save!
 
 puts "Creating 11 languages"
 

@@ -27,14 +27,31 @@ import "bootstrap";
 import "controllers"
 import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
+import { initChatroomCable } from '../channels/chatroom_channel';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
-  loadDynamicBannerText();
   initSelect2();
+  loadDynamicBannerText();
+<<<<<<< HEAD
+  initChatroomCable();
+=======
+  initSelect2();
+>>>>>>> master
 });
 
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+<<<<<<< HEAD
+
+// document.addEventListener('turbolinks:load', () => {
+
+//   // Call your functions here, e.g:
+//   // initSelect2();
+// });
+
+
+=======
+>>>>>>> master

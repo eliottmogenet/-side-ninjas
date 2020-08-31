@@ -37,7 +37,7 @@
       <% else %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           JOIN THE PROJECT
-      </button>
+        </button>
       <% end %>
     </div>
   <% end %>
@@ -48,7 +48,10 @@
     <div class="resum-project-box">
       <div class="resum-project-title">
         <h5><%= @project.title %></h5>
-
+        <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
+          <i class="fab fa-github"></i>
+        <% end %>
+        <i class="fas fa-tv"></i>
       </div>
       <hr>
       <div class="resum-project-content">
@@ -148,7 +151,10 @@
       </div>
         <div class="second-important-btn mt-4">
           <i class="fab fa-slack"></i>
-          <%= link_to "Invite friends on slack", root_path %>
+          <%= simple_form_for([@project.user, @chatroom]) do |f| %>
+            <%= f.hidden_field :project, value: @project.id %>
+            <%= f.submit %>
+          <% end %>
         </div>
       </div>
     </div>
