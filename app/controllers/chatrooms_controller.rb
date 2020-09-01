@@ -30,6 +30,8 @@ class ChatroomsController < ApplicationController
     @second_chatroom_user.chatroom = @chatroom
     @second_chatroom_user.save
 
+    # @chatroom.name = Project.find(params["chatroom"]["project"]).user.first_name
+
     redirect_to chatroom_path(@chatroom)
   end
 
