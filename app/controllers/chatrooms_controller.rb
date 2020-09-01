@@ -3,7 +3,6 @@ class ChatroomsController < ApplicationController
   def index
     @user = current_user
     @chatrooms = policy_scope(Chatroom)
-
   end
 
   def show
@@ -13,7 +12,7 @@ class ChatroomsController < ApplicationController
     #   format.json { render_to_string "chatrooms/show", chatroom: @chatroom }.to_json
     #   format.html
     # end
-    render partial: 'chatrooms/show', locals: {chatroom: @chatroom, message: Message.new}, layout: false
+    render partial: 'show', locals: { chatroom: @chatroom, message: Message.new }, layout: false
   end
 
   def create
@@ -29,6 +28,8 @@ class ChatroomsController < ApplicationController
     @second_chatroom_user.user = Project.find(params["chatroom"]["project"]).user
     @second_chatroom_user.chatroom = @chatroom
     @second_chatroom_user.save
+
+    # @chatroom.name = Project.find(params["chatroom"]["project"]).user.first_name
 
     redirect_to chatroom_path(@chatroom)
   end

@@ -86,7 +86,7 @@
     }
     color: $browne;
     background-color: $white;
-    border-radius: $border-radius;
+    border-radius: $border-radius-second;
     padding: 7px 7px;
   }
 }
@@ -119,11 +119,12 @@
 
 
 .main-info {
-  margin: 50px 0px;
+  padding: 50px 0px;
   flex-grow: 1;
   position: relative;
   &.with-sidebar {
-    margin-left: 260px;
+    padding-left: 40px;
+    margin-left: 220px;
     margin-right: 40px;
   }
   &.with-search-sidebar {
