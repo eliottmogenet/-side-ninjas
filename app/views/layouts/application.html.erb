@@ -26,7 +26,7 @@
           <%= yield %>
         </div>
       <% else %>
-        <div class="main-info <%= "with-search-sidebar" if controller.controller_name == "projects" && controller.action_name == "index" %> <%= "with-sidebar" unless (controller.controller_name == "pages" && controller.action_name == "home") || (controller.controller_name == "projects" && controller.action_name == "index") %>">
+        <div class="main-info <%= 'with-search-sidebar' if controller.controller_name == 'projects' && controller.action_name == 'index' %> <%= 'with-sidebar' unless (controller.controller_name == 'pages' && controller.action_name == 'home') || (controller.controller_name == 'projects' && controller.action_name == 'index') %>">
           <%= yield %>
         </div>
       <% end %>
