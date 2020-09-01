@@ -28,23 +28,24 @@ import "controllers"
 import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { showImage } from '../components/display_photo';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   // [...]
   initSelect2();
   loadDynamicBannerText();
-<<<<<<< HEAD
   initChatroomCable();
-=======
+  showImage();
+
   initSelect2();
->>>>>>> master
 });
 
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-<<<<<<< HEAD
+
 
 // document.addEventListener('turbolinks:load', () => {
 
@@ -52,6 +53,3 @@ document.addEventListener('turbolinks:load', () => {
 //   // initSelect2();
 // });
 
-
-=======
->>>>>>> master

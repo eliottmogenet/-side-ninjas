@@ -26,25 +26,25 @@
     <div class="col-8">
       <div class="resum-project-box">
         <div class="resum-project-title">
-          <h5><%= f.input :title %></h5>
+          <h5 style="width: 100%"><%= f.input :title, label: false, placeholder: "Title" %></h5>
         </div>
         <hr>
         <div class="resum-project-content">
           <div class="resum-project-description">
-            <p><%= f.input :description %></p>
+            <p><%= f.input :description, label: false, placeholder: "Description" %></p>
           </div>
           <div class="web-link">
-              <h5><i class="fab fa-github"></i></h5> <%= f.input :github_repository %>
-              <h5><i class="fas fa-tv"></i></h5> <%= f.input :trello_link %>
+              <h5><i class="fab fa-github"></i></h5> <%= f.input :github_repository, label: false, placeholder: "Github url" %>
+              <h5><i class="fab fa-trello"></i></h5> <%= f.input :trello_link, label: false, placeholder: "Trello url" %>
           </div>
           <div class="resum-project-images">
             <div class="resum-project-pictures">
-              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= f.input :photos, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
             </div>
           </div>
 
           <div class="language-create-project">
-            <%= f.association :languages %>
+            <%= f.association :languages, label: "Select main languages" %>
           </div>
 
           <div class="resum-project-tags">
@@ -54,13 +54,15 @@
                 <p><%= tag %></p>
               </div>
             <% end %>
-              <%= f.input :website_link %>
-              <%= f.input :tag %>
+              <%= f.input :website_link, label: false, placeholder: "Website url"  %>
+              <%= f.input :tag, label: false, placeholder: "Tag" %>
 
-
-              <%= f.input :start_date %>
+              <%= f.hidden_field :start_date, value: Date.today %>
           </div>
-              <%= f.submit %>
+            <%= button_tag class: "create-btn" do %>
+              <i class="fas fa-plus m-2"></i>
+              Save
+            <% end %>
         </div>
       </div>
     </div>
@@ -71,24 +73,19 @@
         </div>
         <hr>
         <div class="team-members">
-          <% @project.participations.each do |participation| %>
             <div class="resum-member">
               <div class="member-infos">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Zinedine_Zidane_by_Tasnim_01.jpg" class="avatar-large">
                 <div class="member-name-batch">
-                  <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
-                  <p>#Batch <%= participation.user.batch_number %> <%= participation.user.bootcamp_year %> (<%= participation.user.city %>)</p>
+                  <h5><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></h5>
+                  <p>#Batch <%= current_user.batch_number %> <%= current_user.bootcamp_year %> (<%= current_user.city %>)</p>
                 </div>
                 <div class="admin-btn">
-                  <% if @project.user.id == participation.user.id %>
                     <p>Admin</p>
-                  <% else %>
-                    <p>Member</p>
-                  <% end %>
                 </div>
               </div>
               <div class="member-skills">
-                <% participation.user.user_languages.each do |language| %>
+                <% current_user.user_languages.each do |language| %>
                   <% if language.languages.frameworks.nil? %>
                     <div class="one-skill">
                       <div class="skills-btn">
@@ -117,7 +114,6 @@
                 <% end %>
               </div>
             </div>
-          <% end %>
           <div class="second-important-btn">
             <i class="fas fa-plus"></i>
             <%= link_to "Add a member", root_path %>
@@ -125,7 +121,7 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 
   <%= f.simple_fields_for :features do |feature| %>
     <% index = 0 %>
@@ -164,5 +160,4 @@
     </div>
     <% index += 1 %>
   <% end %>
-<!-- Below, end of simple_form -->
 <% end %>
