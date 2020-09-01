@@ -69,7 +69,6 @@
             <% end %>
             <%= f.hidden_field :start_date, value: Date.today %>
           </div>
-          <%= f.submit %>
         </div>
       </div>
     </div>
@@ -98,7 +97,7 @@
               </div>
               <div class="member-skills">
                 <% current_user.user_languages.each do |language| %>
-                  <% if language.languages.frameworks.nil? %>
+                  <% if language.language.frameworks.nil? %>
                     <div class="one-skill">
                       <div class="skills-btn">
                         <i class="fab fa-js-square"></i>
@@ -110,11 +109,11 @@
                       </div>
                     </div>
                   <% else %>
-                    <% language.languages.frameworks.each do |framework| %>
+                    <% language.language.frameworks.each do |framework| %>
                       <div class="one-skill">
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
-                          <p><%= language.languages.name %> <%= language.languages.framework.name %></p>
+                          <p><%= language.languages.name %> <%= language.language.framework.name %></p>
                         </div>
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
@@ -137,11 +136,11 @@
     </div>
 
   <%= f.simple_fields_for :features do |feature| %>
-    <% index = 0 %>
+    <% i = 0 %>
     <%= feature.input_field :id, class: "d-none" %>
     <div class="features-background">
       <div class="features-title">
-        <h5>Main feature #<%= index + 1 %>: <%= feature.input :name %></h5>
+        <h5>Main feature #<%= i + 1 %>: <%= feature.input :name %></h5>
       </div>
       <hr>
       <div class="features-logos">
@@ -155,22 +154,23 @@
       </div>
       <div class="features-languages">
         <% feature.object.feature_languages.each do |language| %>
-          <% if language.languages.frameworks.nil? %>
+          <% if language.language.frameworks.nil? %>
             <div class="skills-btn">
               <i class="fab fa-js-square"></i>
               <p><% language.languages.name %></p>
             </div>
           <% else %>
-            <% language.languages.frameworks.each do |framework| %>
+            <% language.language.frameworks.each do |framework| %>
             <div class="skills-btn">
               <i class="fab fa-js-square"></i>
-              <p><% language.languages.name %> <%= language.languages.framework %></p>
-            </div>
+              <p><% language.languages.name %> <%= language.language.framework %></p>
+             </div>
             <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
-    <% index += 1 %>
+    <% i += 1 %>
   <% end %>
+  <%= f.submit %>
 <% end %>

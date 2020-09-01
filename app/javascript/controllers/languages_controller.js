@@ -8,11 +8,17 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "checkbox" ]
+  static targets = [ "checkbox", "images" ]
 
-  // connect() {
-  //   console.log('Language displayed !')
-  // }
+  connect() {
+    this.imagesTargets.forEach(image => {
+      this.checkboxTargets.forEach(checkbox => {
+        if (checkbox.checked && checkbox.value === image.dataset.id) {
+          image.classList.toggle('image-active');
+        }
+      })
+    })
+  }
 
   checkLanguage(event) {
     const clickedElement = event.currentTarget;

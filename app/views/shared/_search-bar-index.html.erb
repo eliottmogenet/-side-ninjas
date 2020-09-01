@@ -1,23 +1,59 @@
-
-<div class="search-bar-box">
+<div class="search-bar-box"  data-controller="languages">
   <div class="search-bar-filters">
     <h4>Filters</h4>
-    <%= form_tag projects_path, method: :get do %>
-      <%= select_tag :language, options_for_select(@languages, params[:language]),
-        multiple: true, class: 'select2-multiple'
-      %>
+
+
+
+      <div class="row p-5">
+       <div class="language-label"><p>Languages</p></div>
+        <% @languages.each do |language| %>
+          <div class="col-10 image-select" data-id="<%= language.id %>" data-target="languages.images" data-action="click->languages#checkLanguage">
+            <%= cl_image_tag language.photo.key, crop: :fill, class: "" %>
+            <%= language.name %>
+          </div>
+        <% end %>
+      </div>
   </div>
-  <div class="search-bar-buttons">
-    <div class="share-the-project-btn">
-      <i class="fas fa-undo-alt"></i>
-      <%= link_to "Reset" %>
-    </div>
-    <!-- <div class="search-btn"> -->
-    <%= button_tag class: "search-btn" do %>
-      <i class="fas fa-search mr-2"></i>
-      Search
+    <%= simple_form_for :search, url: projects_path, method: :get do |f| %><div class="languages-selection">
+      <%= f.input :language, as: :check_boxes, collection: @languages, checked: (params["search"]["language"] if params["search"]), include_blank: false, :input_html => {multiple: true, data: {target: "languages.checkbox"} }, include_hidden: false, item_wrapper_class: "image-select d-none"%>
+      <p>City</p>
+      <%= f.input :city, collection: @all_cities, label: false, input_html: { class: 'select2-multiple-city' } %>
+      <p>Batch number</p>
+      <%= f.input :batch, collection: @all_batch_number, label: false, input_html: { class: 'select2-multiple-batch' } %>
+
+      <div class="filter-btns" style="padding-right: 65px;">
+        <div class="reset-btn">
+          <%= link_to projects_path do %>
+            <i class="fas fa-undo-alt"></i>
+            <span>Reset</span>
+          <% end %>
+        </div>
+
+        <%= button_tag class: "search-buttons" do %>
+          <div class="search-btn">
+            <i class='fas fa-search pr-2'></i> <span> SEARCH </span>
+          </div>
+        <% end %>
+
+      </div>
     <% end %>
-  <% end %>
-    <!-- </div> -->
+
+    <%#= form_tag projects_path, method: :get do %>
+      <%#= select_tag :language, options_for_select(@languages, params[:language]),
+        multiple: true,
+        class: ''
+      %>
+
+
+      <%#= select_tag :user, options_for_select(@all_cities , params[:user]),
+        multiple: true, class: 'select2-multiple-city'
+      %>
+
+      <%#= select_tag :batch, options_for_select(@all_batch_number , params[:batch]),
+        multiple: true, class: 'select2-multiple-batch'
+      %>
+
   </div>
+
 </div>
+

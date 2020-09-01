@@ -2,13 +2,48 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @languages = Language.pluck(:name)
+    # @languages = Language.pluck(:name)
+    @languages = Language.all
     @projects = policy_scope(Project)#.includes(:project_languages)
-    if params[:language].present?
-      @projects = @projects.joins(project_languages: :language).where(languages: { name: params[:language] })
+    # raise
+
+    # array of uniques city names ordered by city name where users have created a project
+    @all_cities = User.joins(:projects).order(:city).pluck(:city).uniq
+
+    @all_batch_number = User.joins(:projects).order(:batch_number).pluck(:batch_number).uniq
+
+
+    if params[:search].present? && params[:search][:language].present?
+      @projects = @projects.joins(project_languages: :language).where(languages: { id: params[:search][:language] })
+    # raise
     end
-    if params[:sort].present?
-      @projects = @projects.order(start_date: params[:sort])
+
+
+    # FILTERING
+    # @projects_languages = []
+      # params[:search][:language].map do |id_language|
+      #   @projects_languages << @projects.joins(project_languages: :language).where(languages: { id: id_language })
+      # end
+
+      # params[:search][:language].each do |id_language|
+      #   # ["51", "52"]
+      #   # id_language = 52
+      #   @projects.each do |project|
+      #     if project.languages.find_by(id: id_language).nil?
+      #       @projects.reject { |pro| pro == project }
+      #       # raise
+      #     end
+      #   end
+      # end
+    # @language_project = @projects_languages.flatten.uniq
+    # raise
+    # TODO: filter by city
+    if params[:search].present? && params[:search][:user].present?
+      @projects = @projects.joins(participations: :user).where(participations: { admin: true, users: { city: params[:search][:user] }})
+    end
+
+    if params[:search].present? && params[:search][:batch].present?
+      @projects = @projects.joins(participations: :user).where(participations: { admin: true, users: { batch_number: params[:search][:batch] }})
     end
   end
 
@@ -40,13 +75,13 @@ class ProjectsController < ApplicationController
     @user = current_user
     @languages = Language.all
     @project = Project.new
+    @project.features.build
     authorize @project
   end
 
   def create #on créé un nouveau projet / une participation pour le current_user et des project_languages
     @project = Project.new(params_project)
     authorize @project
-
     @project.user = current_user
     if @project.save
       redirect_to project_path(@project)
@@ -83,4 +118,3 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 end
-
