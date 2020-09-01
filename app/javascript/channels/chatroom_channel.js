@@ -1,21 +1,25 @@
 import consumer from "./consumer";
 
 const initChatroomCable = () => {
-  const messagesContainer = document.getElementById('messages');
-  if (messagesContainer) {
-    const id = messagesContainer.dataset.chatroomId;
 
-    // consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
-    //   received(data) {
-    //     console.log(data); // called when data is broadcast in the cable
-    //   },
-    // });
+  const chatrooms = document.querySelectorAll('#messages');
 
-    consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
-      received(data) {
-        messagesContainer.insertAdjacentHTML('beforeend', data);
-      }
-    });
+  if (chatrooms) {
+    chatrooms.forEach((chatroom) => {
+      const id = chatroom.dataset.chatroomId;
+
+      consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
+        received(data) {
+          console.log(data);
+          chatroom.insertAdjacentHTML('beforeend', data);
+          const messages_forms = document.querySelectorAll('.new_message');
+          console.log(messages_forms);
+          messages_forms.forEach((form) => {
+            form.querySelector('input').value = "";
+          })
+        }
+      });
+    })
   }
 }
 
