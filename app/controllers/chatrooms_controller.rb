@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  after_action :delete_notif, only: :index
 
   def index
     @user = current_user
@@ -38,5 +39,9 @@ class ChatroomsController < ApplicationController
 
   def params_project
     params.require(:chatroom).permit(:recipient)
+  end
+
+  def delete_notif
+    current_user.notifications.where(category_name: "conversations").destroy_all
   end
 end

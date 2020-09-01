@@ -4,7 +4,16 @@
     <h5>Messages directs</h5>
     <div class="list-contacts">
       <% @chatrooms.each do |chatroom| %>
-        <%= link_to "# #{chatroom.users.find { |u| u != current_user }.first_name}", "#", data: { id: chatroom.id, action: "click->chatrooms#refresh" } %>
+        <!-- si le user se parle avec lui même -->
+        <% if chatroom.users.find { |u| u != @user }.nil? %>
+          <p>Il y a un problem : <%= chatroom.users.first.first_name %></p>
+        <!-- si le user a des messages non lus -->
+        <% elsif !@user.notifications.where(category_id: chatroom.users.find { |u| u != @user }.id).first.nil? %>
+          <%= link_to "# #{chatroom.users.find { |u| u != @user }.first_name} (#{@user.notifications.where(category_id: chatroom.users.find { |u| u != @user }.id).count})", "#", data: { id: chatroom.id, action: "click->chatrooms#refresh" } %>
+        <% else %>
+          <%# raise %>
+          <%= link_to "# #{chatroom.users.find { |u| u != @user }.first_name}", "#", data: { id: chatroom.id, action: "click->chatrooms#refresh" } %>
+        <% end %>
       <% end %>
     </div>
   </div>
