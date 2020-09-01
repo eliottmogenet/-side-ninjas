@@ -31,7 +31,7 @@ class ChatroomsController < ApplicationController
 
     # @chatroom.name = Project.find(params["chatroom"]["project"]).user.first_name
 
-    redirect_to chatroom_path(@chatroom)
+    redirect_to user_chatrooms_path(@chatroom)
   end
 
   private
