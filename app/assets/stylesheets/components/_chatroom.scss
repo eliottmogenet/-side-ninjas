@@ -1,12 +1,46 @@
 .chatrooms-container {
+  margin-left: 220px;
+}
+
+.chatrooms-index {
   display: flex;
 }
 
+.photo-writer {
+  width: 40px;
+}
+
 .chatroom-list {
-  padding-right: 50px;
-  background-color: blue;
+  background-color: $light-blue;
+  padding: 50px 50px;
+  width: 250px;
+  position: fixed;
+  height: 100vh;
 }
 
 .chatroom-content {
-  background-color: red;
+  padding: 50px 20px;
+  margin-left: 250px;
+  background-color: $light-gray;
+  min-height: 100vh;
+  width: calc(100vw - 470px);
 }
+
+.message-container {
+  display: flex;
+}
+
+.list-contacts {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  a {
+    color: $middle-gray;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      background-color: $light-blue;
+    }
+  }
+}
+

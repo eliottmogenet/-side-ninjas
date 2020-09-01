@@ -22,7 +22,7 @@
   <div class="user-actions">
     <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['index', 'show'].include?(params[:action]) %>">
       <i class="fas fa-search mr-2"></i>
-      <%= link_to "Search", projects_path %>
+      <%= link_to "Discover", projects_path %>
     </div>
     <div class="btn-user-action <%= "active" if params[:controller] == "projects" && ['new'].include?(params[:action]) %>">
       <i class="fas fa-plus mr-2"></i>

@@ -1,11 +1,8 @@
 import { Controller } from "stimulus"
+import { initChatroomCable } from "../channels/chatroom_channel"
 
 export default class extends Controller {
   static targets = [ "content"]
-
-  connect() {
-    console.log(this.contentTarget);
-  }
 
   // refresh(event) {
   //   event.preventDefault();
@@ -18,10 +15,25 @@ export default class extends Controller {
   // }
 
   refresh(event) {
-  event.preventDefault();
-  fetch(`chatrooms/${event.currentTarget.dataset.id}`)
-    .then(response => response.text())
-    .then(html => this.contentTarget.innerHTML = html)
+    event.preventDefault();
+    const chatroomId = event.currentTarget.dataset.id;
+    const chatrooms = document.querySelectorAll('.chatroom-content');
+    if (chatrooms) {
+      chatrooms.forEach((chatroom) => {
+        chatroom.classList.add('d-none');
+      })
+      const target = document.querySelector(`[data-chatroom-messages="${chatroomId}"]`);
+      target.classList.remove('d-none');
+    }
+    // fetch(`chatrooms/${event.currentTarget.dataset.id}`)
+    //   .then(response => response.text())
+    //   .then(html => this.contentTarget.innerHTML = html)
+    // initChatroomCable();
+  }
+
+  post() {
+
+    this.refresh()
   }
 
 }
