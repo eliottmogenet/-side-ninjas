@@ -26,8 +26,12 @@ class MessagesController < ApplicationController
   end
 
   def create_notif
-    notif = Notification.new(category_name: "conversations", category_id: @chatroom.id)
-    notif.user = @chatroom.chatroom_users.find{|user| user.id != current_user.id}.user
+    notif = Notification.new(category_name: "conversations", category_id: current_user.id)
+    user = []
+    @chatroom.chatroom_users.each do |chatroom_user|
+      user << chatroom_user.user unless chatroom_user.user.id == current_user.id
+    end
+    notif.user = user.first
     notif.save!
   end
 end
