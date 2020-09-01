@@ -5,36 +5,40 @@
   <% end %>
 </div>
 
-<div class="join-request">
-  <% @project.participations.each do |participation| %>
+<% @project.participations.each do |participation| %>
+  <% if  @project.user == current_user %>
     <% if participation.accepted.nil? %>
-      <ul>
-        <li>
-          <div class="pending-request">
-            <div class="user-pending-request-avatar-name">
-              <% if participation.user.photo.attached? %>
-                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
-              <% else %>
-                <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
-              <% end %>
-              <%= participation.user.first_name %> <%= participation.user.last_name %>
-            </div>
-            <div class="acceptations-yes-no">
-              <button>Accept</button>
-              <button>Refuse</button>
-            </div>
-          </div>
-        </li>
-      </ul>
-   <% end %>
+      <div class="join-request">
+        <ul>
+          <h5>Asking for membership</h5>
+            <li>
+              <div class="pending-request">
+                <div class="user-pending-request-avatar-name">
+                  <% if participation.user.photo.attached? %>
+                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                  <% else %>
+                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                  <% end %>
+                  <%= participation.user.first_name %> <%= participation.user.last_name %>
+                </div>
+                <div class="acceptations-yes-no">
+                  <%= link_to 'Accept', accept_participation_path(participation), method: :post  %>
+                  <%= link_to 'Refuse', refuse_participation_path(participation), method: :post, remote: true %>
+                </div>
+              </div>
+            </li>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
-</div>
+<% end %>
+
 
 <div class="page-title-box">
   <div class="page-title-description">
     <div class="page-title">
       <!-- if participation est accepted = true -->
-      <h1>Join</h1>
+      <!-- <h1>Join</h1> -->
       <div class="project-name">
         <h1><%= @project.title %></h1>
       </div>
@@ -54,11 +58,20 @@
   </div>
 
   <% if current_user != @project.user %>
-    <div class="first-important-btn">
+    <div class="first-important-btn" >
       <% if  @project.participations.map(&:user).include?(current_user) %>
-        <%= link_to "Cancel my application", participation_path(@request_participation),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
+        <% if @project.participations.accepted.map(&:user).include?(current_user) %>
+          <%= link_to "Cancel my application", participation_path(@request_participation),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+        <% elsif @project.participations.refused.map(&:user).include?(current_user)%>
+          <p>Refused</p>
+        <% else %>
+          <div class="pending-request-btn">
+            <i class="fas fa-hourglass-half"></i>
+            <p>PENDING REQUEST</p>
+        </div>
+        <% end %>
       <% else %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Join the project
@@ -123,7 +136,7 @@
       <hr>
       <div class="team-members">
         <div class="members-container">
-          <% @project.participations.each do |participation| %>
+          <% @project.participations.accepted.each do |participation| %>
               <div class="resum-member">
                 <div class="member-infos">
                   <% if participation.user.photo.attached? %>
