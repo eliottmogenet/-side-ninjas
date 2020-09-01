@@ -7,7 +7,7 @@
       <div class="row p-5">
        <div class="language-label"><p>Languages</p></div>
         <% @languages.each do |language| %>
-          <div class="col-10 image-select" data-id="<%= language.id %>" data-target="languages.images" data-action="click->languages#checkLanguage">
+          <div class="col-10 image-select card-languages" data-id="<%= language.id %>" data-target="languages.images" data-action="click->languages#checkLanguage">
             <%= cl_image_tag language.photo.key, crop: :fill, class: "" %>
             <%= language.name %>
           </div>
