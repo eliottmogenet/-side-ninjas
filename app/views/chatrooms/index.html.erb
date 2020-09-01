@@ -1,14 +1,17 @@
-<div class="chatroom-list">
-  <ol>
-    <% @chatrooms.each do |chatroom| %>
-      <%# raise %>
-      <li>
-        <%#= render 'chatrooms/show', chatroom: chatroom %>
-      </li>
-    <% end %>
-  </ol>
-</div>
+<div id="chatrooms-container" data-controller="chatrooms">
 
-<div class="chatroom-content">
-  <%= render 'chatrooms/show', chatroom: @chatrooms.last %>
+  <div class="chatroom-list">
+    <ol>
+      <% @chatrooms.each do |chatroom| %>
+        <li>
+          <%= link_to "Conversation avec #{chatroom.users.find { |u| u != current_user }.first_name}", "#", data: { id: chatroom.id, action: "click->chatrooms#refresh" } %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="chatroom-content" data-target="chatrooms.content">
+    <%= render 'chatrooms/show', chatroom: @chatrooms.last, message: Message.new %>
+  </div>
+
 </div>

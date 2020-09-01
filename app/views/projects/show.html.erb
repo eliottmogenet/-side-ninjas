@@ -48,6 +48,7 @@
     <div class="resum-project-box">
       <div class="resum-project-title">
         <h5><%= @project.title %></h5>
+        <h6><%= @project.tag %></h6>
       </div>
       <hr>
       <div class="resum-project-content">
@@ -55,18 +56,24 @@
           <p><%= @project.description %></p>
         </div>
         <div class="web-link">
-          <div class="github">
-            <p>See on Github</p>
-            <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
-              <h5><i class="fab fa-github"></i></h5>
-            <% end %>
-          </div>
-          <div class="github">
-            <p>See on Trello</p>
-            <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
-              <h5><i class="fab fa-trello"></i></h5>
-            <% end %>
-          </div>
+          <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
+            <div class="second-important-btn">
+                <p>See on Github : </p>
+                <p><i class="fab fa-github ml-2"></i></p>
+            </div>
+          <% end %>
+          <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
+            <div class="second-important-btn">
+                <p>See on Trello : </p>
+                <p><i class="fab fa-trello ml-2"></i></p>
+            </div>
+          <% end %>
+          <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
+            <div class="second-important-btn">
+                <p>See the product : </p>
+                <p><i class="fas fa-globe ml-2"></i></p>
+            </div>
+          <% end %>
         </div>
         <div class="resum-project-images">
           <% if @project.photos.attached? %>
