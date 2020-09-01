@@ -16,7 +16,6 @@
     <%= render 'shared/flashes' %>
 
     <div class="custom-container">
-      <%#= render 'shared/left-side-bar' %>
       <% if user_signed_in? %>
         <%= render 'shared/left-side-bar' unless controller.controller_name == "pages" && controller.action_name == "home" %>
       <% end %>
