@@ -34,20 +34,18 @@
     <div class="btn-user-action <%= "active" if params[:controller] == "dashboards" && ['index'].include?(params[:action]) %>">
       <i class="fas fa-tasks mr-2"></i>
       <%= link_to dashboards_path do %>
+        <p>Manage</p>
         <% if current_user.notifications.where(category_name: "manage").count != 0 %>
-          <p>Manage (<%= current_user.notifications.where(category_name: "manage").count %>)</p>
-        <% else %>
-          <p>Manage</p>
+          <p class="notification"><%= current_user.notifications.where(category_name: "manage").count %></p>
         <% end %>
       <% end %>
     </div>
     <div class="btn-user-action <%= "active" if params[:controller] == "chatrooms" %>">
       <i class="far fa-comment mr-2"></i>
       <%= link_to user_chatrooms_path(current_user) do %>
+        <p>Conversations</p>
         <% if current_user.notifications.where(category_name: "conversations").count != 0 %>
-          <p>Conversations (<%= current_user.notifications.where(category_name: "conversations").count %>)</p>
-        <% else %>
-          <p>Conversations</p>
+          <p class="notification"><%= current_user.notifications.where(category_name: "conversations").count %></p>
         <% end %>
       <% end %>
     </div>

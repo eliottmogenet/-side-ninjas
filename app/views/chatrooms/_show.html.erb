@@ -1,4 +1,4 @@
-<h5># wich name ?</h5>
+<h5 class="mb-4"># <%= chatroom.users.find { |u| u != @user }.first_name.capitalize %></h5>
 
 <div id="messages" data-chatroom-id="<%= chatroom.id %>">
   <% chatroom.messages.each_with_index do |message, i| %>
