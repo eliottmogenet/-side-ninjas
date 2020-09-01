@@ -38,20 +38,22 @@ class ParticipationsController < ApplicationController
   def accept
     @participation = Participation.find(params[:id])
     authorize @participation
+    # skip_authorization
 
     @participation.accepted = true
     @participation.save
+    redirect_to project_path(@participation.project)
   end
-
 
   def refuse
     @participation = Participation.find(params[:id])
     authorize @participation
+    # skip_authorization
 
     @participation.accepted = false
     @participation.save
+    redirect_to project_path(@participation.project)
   end
-
 
   private
 
