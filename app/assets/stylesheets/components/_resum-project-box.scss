@@ -7,7 +7,7 @@
 }
 
 .resum-project-description {
-  height: 130px;
+  height: 100px;
   overflow-y: scroll;
   // overflow: scroll;
   // max-width: 600px;
@@ -19,11 +19,16 @@
 }
 
 .resum-project-title {
-  display: flex;
+  // display: flex;
   // align-items: center;
-  h5 {
+  // justify-content: space-between;
+  h5, h6 {
     padding: 0px;
     margin: 0px;
+  }
+
+  h6 {
+    margin-top: 10px;
   }
   i {
     margin: 0px 5px;
@@ -31,7 +36,7 @@
 }
 
 .resum-project-title {
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .resum-project-pictures {
@@ -72,4 +77,11 @@
   i {
     font-size: 30px;
   }
+}
+
+.github {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,5 +1,7 @@
 // boutton du genre contact on slack --> adrien à faire
 .second-important-btn {
+  display: flex;
+  align-items: center;
   a {
     text-decoration: none;
     color: $saumon;
@@ -11,17 +13,30 @@
 
   }
 
+  .form-group.string.optional {
+    margin-bottom: 0px;
+  }
+
   p {
     padding: 0px;
     margin: 0px;
+    // width: fit-content;
   }
 
   margin: 5px 10px;
   padding: 7px 13px;
   width: fit-content;
-  height: min-content;
+  height: fit-content;
   border-radius: $border-radius-second;
   background-color: $saumon-ligth;
   color: $saumon;
   text-decoration: none;
+}
+
+.team-box > .second-important-btn {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

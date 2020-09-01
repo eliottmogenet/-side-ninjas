@@ -10,20 +10,24 @@ Rails.application.routes.draw do
     resources :participations, only: [:new, :create]
     resources :features, only: [:index, :show, :new, :create, :edit, :update]
   end
+
   resources :participations, only: [:destroy, :edit, :update] do
     member do
       post 'accept', to: "participations#accept"
       post 'refuse', to: "participations#refuse"
     end
   end
+
   resources :features, only: [:destroy]
   resources :dashboards, only: [:index]
-  resources :chatrooms, only: [:show] do
-    resources :messages, only: :create
-  end
+  # resources :chatrooms, only: [:show] do
+  #   resources :messages, only: :create
+  # end
 
   resources :users, only: [] do
-    resources :chatrooms, only: [:create, :index]
+    resources :chatrooms, only: [:create, :index, :show]  do
+      resources :messages, only: :create
+    end
   end
   # users/34/chatrooms POST
 
