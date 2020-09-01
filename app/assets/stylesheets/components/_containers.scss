@@ -29,11 +29,19 @@
     }
   }
 
+  .notification {
+    background-color: $red;
+    width: fit-content;
+    padding: 2px 9px 3px 9px;
+    border-radius: 50%;
+  }
+
   .user-actions {
     flex-grow: 1;
-    padding-left: 43px;
+    padding-left: 33px;
     padding-top: 30px;
     .btn-user-action {
+      width: fit-content;
       margin-bottom: 30px;
       &:last-child {
         margin-bottom: 0;
@@ -68,7 +76,7 @@
   width: min-content;
   display: flex;
   align-items: center;
-  a {
+  a, p {
     padding: 0px;
     margin: 0px;
     color: $white;
@@ -77,11 +85,18 @@
       text-decoration: none;
     }
   }
+  a {
+    display: flex;
+    align-items: center;
+    .notification {
+      margin-left: 8px;
+    }
+  }
   &.active {
     i {
       margin-left: 3px;
     }
-    a {
+    a, p {
       color: $browne;
     }
     color: $browne;
