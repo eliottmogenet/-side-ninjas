@@ -1,16 +1,16 @@
 <div class="container-index">
 
-  <div class="col-8">
+  <div class="col-12">
    <div class="search-title-description">
       <div class="search-title">
         <h1>Search a project</h1>
       </div>
       <div class="under-title">
           <div class="project-tag-line">
-            <% if @projects.count >=2 %>
-              <p><%= @projects.count %> projects are matching your research.</p>
-            <% elsif @projects.count == 1 %>
-              <p><%= @projects.count %> project is matching your research.</p>
+            <% if @projects.uniq.count >=2 %>
+              <p><%= @projects.uniq.count %> projects are matching your research.</p>
+            <% elsif @projects.uniq.count == 1 %>
+              <p><%= @projects.uniq.count %> project is matching your research.</p>
             <% else %>
               <p> No projects are matching your research.</p>
             <% end %>
@@ -18,7 +18,7 @@
         </div>
       </div>
 
-    <% @projects.each do |project|%>
+    <% @projects.uniq.each do |project|%>
       <div class="row mt-5">
         <div class="col-12">
           <div class="resum-project-box">
@@ -60,6 +60,10 @@
 
               <div class="city-user">
                 <%=project.user.city%>
+
+              </div>
+              <div class="batch-user">
+                <%=project.user.batch_number%>
 
               </div>
               <div class="second-important-btn">
