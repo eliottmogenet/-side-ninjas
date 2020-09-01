@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_111211) do
+ActiveRecord::Schema.define(version: 2020_09_01_172336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,15 @@ ActiveRecord::Schema.define(version: 2020_08_31_111211) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "category_name"
+    t.bigint "user_id", null: false
+    t.integer "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.boolean "accepted"
     t.text "motivation"
@@ -170,6 +179,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_111211) do
   add_foreign_key "frameworks", "languages"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "participations", "projects"
   add_foreign_key "participations", "users"
   add_foreign_key "project_languages", "languages"
