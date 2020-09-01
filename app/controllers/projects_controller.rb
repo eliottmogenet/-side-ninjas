@@ -40,13 +40,13 @@ class ProjectsController < ApplicationController
     @user = current_user
     @languages = Language.all
     @project = Project.new
+    @project.features.build
     authorize @project
   end
 
   def create #on créé un nouveau projet / une participation pour le current_user et des project_languages
     @project = Project.new(params_project)
     authorize @project
-
     @project.user = current_user
     if @project.save
       redirect_to project_path(@project)
@@ -83,4 +83,3 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 end
-
