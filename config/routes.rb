@@ -18,12 +18,14 @@ Rails.application.routes.draw do
   end
   resources :features, only: [:destroy]
   resources :dashboards, only: [:index]
-  resources :chatrooms, only: [:show] do
-    resources :messages, only: :create
-  end
+  # resources :chatrooms, only: [:show] do
+  #   resources :messages, only: :create
+  # end
 
   resources :users, only: [] do
-    resources :chatrooms, only: [:create, :index]
+    resources :chatrooms, only: [:create, :index, :show]  do
+      resources :messages, only: :create
+    end
   end
   # users/34/chatrooms POST
 
