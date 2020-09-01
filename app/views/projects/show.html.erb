@@ -5,6 +5,31 @@
   <% end %>
 </div>
 
+<div class="join-request">
+  <% @project.participations.each do |participation| %>
+    <% if participation.accepted.nil? %>
+      <ul>
+        <li>
+          <div class="pending-request">
+            <div class="user-pending-request-avatar-name">
+              <% if participation.user.photo.attached? %>
+                <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+              <% else %>
+                <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+              <% end %>
+              <%= participation.user.first_name %> <%= participation.user.last_name %>
+            </div>
+            <div class="acceptations-yes-no">
+              <button>Accept</button>
+              <button>Refuse</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+   <% end %>
+  <% end %>
+</div>
+
 <div class="page-title-box">
   <div class="page-title-description">
     <div class="page-title">

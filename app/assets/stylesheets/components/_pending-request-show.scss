@@ -1,0 +1,14 @@
+.join-request {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  li {
+    list-style: none;
+  }
+}
+
+.pending-request {
+  display: flex;
+  justify-content: space-between;
+}

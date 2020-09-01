@@ -43,7 +43,6 @@ class ParticipationsController < ApplicationController
     @participation.save
   end
 
-
   def refuse
     @participation = Participation.find(params[:id])
     authorize @participation
@@ -51,7 +50,6 @@ class ParticipationsController < ApplicationController
     @participation.accepted = false
     @participation.save
   end
-
 
   private
 
