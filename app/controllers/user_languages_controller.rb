@@ -11,9 +11,11 @@ class UserLanguagesController < ApplicationController
     @languages = Language.all
     @user_language = UserLanguage.new
     authorize @user_language
+
   end
 
   def create
+    # raise
     current_user.user_languages.destroy_all
     if params["user_language"].present?
       language_params[:language_id].each do |id|

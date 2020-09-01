@@ -21,7 +21,7 @@ class ProjectPolicy < ApplicationPolicy
     true
   end
 
-  def index?
-    true
-  end
+  # def index?
+  #   true
+  # end
 end
