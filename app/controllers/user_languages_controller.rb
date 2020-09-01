@@ -33,7 +33,6 @@ class UserLanguagesController < ApplicationController
     end
   end
 
-
   def edit
     @user_language = UserLanguage.find(params[:id])
     authorize @user_language
@@ -47,7 +46,6 @@ class UserLanguagesController < ApplicationController
     @user_language.update(language_params)
 
     redirect_to user_languages_path
-
   end
 
   private
