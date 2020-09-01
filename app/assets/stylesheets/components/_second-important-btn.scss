@@ -32,3 +32,11 @@
   color: $saumon;
   text-decoration: none;
 }
+
+.team-box > .second-important-btn {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

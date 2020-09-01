@@ -28,6 +28,8 @@ import "controllers"
 import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
 import { initChatroomCable } from '../channels/chatroom_channel';
+import { showImage } from '../components/display_photo';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
@@ -35,6 +37,11 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   loadDynamicBannerText();
   initChatroomCable();
+
+  showImage();
+
+  initSelect2();
+
 });
 
 

@@ -35,6 +35,10 @@
   }
 }
 
+.resum-project-title {
+  max-width: 100%;
+}
+
 .resum-project-pictures {
   display: flex;
 }
@@ -73,4 +77,11 @@
   i {
     font-size: 30px;
   }
+}
+
+.github {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }

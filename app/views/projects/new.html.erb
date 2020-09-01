@@ -29,6 +29,7 @@
         <div class="resum-project-title">
           <h5><%= f.input :title, label: false, placeholder: "Your project's title" %></h5>
           <h6><%= f.input :tag, label: false, placeholder: "Your project tag" %></h6>
+          <!-- <h5 style="width: 100%"><%#= f.input :title, label: false, placeholder: "Title" %></h5> -->
         </div>
         <hr>
         <div class="resum-project-content">
@@ -51,12 +52,12 @@
           </div>
           <div class="resum-project-images">
             <div class="resum-project-pictures">
-              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= f.input :photos, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
             </div>
           </div>
 
           <div class="language-create-project">
-            <%= f.association :languages %>
+            <%= f.association :languages, label: "Select main languages" %>
           </div>
 
           <div class="resum-project-tags">
@@ -96,7 +97,7 @@
                 </div>
               </div>
               <div class="member-skills">
-                <% @user.user_languages.each do |language| %>
+                <% current_user.user_languages.each do |language| %>
                   <% if language.languages.frameworks.nil? %>
                     <div class="one-skill">
                       <div class="skills-btn">
@@ -125,15 +126,15 @@
                 <% end %>
               </div>
             </div>
+          </div>
           <%# end %>
           <div class="second-important-btn">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-plus mr-2"></i>
             <%= link_to "Add a member", "#" %>
           </div>
         </div>
       </div>
     </div>
-</div>
 
   <%= f.simple_fields_for :features do |feature| %>
     <% index = 0 %>
@@ -172,5 +173,4 @@
     </div>
     <% index += 1 %>
   <% end %>
-<!-- Below, end of simple_form -->
 <% end %>
