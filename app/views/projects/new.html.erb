@@ -1,10 +1,9 @@
-<div class="back-btn">
+<div class="back-btn" >
   <%= link_to projects_path do%>
     <i class="fas fa-long-arrow-alt-left"></i>
     <p>Back</p>
   <% end %>
 </div>
-
 <%= simple_form_for(@project) do |f| %>
 
   <div class="page-title-box">
@@ -23,154 +22,177 @@
     </div>
   </div>
 
-  <div class="row mt-5">
-    <div class="col-8">
-      <div class="resum-project-box">
-        <div class="resum-project-title">
-          <h5><%= f.input :title, label: false, placeholder: "Your project's title" %></h5>
-          <h6><%= f.input :tag, label: false, placeholder: "Your project tag" %></h6>
-          <!-- <h5 style="width: 100%"><%#= f.input :title, label: false, placeholder: "Title" %></h5> -->
-        </div>
-        <hr>
-        <div class="resum-project-content">
-          <div class="resum-project-description">
-            <p><%= f.input :description, label: false, placeholder: "Tell us more about your project" %></p>
+  <div class="container-new-project" data-controller="languages">
+    <div class="row mt-5">
+      <div class="col-8">
+        <div class="resum-project-box">
+          <div class="resum-project-title">
+            <h5><%= f.input :title, label: false, placeholder: "Your project's title" %></h5>
+            <h6><%= f.input :tag, label: false, placeholder: "Your project tag" %></h6>
+            <!-- <h5 style="width: 100%"><%#= f.input :title, label: false, placeholder: "Title" %></h5> -->
           </div>
-          <div class="web-link">
-            <div class="second-important-btn">
-                <%= f.input :github_repository, label: false, placeholder: "Github link :" %>
-                <p><i class="fab fa-github ml-2"></i></p>
+          <hr>
+          <div class="resum-project-content">
+            <div class="resum-project-description">
+              <p><%= f.input :description, label: false, placeholder: "Tell us more about your project" %></p>
             </div>
-            <div class="second-important-btn">
-                <%= f.input :trello_link, label: false, placeholder: "Trello link :" %>
-                <p><i class="fab fa-trello ml-2"></i></p>
-            </div>
-            <div class="second-important-btn">
-                <%= f.input :website_link, label: false, placeholder: "Website link :" %>
-                <p><i class="fas fa-globe ml-2"></i></p>
-            </div>
-          </div>
-          <div class="resum-project-images">
-            <div class="resum-project-pictures">
-              <%= f.input :photos, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
-            </div>
-          </div>
-
-          <div class="language-create-project">
-            <%= f.association :languages, label: "Select main languages" %>
-          </div>
-
-          <div class="resum-project-tags">
-            <% @project.project_languages.each do |tag| %>
-              <div class="skills-btn">
-                <i class="fab fa-js-square"></i>
-                <p><%= tag %></p>
+            <div class="web-link">
+              <div class="second-important-btn">
+                  <%= f.input :github_repository, label: false, placeholder: "Github link :" %>
+                  <p><i class="fab fa-github ml-2"></i></p>
               </div>
-            <% end %>
-            <%= f.hidden_field :start_date, value: Date.today %>
+              <div class="second-important-btn">
+                  <%= f.input :trello_link, label: false, placeholder: "Trello link :" %>
+                  <p><i class="fab fa-trello ml-2"></i></p>
+              </div>
+              <div class="second-important-btn">
+                  <%= f.input :website_link, label: false, placeholder: "Website link :" %>
+                  <p><i class="fas fa-globe ml-2"></i></p>
+              </div>
+            </div>
+            <div class="resum-project-images">
+              <div class="resum-project-pictures">
+                <%= f.input :photos, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
+              </div>
+            </div>
+
+            <div class="language-create-project">
+              <div class="languages-selection">
+                  <div class="row p-5 new-language-project">
+
+                    <% @languages.each do |language| %>
+                      <div class="col-3 image-select" data-id="<%= language.id %>" data-action="click->languages#checkLanguage">
+                        <%= cl_image_tag language.photo.key, crop: :fill, class: "" %>
+                        <%= language.name %>
+                      </div>
+                  <% end %>
+                </div>
+            </div>
+              <%= f.simple_fields_for :project_languages do |project_languages| %>
+              <%= project_languages.input :language,
+               :as => :check_boxes,
+               item_wrapper_tag: :div,
+               item_wrapper_class: "image-select d-none",
+               :collection => @languages,
+               :label => false,
+               :inline_label => false,
+               include_blank: false,
+               include_hidden: false,
+               :input_html => {multiple: true, data: {target: "languages.checkbox"} },
+               # :label_method => lambda { |b| cl_image_tag(b.photo.key)},
+               value_method: :id %>
+              <% end %>
+            </div>
+
+            <div class="resum-project-tags">
+              <%= f.hidden_field :start_date, value: Date.today %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-4">
-      <div class="team-box">
-        <div class="team-box-title">
-          <h5>Team</h5>
-        </div>
-        <hr>
-        <div class="team-members">
-          <%# @project.participations.each do |participation| %>
-            <div class="resum-member">
-              <div class="member-infos">
-                <%= cl_image_tag @user.photo.key, class:"avatar-large" %>
-                <div class="member-name-batch">
-                  <h5><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h5>
-                  <p>#Batch <%= @user.batch_number %> <%#= @user.bootcamp_year %> (<%= @user.city %>)</p>
+      <div class="col-4">
+        <div class="team-box">
+          <div class="team-box-title">
+            <h5>Team</h5>
+          </div>
+          <hr>
+          <div class="team-members">
+            <%# @project.participations.each do |participation| %>
+              <div class="resum-member">
+                <div class="member-infos">
+                  <%= cl_image_tag @user.photo.key, class:"avatar-large" %>
+                  <div class="member-name-batch">
+                    <h5><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h5>
+                    <p>#Batch <%= @user.batch_number %> <%#= @user.bootcamp_year %> (<%= @user.city %>)</p>
+                  </div>
+                  <div class="admin-btn">
+                    <%# if @project.user.id == @user.id %>
+                      <p>Admin</p>
+                    <%# else %>
+                      <!-- <p>Member</p> -->
+                    <%# end %>
+                  </div>
                 </div>
-                <div class="admin-btn">
-                  <%# if @project.user.id == @user.id %>
-                    <p>Admin</p>
-                  <%# else %>
-                    <!-- <p>Member</p> -->
-                  <%# end %>
-                </div>
-              </div>
-              <div class="member-skills">
-                <% current_user.user_languages.each do |language| %>
-                  <% if language.language.frameworks.nil? %>
-                    <div class="one-skill">
-                      <div class="skills-btn">
-                        <i class="fab fa-js-square"></i>
-                        <p><%= language.languages.name %></p>
-                      </div>
-                      <div class="skills-btn">
-                        <i class="fab fa-js-square"></i>
-                        <p><%= language.level %></p>
-                      </div>
-                    </div>
-                  <% else %>
-                    <% language.language.frameworks.each do |framework| %>
+                <div class="member-skills">
+                  <% current_user.user_languages.each do |language| %>
+                    <% if language.language.frameworks.nil? %>
                       <div class="one-skill">
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
-                          <p><%= language.languages.name %> <%= language.language.framework.name %></p>
+                          <p><%= language.languages.name %></p>
                         </div>
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
                           <p><%= language.level %></p>
                         </div>
                       </div>
+                    <% else %>
+                      <% language.language.frameworks.each do |framework| %>
+                        <div class="one-skill">
+                          <div class="skills-btn">
+                            <i class="fab fa-js-square"></i>
+                            <p><%= language.languages.name %> <%= language.language.framework.name %></p>
+                          </div>
+                          <div class="skills-btn">
+                            <i class="fab fa-js-square"></i>
+                            <p><%= language.level %></p>
+                          </div>
+                        </div>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
+                </div>
               </div>
             </div>
-          </div>
-          <%# end %>
-          <div class="second-important-btn">
-            <i class="fas fa-plus mr-2"></i>
-            <%= link_to "Add a member", "#" %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <%= f.simple_fields_for :features do |feature| %>
-    <% i = 0 %>
-    <%= feature.input_field :id, class: "d-none" %>
-    <div class="features-background">
-      <div class="features-title">
-        <h5>Main feature #<%= i + 1 %>: <%= feature.input :name %></h5>
-      </div>
-      <hr>
-      <div class="features-logos">
-        <div class="features-avatars">
-          <img src="https://futhead.cursecdn.com/static/img/19/players/158023.png" class="avatar-large">
-          <img src="https://gal.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2F2018.2F10.2F18.2F2ccbda1a-7cf3-4858-8b56-36840d5b9b19.2Ejpeg/480x480/quality/80/focus-point/1447%2C851/cristiano-ronaldo-dans-la-tourmente-c-est-parti-pour-durer.jpg" class="avatar-large">
-        </div>
-      </div>
-      <div class="features-description">
-        <p><%= feature.input :description %></p>
-      </div>
-      <div class="features-languages">
-        <% feature.object.feature_languages.each do |language| %>
-          <% if language.language.frameworks.nil? %>
-            <div class="skills-btn">
-              <i class="fab fa-js-square"></i>
-              <p><% language.languages.name %></p>
+            <%# end %>
+            <div class="second-important-btn">
+              <i class="fas fa-plus mr-2"></i>
+              <%= link_to "Add a member", "#" %>
             </div>
-          <% else %>
-            <% language.language.frameworks.each do |framework| %>
-            <div class="skills-btn">
-              <i class="fab fa-js-square"></i>
-              <p><% language.languages.name %> <%= language.language.framework %></p>
-             </div>
-            <% end %>
-          <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <%= f.simple_fields_for :features do |feature| %>
+          <% i = 0 %>
+          <%= feature.input_field :id, class: "d-none" %>
+          <div class="features-background">
+            <div class="features-title">
+              <h5>Main feature #<%= i + 1 %>: <%= feature.input :name %></h5>
+            </div>
+            <hr>
+            <div class="features-logos">
+              <div class="features-avatars">
+                 <%= cl_image_tag @user.photo.key, crop: :fill, class: "features-avatars" %>
+              </div>
+            </div>
+            <div class="features-description">
+              <p><%= feature.input :description %></p>
+            </div>
+            <div class="features-languages">
+              <% feature.object.feature_languages.each do |language| %>
+                <% if language.language.frameworks.nil? %>
+                  <div class="skills-btn">
+                    <i class="fab fa-js-square"></i>
+                    <p><% language.languages.name %></p>
+                  </div>
+                <% else %>
+                  <% language.language.frameworks.each do |framework| %>
+                  <div class="skills-btn">
+                    <i class="fab fa-js-square"></i>
+                    <p><% language.languages.name %> <%= language.language.framework %></p>
+                   </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <% i += 1 %>
         <% end %>
+        <%= f.submit class: "btn-create" %>
+      <% end %>
+
       </div>
     </div>
-    <% i += 1 %>
-  <% end %>
-  <%= f.submit %>
-<% end %>
+  </div>
+

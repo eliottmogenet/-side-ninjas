@@ -18,8 +18,8 @@ require 'open-uri'
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/z9v86_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/tyth_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/e10_vignette.jpg",
 # "https://i.pinimg.com/originals/fa/16/42/fa164207f82b769dec7719b3156355e3.jpg"]
 ChatroomUser.destroy_all
-Chatroom.destroy_all
 Message.destroy_all
+Chatroom.destroy_all
 ProjectLanguage.destroy_all
 Language.destroy_all
 Participation.destroy_all
@@ -174,7 +174,7 @@ user_admin_one.save!
 file_user_one = URI.open("https://lh3.googleusercontent.com/proxy/q_ZjASD_zGc5WuNaanQ92BxTGUuOOcdHKOi2Mh_hM6o1bMWNvk-I1KCVe1yPaqRb9GL8YvvUBuBLicBgNwK6yUqvvfughbDtjfV1bag")
 user_admin_one.photo.attach(io: file_user_one, filename: 'photo_user.png')
 
-user_admin_two = User.new(first_name: "Nicolas", last_name: "Salarksit", email: "nicolas.salarkzit@wagon.com", password: "azerty", batch_number: 389, city: "Moscou", pays: "Russie", bootcamp_year: 2014)
+user_admin_two = User.new(first_name: "Nicolas", last_name: "Salar", email: "nicolas.salarkzit@wagon.com", password: "azerty", batch_number: 389, city: "Moscou", pays: "Russie", bootcamp_year: 2014)
 user_admin_two.save!
 file_user_two = URI.open("https://www.tourisme-valdemarne.com/espace-pro/wp-content/uploads/sites/3/2019/12/willy-ronis.jpg")
 user_admin_two.photo.attach(io: file_user_two, filename: 'photo_user.png')
