@@ -127,7 +127,7 @@
           <% end %>
         </div>
 
-        <div class="<%= (controller.controller_name == "projects" && controller.action_name == "index") ? "resum-project-tags" : "resum-project-tags-show" %>">
+        <div class="<%= (controller.controller_name == 'projects' && controller.action_name == 'index') ? 'resum-project-tags' : 'resum-project-tags-show' %>">
           <% @project.project_languages.each do |tag| %>
             <div class="skills-btn">
               <%= cl_image_tag tag.language.photo.key, class: "language-tag-img" %>
@@ -147,32 +147,47 @@
       <div class="team-members">
         <div class="members-container">
           <% @project.participations.accepted.each do |participation| %>
-              <div class="resum-member">
-                <div class="member-infos">
-                  <% if participation.user.photo.attached? %>
-                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+            <div class="resum-member">
+              <div class="member-infos">
+                <% if participation.user.photo.attached? %>
+                  <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                <% else %>
+                  <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                <% end %>
+                <div class="member-name-batch">
+                  <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
+                  <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
+                </div>
+                <div class="admin-btn">
+                  <% if @project.user.id == participation.user.id %>
+                    <p>Admin</p>
                   <% else %>
-                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                    <p>Member</p>
                   <% end %>
-                  <div class="member-name-batch">
-                    <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
-                    <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
-                  </div>
-                  <div class="admin-btn">
-                    <% if @project.user.id == participation.user.id %>
-                      <p>Admin</p>
-                    <% else %>
-                      <p>Member</p>
-                    <% end %>
-                  </div>
                 </div>
                 <div class="member-skills">
                   <% participation.user.user_languages.each do |language| %>
                     <% if language.language.frameworks.nil? %>
+              </div>
+              <div class="member-skills">
+                <% participation.user.user_languages.each do |language| %>
+                  <% if language.language.frameworks.nil? %>
+                    <div class="one-skill">
+                      <div class="skills-btn">
+                        <i class="fab fa-js-square"></i>
+                        <p><%= language.languages.name %></p>
+                      </div>
+                      <div class="skills-btn">
+                        <i class="fab fa-js-square"></i>
+                        <p><%= language.level %></p>
+                      </div>
+                    </div>
+                  <% else %>
+                    <% language.language.frameworks.each do |framework| %>
                       <div class="one-skill">
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
-                          <p><%= language.languages.name %></p>
+                          <p><%= language.languages.name %> <%= language.language.framework.name %></p>
                         </div>
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
@@ -194,23 +209,22 @@
                       <% end %>
                     <% end %>
                   <% end %>
-                </div>
+                <% end %>
               </div>
-            <% end %>
-        </div>
-      </div>
-        <div class="second-important-btn mt-4">
-          <i class="fab fa-slack"></i>
-          <%= simple_form_for([@project.user, @chatroom]) do |f| %>
-            <%= f.hidden_field :project, value: @project.id %>
-            <%= f.submit %>
+            </div>
           <% end %>
         </div>
+      </div>
+      <div class="second-important-btn mt-4">
+        <i class="fab fa-slack"></i>
+        <%= simple_form_for([@project.user, @chatroom]) do |f| %>
+          <%= f.hidden_field :project, value: @project.id %>
+          <%= f.submit %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
 
 <% @project.features.each_with_index do |feature, index| %>
   <div class="features-background">
@@ -230,16 +244,16 @@
     </div>
     <div class="features-languages">
       <% feature.feature_languages.each do |language| %>
-        <% if language.languages.frameworks.nil? %>
+        <% if language.language.frameworks.nil? %>
           <div class="skills-btn">
             <i class="fab fa-js-square"></i>
             <p><% language.languages.name %></p>
           </div>
         <% else %>
-          <% language.languages.frameworks.each do |framework| %>
+          <% language.language.frameworks.each do |framework| %>
           <div class="skills-btn">
             <i class="fab fa-js-square"></i>
-            <p><% language.languages.name %> <%= language.languages.framework %></p>
+            <p><% language.languages.name %> <%= language.language.framework %></p>
           </div>
           <% end %>
         <% end %>

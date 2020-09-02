@@ -17,6 +17,9 @@ require 'open-uri'
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/R3DO_avatar.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/zero_vignette.png",
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/z9v86_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/tyth_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/e10_vignette.jpg",
 # "https://i.pinimg.com/originals/fa/16/42/fa164207f82b769dec7719b3156355e3.jpg"]
+ChatroomUser.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
 ProjectLanguage.destroy_all
 Language.destroy_all
 Participation.destroy_all
@@ -66,7 +69,7 @@ PROJECT_DESCRIPTION = [
   " How do you research and think through important decisions? Open browser tabs, files in Dropbox, a whiteboard… Muse offers a new way. It turns your iPad into a spatial canvas for research notes, PDFs, screenshots, sketches, and bookmarks."
 ]
 
-user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
+user = User.new(email: "will@wagon.org", password: "azerty", first_name: "wWll", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
 user_url = PICTURE_USER.sample
 file_user = URI.open(user_url)
 user.photo.attach(io: file_user, filename: 'photo_user.png')

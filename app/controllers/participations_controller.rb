@@ -1,4 +1,7 @@
 class ParticipationsController < ApplicationController
+  after_action :create_notif, only: :create
+  after_action :create_project_notif, only: :accept
+  after_action :delete_notif, only: [:accept, :refuse]
 
   def new
     @project = Project.find(params[:project_id])
@@ -59,5 +62,21 @@ class ParticipationsController < ApplicationController
 
   def params_participation
     params.require(:participation).permit(:motivation, :work_time)
+  end
+
+  def create_notif
+    notif = Notification.new(category_name: "manage", category_id: current_user.id)
+    notif.user = @participation.project.user
+    notif.save!
+  end
+
+  def create_project_notif
+    notif = Notification.new(category_name: "manage", category_id: current_user.id)
+    notif.user = @participation.user
+    notif.save!
+  end
+
+  def delete_notif
+    current_user.notifications.where(category_name: "manage").where(category_id: @participation.user).destroy_all
   end
 end

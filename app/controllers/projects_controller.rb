@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  after_action :delete_notif, only: :show
 
   def index
     # @languages = Language.pluck(:name)
@@ -99,6 +100,11 @@ class ProjectsController < ApplicationController
 
 
   private
+
+  def delete_notif
+    # raise
+    current_user.notifications.where(category_name: "manage").where(category_id: @project.user).destroy_all
+  end
 
   def params_project
     params.require(:project).permit(

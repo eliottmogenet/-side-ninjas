@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :user_languages, dependent: :destroy
   has_many :chatroom_users, dependent: :destroy
   has_many :chatrooms, through: :chatroom_users
+  has_many :notifications
 
   has_one_attached :photo
 
