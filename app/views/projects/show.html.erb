@@ -165,7 +165,6 @@
                     <p>Member</p>
                   <% end %>
                 </div>
-              </div>
               <div class="member-skills">
                 <% participation.user.user_languages.each do |language| %>
                   <% if language.language.frameworks.nil? %>
@@ -199,6 +198,12 @@
           <% end %>
         </div>
       </div>
+
+
+
+
+
+
       <div class="second-important-btn mt-4">
         <i class="fab fa-slack"></i>
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
@@ -235,10 +240,10 @@
           </div>
         <% else %>
           <% language.language.frameworks.each do |framework| %>
-          <div class="skills-btn">
-            <i class="fab fa-js-square"></i>
-            <p><% language.languages.name %> <%= language.language.framework %></p>
-          </div>
+            <div class="skills-btn">
+              <i class="fab fa-js-square"></i>
+              <p><% language.languages.name %> <%= language.language.framework %></p>
+            </div>
           <% end %>
         <% end %>
       <% end %>
