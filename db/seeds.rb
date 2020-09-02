@@ -143,8 +143,8 @@ users_creator.keys.each do |num|
   participation.save!
 
   puts "debut file project"
-  file_project_one = URI.open("https://lh3.googleusercontent.com/proxy/82NEKAPoX1uKcRz1FbBTn_P-TCpsjv8dnObv1TbHfzHysHpyI24zC1khoj8Ca6H7YUGp8iBfOlb70xQPn_1CqH-JrFyA_RQPzfZqCpI1q8fSZFCDZCDqrU4zybgs2rrNTYqvbnWdlyzkBV2FmNq0kKLBstogxgsnxSc")
-  project.photos.attach(io: file_project_one, filename: 'photo_user.png')
+  # file_project_one = URI.open("https://lh3.googleusercontent.com/proxy/82NEKAPoX1uKcRz1FbBTn_P-TCpsjv8dnObv1TbHfzHysHpyI24zC1khoj8Ca6H7YUGp8iBfOlb70xQPn_1CqH-JrFyA_RQPzfZqCpI1q8fSZFCDZCDqrU4zybgs2rrNTYqvbnWdlyzkBV2FmNq0kKLBstogxgsnxSc")
+  # project.photos.attach(io: file_project_one, filename: 'photo_user.png')
   file_project_two = URI.open("https://www.applicationiphone.info/wp-content/uploads/2016/04/7-minutes.png")
   project.photos.attach(io: file_project_two, filename: 'photo_user.png')
   puts "fin file project"
