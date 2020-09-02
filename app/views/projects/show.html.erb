@@ -208,7 +208,7 @@
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
           <i class="fab fa-slack"></i>
           <%= f.hidden_field :project, value: @project.id %>
-          <%= f.submit "Contact #{@admin.first_name}, class: "submit-contact-btn" %>
+          <%= f.submit "Contact #{@admin.first_name}", class: "submit-contact-btn" %>
         <% end %>
       </div>
     </div>
