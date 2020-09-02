@@ -48,6 +48,13 @@ users_creator = {
   8 => ["Thibault", "Morla", "thibault.morla@wagon.com", 440, "https://avatars3.githubusercontent.com/u/66415445?v=4"]
   9 => ["Stephan", "Zé-Ogier", "Stephan.zeé-ogier@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594055830/nqzkb753savp5cyi0chf.jpg"]
   10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://avatars2.githubusercontent.com/u/61418966?v=4"]
+  11 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://avatars0.githubusercontent.com/u/62572114?v=4"]
+  12 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://avatars2.githubusercontent.com/u/66635406?v=4"]
+  13 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://avatars1.githubusercontent.com/u/63396358?v=4"]
+  14 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594193819/yhixvbjokpulns5xipyt.jpg"]
+  15 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://avatars0.githubusercontent.com/u/66723589?v=4"]
+  16 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://avatars3.githubusercontent.com/u/63286070?v=4"]
+  17 => ["Farouk", "Rahmani", "Farouk.Rahmani@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597865657/snnrexr6qgbfhyotof4j.jpg"]
 }
 projects_creator = {
   1 => ["Cyclee 🚲", "appli GPS qui donne les trajets optimisés vélo + emplacements vélos à proximité + densité du trafic grâce à la communauté", "www.cyclee.fr", "La meilleure façon de se déplacer à vélo"]
@@ -60,6 +67,13 @@ projects_creator = {
   8 => ["SubDesk", "We want to build a plateform that matches small companies that are looking for affordable offices and big ones that are looking for reducing rent cost", "www.subdesk.pro", "Don't waste money on office rent"]
   9 => ["Pladujoor", "Des menus connectés qui facilitent le respect des règles sanitaires. Et donnent une meilleure visibilité sur le taux d'occupation journalier des CHR.", "www.pladujoor.xyz", "Afficher complet"]
   10 => ["Train Up", "Créer une app qui mette en relation les clients et les différents types de coaches", "www.trainup.club", "Booker un cours particulier de sport"]
+  11 => ["Commit’hood", "", "www.trainup.club", ""]
+  12 => ["Tata Monique", "", "www.trainup.club", ""]
+  13 => ["Liberty", "", "www.trainup.club", ""]
+  14 => ["Mettez les pieds sous la table", "", "www.trainup.club", ""]
+  15 => ["Wasteless", "", "www.trainup.club", ""]
+  16 => ["Apero Blind Test", "", "www.trainup.club", ""]
+  17 => ["Rupt’Care", "", "www.trainup.club", ""]
 }
 users_creator.keys.each do |num|
   infos = users_creator[num]
