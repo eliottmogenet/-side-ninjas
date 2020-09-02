@@ -51,6 +51,9 @@ class ProjectsController < ApplicationController
     @request_participation = @project.participations.find_by(user: current_user)
     @features = @project.features
     @participation = Participation.new
+    admin_id = @project.participations.where(admin:true).first.user_id
+    @admin = User.find(admin_id)
+
   end
 
   def edit
