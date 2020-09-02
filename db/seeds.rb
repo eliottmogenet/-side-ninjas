@@ -39,6 +39,68 @@ PICTURE_USER = ["https://www.starwars-universe.com/images/encyclopedie/personnag
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alec_efran_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alis_saro_bakvalen_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/alison_dawn_vignette.png",
 "https://www.starwars-universe.com/images/encyclopedie/personnages/vignettes_v6/Allium_avatar.png"]
 
+
+users_creator = {
+  1 => ["Chloé", "Rihouay", "chloe.rihouay@wagon.com", 440, "https://avatars2.githubusercontent.com/u/65725594?v=4"]
+  2 => ["Louis", "Renie", "louis.renier@wagon.com", 440, "https://avatars0.githubusercontent.com/u/67097112?v=4"]
+  3 => ["Hugo", "Arnoult", "hugo.arnoult@wagon.com", 440, "https://avatars2.githubusercontent.com/u/67268760?v=4"]
+  4 => ["Anthony", "You", "anthony.you@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"]
+  5 => ["Elsa", "Kifer", "elsa.kifer@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598975754/yqvb1mn4ughztj2mhp7o.jpg"]
+  6 => ["Mathilda", "Djamdjian", "mathilda.djamdjian@wagon.com", 440, "https://avatars0.githubusercontent.com/u/56888912?v=4"]
+  7 => ["Alex", "Touze", "alex.touze@wagon.com", 440, "url_photo"]
+  8 => ["Thibault", "Morla", "thibault.morla@wagon.com", 440, "https://avatars3.githubusercontent.com/u/66415445?v=4"]
+  9 => ["Stephan", "Zé-Ogier", "Stephan.zeé-ogier@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594055830/nqzkb753savp5cyi0chf.jpg"]
+  10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://avatars2.githubusercontent.com/u/61418966?v=4"]
+}
+projects_creator = {
+  1 => ["Cyclee 🚲", "appli GPS qui donne les trajets optimisés vélo + emplacements vélos à proximité + densité du trafic grâce à la communauté", "www.cyclee.fr", "La meilleure façon de se déplacer à vélo"]
+  2 => ["Wellbe 🤸", "Le user rentre le temps disponible et le type d'exercice souhaité (selon son niveau et ses objectifs). Un algo génère une session sur mesure.", "www.wellbe-fit.xyz", "Le fitness sur mesure"]
+  3 => ["Paramz 🎮", "An esports platform to share setup and settings while centralizing information. 🎮🏆", "www.paramz.xyz", "Build the future of esports."]
+  4 => ["Escapades ✈️🌍", "Platform to find travel buddies & plan your trip. 🚀🌍", "www.escapades.app", "Voyageons ensemble"]
+  5 => ["Cosmeet 💞🪐 💫", "An astro-dating app that matches personalities with an entertaining approach, focusing on human qualities and on the relevance of the connections.", "www.cosmeet.me", "www.cosmeet.me"]
+  6 => ["Red[u]ce ♻️", "Logiciel qui analyse et permet de réduire le gaspillage alimentaire pour la restauration.", "www.reducewaste.io", "Changer le monde un repas à la fois 👩‍🍳"]
+  7 => ["Shareflix", "Shareflix est une communauté de partage de comptes et d’abonnements Netflix, Spotify, Disney+, HBO etc.", "www.shareflix.club", "Netflix, HBO, Spotify, Deezer... Get them all"]
+  8 => ["SubDesk", "We want to build a plateform that matches small companies that are looking for affordable offices and big ones that are looking for reducing rent cost", "www.subdesk.pro", "Don't waste money on office rent"]
+  9 => ["Pladujoor", "Des menus connectés qui facilitent le respect des règles sanitaires. Et donnent une meilleure visibilité sur le taux d'occupation journalier des CHR.", "www.pladujoor.xyz", "Afficher complet"]
+  10 => ["Train Up", "Créer une app qui mette en relation les clients et les différents types de coaches", "www.trainup.club", "Booker un cours particulier de sport"]
+}
+users_creator.keys.each do |num|
+  infos = users_creator[num]
+  user = User.new(first: infos[0], last_name: infos[1], email: infos[2], password: "azerty", batch_number: infos[3], city: "Paris", pays: "France", bootcamp_year: "2020")
+  user_url = infos.last
+  file_user = URI.open(user_url)
+  user.photo.attach(io: file_user, filename: 'photo_user.png')
+  user.save!
+  project = project_creator[num]
+end
+
+projects_creator.keys.each do |num|
+  infos = projects_creator[num]
+  project = Project.new(title: infos[0], description: infos[1], github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: infos[5], tag: infos[6])
+end
+
+3 projects
+project1 = Project.new(title: "ImagineR", description: "Logiciel de réalité virtuelle pour dédiés aux formations de pilote de l'air", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "www.air-france.fr", tag: "Changer la formation des pilote de l'air")
+project2 = Project.new(title: "Cloudsystem", description: "Decouvrez une nouvelle maniere de stocker vos donnees, Cloudsystem est un hebergeur gratuit et illimité", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "www.aws.com", tag: "Decouvrer le futur de la gestion de données")
+project3 = Project.new(title: "Drony", description: "creation d'un logiciel d'analyse de données dans l'agriculture", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "www.pac.fr", tag: "Données la possibilité aux agriculteur de proposer le meilleure")
+
+9 users --> 1 admin et 2 participants
+
+user_admin1 = User.new(first: "Jack", last_name: "Dawson", email: "jack.dawson@wagon.com", password: "azerty", batch_number: 399, city: "Sao Polo", pays: "Bresil", bootcamp_year: "2016", user_url: "https://img-4.linternaute.com/W054xzfmWRwb-IQwbE-BQRdgua8=/1240x/smart/5ea50059965d4b94981a7e62655ae0e0/ccmcms-linternaute/11938078.jpg")
+user_admin2 = User.new(first: "Nicolas", last_name: "Salarksit", email: "nicolas.salarkzit@wagon.com", password: "azerty", batch_number: 389, city: "Moscou", pays: "Russie", bootcamp_year: "2014", user_url: "https://i.pinimg.com/originals/f8/77/18/f87718be74ddb439645c1e7ed6e12f2b.jpg")
+user_admin3 = User.new(first: "john", last_name: "lennon", email: "john.@lennon.com", password: "azerty", batch_number: 420, city: "New York", pays: "Etats-Unis", bootcamp_year: "2019", user_url: "https://www.biography.com/.image/t_share/MTE1ODA0OTcxNjk3OTMxNzg5/john-lennon-9379045-2-402.jpg")
+
+user_participant1 = User.new(first: "Fabrice", last_name: "Touet", email: "fabrice.touet@wagon.com", password: "azerty", batch_number: 400, city: "Paris", pays: "France", bootcamp_year: "2019", user_url: "https://www.umr-lops.fr/var/storage/images/_aliases/fullsize/medias-ifremer/medias-lops/pages-perso/fabrice-ardhuin/fabrice-ardhuin/1683820-1-fre-FR/Fabrice-Ardhuin.jpg")
+user_participant2 = User.new(first: "Khalil", last_name: "Man", email: "khalil.man@wagon.com", password: "azerty", batch_number: 409, city: "Ho-Chin-Minh", pays: "Vietnam", bootcamp_year: "2018", user_url: "https://pbs.twimg.com/profile_images/1062608006/khalilmuhammad20.jpg")
+user_participant3 = User.new(first: "William", last_name: "Morin", email: "william.morin@wagon.com", password: "azerty", batch_number: 399, city: "Dakar", pays: "Senegal", bootcamp_year: "2017", user_url: "https://www.dokidoki.agency/wp-content/uploads/2019/09/jerem-300x295.png")
+user_participant4 = User.new(first: "Jeremy", last_name: "Chervalis", email: "jeremy.chervalis@wagon.com", password: "azerty", batch_number: 389, city: "Marakech", pays: "Maroc", bootcamp_year: "2016", user_url: "https://media-exp1.licdn.com/dms/image/C4D03AQHJPrUCcJQvow/profile-displayphoto-shrink_200_200/0?e=1602720000&v=beta&t=5s2doPZNAt3sYGLZ5VgTYIL4Ywqu7MTxXNGWkjdKc2U")
+user_participant5 = User.new(first: "Francois", last_name: "Vaillant", email: "francois.vaillant@wagon.com", password: "azerty", batch_number: 420, city: "Genève", pays: "Suisse", bootcamp_year: "2020", user_url: "https://epic.foundation/resources/img/alexandre-mars.jpg")
+user_participant6 = User.new(first: "Alexandre", last_name: "Legrand", email: "alexandre.legrand@wagon.com", password: "azerty", batch_number: 415, city: "Berlin", pays: "Allemagne", bootcamp_year: "2019", user_url: "https://pokaa.fr/wp-content/uploads/2019/12/nicolas-rieffel10891775_849455711779282_5230281188826111407_n-1.jpg")
+
+project1.user = user_admin1
+project2.user = user_admin2
+project3.user = user_admin3
+
 user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
 user_url = PICTURE_USER.sample
 file_user = URI.open(user_url)
