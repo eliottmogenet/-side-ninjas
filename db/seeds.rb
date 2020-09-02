@@ -139,6 +139,9 @@ users_creator.keys.each do |num|
   project.save!
   puts "#{project.title}"
 
+  participation = Participation.new(project: project, user: user, accepted: true, admin: true)
+  participation.save!
+
   puts "debut file project"
   file_project_one = URI.open("https://lh3.googleusercontent.com/proxy/82NEKAPoX1uKcRz1FbBTn_P-TCpsjv8dnObv1TbHfzHysHpyI24zC1khoj8Ca6H7YUGp8iBfOlb70xQPn_1CqH-JrFyA_RQPzfZqCpI1q8fSZFCDZCDqrU4zybgs2rrNTYqvbnWdlyzkBV2FmNq0kKLBstogxgsnxSc")
   project.photos.attach(io: file_project_one, filename: 'photo_user.png')
@@ -191,6 +194,9 @@ LANGUAGES_OTHER.sample(3).each do |language|
 end
 project_one.save!
 
+participation = Participation.new(project: project_one, user: user_admin_one, accepted: true, admin: true)
+participation.save!
+
 project_two = Project.new(title: "Cloudsystem", description: "Decouvrez une nouvelle maniere de stocker vos donnees, Cloudsystem est un hebergeur gratuit et illimité", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "www.aws.com", tag_line: "Decouvrer le futur de la gestion de données", tag: "data")
 project_two.user = user_admin_two
 LANGUAGES_OTHER.sample(3).each do |language|
@@ -200,6 +206,9 @@ LANGUAGES_OTHER.sample(3).each do |language|
   b_language.save!
 end
 project_two.save!
+
+participation = Participation.new(project: project_two, user: user_admin_two, accepted: true, admin: true)
+participation.save!
 
 user_participant_a = User.new(first_name: "Fabrice", last_name: "Touet", email: "fabrice.touet@wagon.com", password: "azerty", batch_number: 400, city: "Paris", pays: "France", bootcamp_year: 2019)
 file_user_c = URI.open("https://static.lexpress.fr/medias_2221/w_399,h_399,c_crop,x_42,y_0/w_600,h_600,c_fill,g_north/v1406705717/vin-diesel-gestures-as-he-arrives-for-a-screening-at-the-56th-berlinale-international-film-festival-in-berlin_1137417.jpg")
@@ -239,6 +248,10 @@ LANGUAGES_OTHER.sample(3).each do |language|
   z_language.save!
 end
 project_one_project.save!
+
+participation = Participation.new(project: project_one_project, user: user_project, accepted: true, admin: true)
+participation.save!
+
 
 puts "End!"
 

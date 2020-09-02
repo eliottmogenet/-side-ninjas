@@ -149,7 +149,6 @@
       <hr>
       <div class="team-members">
         <div class="members-container">
-          <%# raise %>
           <% @project.participations.accepted.each do |participation| %>
             <div class="resum-member">
               <div class="member-infos">
@@ -169,34 +168,35 @@
                     <p>Member</p>
                   <% end %>
                 </div>
-              <div class="member-skills">
-                <% participation.user.user_languages.each do |language| %>
-                  <% if language.language.frameworks.nil? %>
-                    <div class="one-skill">
-                      <div class="skills-btn">
-                        <i class="fab fa-js-square"></i>
-                        <p><%= language.languages.name %></p>
-                      </div>
-                      <div class="skills-btn">
-                        <i class="fab fa-js-square"></i>
-                        <p><%= language.level %></p>
-                      </div>
-                    </div>
-                  <% else %>
-                    <% language.language.frameworks.each do |framework| %>
+                <div class="member-skills">
+                  <% participation.user.user_languages.each do |language| %>
+                    <% if language.language.frameworks.nil? %>
                       <div class="one-skill">
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
-                          <p><%= language.languages.name %> <%= language.language.framework.name %></p>
+                          <p><%= language.languages.name %></p>
                         </div>
                         <div class="skills-btn">
                           <i class="fab fa-js-square"></i>
                           <p><%= language.level %></p>
                         </div>
                       </div>
+                    <% else %>
+                      <% language.language.frameworks.each do |framework| %>
+                        <div class="one-skill">
+                          <div class="skills-btn">
+                            <i class="fab fa-js-square"></i>
+                            <p><%= language.languages.name %> <%= language.language.framework.name %></p>
+                          </div>
+                          <div class="skills-btn">
+                            <i class="fab fa-js-square"></i>
+                            <p><%= language.level %></p>
+                          </div>
+                        </div>
+                      <% end %>
                     <% end %>
                   <% end %>
-                <% end %>
+                </div>
               </div>
             </div>
           <% end %>
