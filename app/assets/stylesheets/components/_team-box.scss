@@ -1,7 +1,10 @@
 // c'est la box de présentation de la team --> adrien
 .members-container {
   height: 350px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .team-box {
