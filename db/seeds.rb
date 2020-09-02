@@ -17,6 +17,7 @@ require 'open-uri'
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/R3DO_avatar.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/zero_vignette.png",
 # "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/z9v86_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/tyth_vignette.png", "https://www.starwars-universe.com/images/encyclopedie/droides/vignettes_v6/e10_vignette.jpg",
 # "https://i.pinimg.com/originals/fa/16/42/fa164207f82b769dec7719b3156355e3.jpg"]
+Notification.destroy_all
 ChatroomUser.destroy_all
 Message.destroy_all
 Chatroom.destroy_all
@@ -32,16 +33,16 @@ user.photo.attach(io: file_user, filename: 'photo_user.jpg')
 user.save!
 
 users_creator = {
-  1 => ["Chloé", "Rihouay", "chloe.rihouay@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  2 => ["Louis", "Renie", "louis.renier@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  3 => ["Hugo", "Arnoult", "hugo.arnoult@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  1 => ["Chloé", "Rihouay", "chloe.rihouay@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3cv5FUlROn-X_EVKJ8fArDvm4UVZSQA8WGPugiAXW7dSH64HgAfet7G7jQ9JsxTtcYu68ZVkQX1JlUyzL1eqbbqbMvHrRrUYG-c_iIvJ-J24QlZpn-jvfDLpyhkAdJcLaNO0r1pKKPYtuAOccn19bBo=w1748-h1162-no?authuser=0"],
+  2 => ["Louis", "Renie", "louis.renier@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3e7NSR6aqIRg3H6imy5l_Jkxgrzg7sKdPefAEpbnaLGcF_F4G8xZ2ta9MQcc4SNz1gXSr9ABYgb7v0xK2O226H652-a_DLn1kZYFSUUX6UCKv7IiSbpk-oaScgjdFXZTzO8J0FP-7DCdYA5x3Vk232n=w1894-h1260-no?authuser=0"],
+  3 => ["Hugo", "Arnoult", "hugo.arnoult@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3cAkr2IkTd__FLjkBDIcjgGOMHIjyK97M4F73h4-3KVrmEdsHiF-QeKYf0X-iUYaTAclaxWL5N-NjVZUGoUoqHGSO6Ft943B_GTePRZmecE8BEHnQn3v3gnSFJgurhyUA-L4vn0_6_tMfEiVj0SyF1o=w1894-h1260-no?authuser=0"],
   4 => ["Anthony", "You", "anthony.you@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  5 => ["Elsa", "Kifer", "elsa.kifer@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598975754/yqvb1mn4ughztj2mhp7o.jpg"],
-  6 => ["Mathilda", "Djamdjian", "mathilda.djamdjian@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  7 => ["Alex", "Touze", "alex.touze@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  8 => ["Thibault", "Morla", "thibault.morla@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  9 => ["Stephan", "Zé-Ogier", "Stephan.zeé-ogier@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"]
+  5 => ["Elsa", "Kifer", "elsa.kifer@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3f7nYwhNOmcC0rt0NVNDKPgPRDCHvFuE61BFqx6846tqo8wZBcAWB7F0yMlWzbX2a6B5WxZ4pGecNh-qZpBhoQNpFbIWrC7GcsnKrHrAus6ie--MuX7LuHdBINNeDweI2sKkDq8imc7a1ejhsG7lHF5=w1894-h1260-no?authuser=0"],
+  6 => ["Mathilda", "Djamdjian", "mathilda.djamdjian@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3ca5jBTmA1nVFhm_En0on2j51FWKm_kqSkqlprj35ALk6cibIC_BCOo0-u1kccAP4IjxgOH_vmEmYMYQ14QRhQq9f4LdSt8uqdKI4vLTSKG0ankrKOUUdOBZTfkAvNjClzf99MIh9qapKr1Vs1UnW36=w1894-h1260-no?authuser=0"],
+  7 => ["Alex", "Touze", "alex.touze@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3egWQUY-iohFw3y_7QTO6EED43EQO8w3ka8EvmWA1eZicz9nhmoKl0CHllhZzoOnME6Dcy2jcgo2JxN-E963D9B4bRM3sHugkhHR7WugcGkHCsFhN4pe7YEwzsHP-4ELYZAiuUpMn4dkOrFnk3oFK6U=w1894-h1260-no?authuser=0"],
+  8 => ["Thibault", "Morla", "thibault.morla@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3fFgOM3c3Wd8XbUGMonmhQegxHZAyFn9C_cQmTVcXB7qcm9HW1inMvtAgocnLxy3RK1dkCBsLVHcyfutkwd3iegW2wAeKiv2NISxSbaAxMYJQVcfLyWTfahrq8oQDe0Ry-Np7X2LCEiygQujG3uLN-b=w1894-h1260-no?authuser=0"],
+  9 => ["Stephan", "Zé-Ogier", "Stephan.zeé-ogier@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3dPIgm46jglsOfz5t3zMOKmWRX3HvnJFEQUmkxdfMp8mm_YVE5uPlt3Wwvq4I1NfawsfTt_KPlvVsDJKFUdNFxPqX2EAUiIPsjwPxuTiYaEUbGmuEIqEBjcw5jJVoBDf3knCx6etxW8CpiEoDRo4N11=w1894-h1260-no?authuser=0"],
+  10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3fZJmfzYC6Csw4ay3RZIuYc36DOJFP70evYbZZGvHH_BgDQgC3P9mK0UIyIofiAayB4VW3aAd1F5eTKeAU_D3dPZquSl7f62jv3nhI1zAONIebRufkYvk0TVcHfK62k1Pi6s_eJy4nysmdzTTRiv7zK=w1894-h1260-no?authuser=0"]
   # 11 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   # 12 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   # 13 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
