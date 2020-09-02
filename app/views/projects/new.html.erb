@@ -52,7 +52,7 @@
             </div>
             <div class="resum-project-images">
               <div class="resum-project-pictures">
-                <%= f.input :photos, input_html: { class: 'd-none'}, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
+                <%= f.input :photos, label: "Photos of the project", as: :file, input_html: { multiple: true }, id: "image_upload_id"  %>
               </div>
             </div>
 
@@ -190,7 +190,7 @@
           </div>
           <% i += 1 %>
         <% end %>
-        <%= f.submit %>
+        <%= f.submit class: "btn-create" %>
       <% end %>
 
       </div>
