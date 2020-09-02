@@ -20,50 +20,48 @@
 
     <% @projects.uniq.each do |project|%>
       <div class="row mt-5">
-        <div class="col-12">
-          <div class="resum-project-box">
-            <div class="project-header">
-              <div class="resum-project-title">
-                <h5><%= project.title %></h5>
+        <div class="col-12" id="box-projects-index" >
+          <%= link_to project_path(project) do %>
+            <div class="resum-project-box">
+              <div class="project-header">
+                <div class="resum-project-title">
+                  <h5><%= project.title %></h5>
+                </div>
+                <div class="pending-request-btn">
+                  <i class="fas fa-hourglass-half"></i>
+                  <p><%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
+                </div>
               </div>
-              <div class="pending-request-btn">
-                <i class="fas fa-hourglass-half"></i>
-                <p><%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
-              </div>
-            </div>
-            <hr>
-            <div class="resum-project-content">
-              <div class="search-project-description">
-                <p><%= project.tag_line %></p>
-                <p><%= project.description %></p>
-              </div>
-              <div class="resum-project-images">
-                <div class="resum-project-pictures">
-                  <% project.participations.each do |participation| %>
-                  <% if participation.user.photo.attached? %>
-                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
-                  <% else %>
-                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
-            <div class="bottom-search-project">
-              <div class="resum-project-tags">
-                <% project.project_languages.each do |project_language| %>
-                  <div class="skills-btn">
-                    <%= cl_image_tag project_language.language.photo.key, class: "language-tag-img" %>
-                    <p><%= project_language.language.name %></p>
+              <hr>
+              <div class="resum-project-content">
+                <div class="search-project-description">
+                  <p><%= project.tag_line %></p>
+                  <p><%= project.description %></p>
+                </div>
+                <div class="resum-project-images">
+                  <div class="resum-project-pictures">
+                    <% project.participations.each do |participation| %>
+                      <% if participation.user.photo.attached? %>
+                        <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                      <% else %>
+                        <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                      <% end %>
+                    <% end %>
                   </div>
-                <% end %>
-              </div>
-              <div class="second-important-btn">
-                <i class="fas fa-search"></i>
-                  <%= link_to "See details", project_path(project) %>
+                </div>
+                <div class="bottom-search-project">
+                  <div class="resum-project-tags">
+                    <% project.project_languages.each do |project_language| %>
+                      <div class="skills-btn">
+                        <%= cl_image_tag project_language.language.photo.key, class: "language-tag-img" %>
+                        <p><%= project_language.language.name %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     <% end %>

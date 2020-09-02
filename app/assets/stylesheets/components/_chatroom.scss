@@ -4,26 +4,46 @@
 
 .chatrooms-index {
   display: flex;
+  // background: linear-gradient(90deg, $browne, $light-blue);
+}
+
+.chatroom-list {
+  background-color: $light-blue;
+  padding: 50px 0px 50px 0px;
+  width: 250px;
+  position: fixed;
+  height: 100vh;
+  h5 {
+    color: $browne;
+  }
+}
+
+.chatroom-content {
+  position: relative;
+  padding: 10px 20px 0px 0px;
+  margin-left: 250px;
+  background-color: $white;
+  min-height: 100vh;
+  width: calc(100vw - 470px);
+}
+
+#chat-content {
+  padding-left: 20px;
+  height: calc(100vh - 115px);
+  overflow-y: scroll;
 }
 
 .photo-writer {
   width: 40px;
 }
-
-.chatroom-list {
-  background-color: $light-blue;
-  padding: 50px 50px;
-  width: 250px;
-  position: fixed;
-  height: 100vh;
-}
-
-.chatroom-content {
-  padding: 50px 20px;
-  margin-left: 250px;
-  background-color: $light-gray;
-  min-height: 100vh;
-  width: calc(100vw - 470px);
+.header-list {
+  margin: 0px 30px 0px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h5 {
+    margin: 0px;
+  }
 }
 
 .message-container {
@@ -31,19 +51,67 @@
 }
 
 .list-contacts {
-  padding-left: 20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   a {
-    color: $middle-gray;
+    color: $browne;
     text-decoration: none;
+    &.notif-message {
+      font-weight: bold;
+    }
     &:hover {
       text-decoration: none;
-      background-color: $light-blue;
+      // background-color: $light-blue;
     }
   }
 }
 
-#messages {
-    height: 90%;
+.name-chat {
+  padding: 5px 0px 5px 50px;
+  &:hover {
+    background-color: $hover-gray;
+  }
 }
+
+#messages {
+  // height: 90%;
+
+}
+
+.contact-projects {
+  p {
+    margin: 0px;
+    margin-right: 5px;
+  }
+}
+
+.new-message-input {
+  position: fixed;
+  bottom: 0px;
+  height: 60px;
+  background-color: $white;
+  // left: 10px;
+  // z-index: 0;
+  width: calc(100% - 470px);
+  .new-input-box {
+    background-color: $light-blue;
+    margin: 3px 10px;
+    border: 1px $middle-gray solid;
+    height: 42px;
+    input {
+      margin: 0px;
+      background-color: $light-blue;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
