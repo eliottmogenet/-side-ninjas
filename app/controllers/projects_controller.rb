@@ -15,6 +15,26 @@ class ProjectsController < ApplicationController
       @projects = @projects.joins(project_languages: :language).where(languages: { id: params[:search][:language] })
     end
 
+    # FILTERING
+    # @projects_languages = []
+      # params[:search][:language].map do |id_language|
+      #   @projects_languages << @projects.joins(project_languages: :language).where(languages: { id: id_language })
+      # end
+
+      # params[:search][:language].each do |id_language|
+      #   # ["51", "52"]
+      #   # id_language = 52
+      #   @projects.each do |project|
+      #     if project.languages.find_by(id: id_language).nil?
+      #       @projects.reject { |pro| pro == project }
+      #       # raise
+      #     end
+      #   end
+      # end
+    # @language_project = @projects_languages.flatten.uniq
+    # raise
+    # TODO: filter by city
+
     if params[:search].present? && params[:search][:user].present?
       @projects = @projects.joins(participations: :user).where(participations: { admin: true, users: { city: params[:search][:user] }})
     end

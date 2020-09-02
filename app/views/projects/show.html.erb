@@ -98,20 +98,23 @@
         </div>
         <div class="web-link">
           <%= link_to "https://github.com/eliottmogenet/side-ninjas", class: "github-link", target: "_blank" do %>
-            <div class="second-important-btn">
-                <p>See on Github : </p>
+            <div class="submtit-btn-box">
+                <p>See on Github </p>
                 <p><i class="fab fa-github ml-2"></i></p>
             </div>
           <% end %>
-          <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
-            <div class="second-important-btn">
-                <p>See on Trello : </p>
-                <p><i class="fab fa-trello ml-2"></i></p>
-            </div>
+          <%# raise %>
+          <% if (@project.participations.include?(current_user) && @project.participations.find(user_id: current_user).accepted == true) || @project.user = current_user  %>
+            <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
+              <div class="submtit-btn-box">
+                  <p>See on Trello </p>
+                  <p><i class="fab fa-trello ml-2"></i></p>
+              </div>
+            <% end %>
           <% end %>
           <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
-            <div class="second-important-btn">
-                <p>See the product : </p>
+            <div class="submtit-btn-box">
+                <p>See the product </p>
                 <p><i class="fas fa-globe ml-2"></i></p>
             </div>
           <% end %>
@@ -200,15 +203,11 @@
       </div>
 
 
-
-
-
-
-      <div class="second-important-btn mt-4">
-        <i class="fab fa-slack"></i>
+      <div class="submtit-btn-box">
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
+          <i class="fab fa-slack"></i>
           <%= f.hidden_field :project, value: @project.id %>
-          <%= f.submit %>
+          <%= f.submit "Contact #{@project.user.first_name} #{@project.user.last_name}", class: "submit-contact-btn" %>
         <% end %>
       </div>
     </div>

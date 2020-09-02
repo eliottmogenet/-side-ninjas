@@ -31,7 +31,13 @@ class MessagesController < ApplicationController
     @chatroom.chatroom_users.each do |chatroom_user|
       user << chatroom_user.user unless chatroom_user.user.id == current_user.id
     end
+
+    # user = @chatroom.users.find { |user| user != current_user }
+    # notif.user = user
+
     notif.user = user.first
     notif.save!
+
+
   end
 end
