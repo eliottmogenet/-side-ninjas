@@ -30,6 +30,8 @@
   background-color: $saumon;
   color: white;
   transition: all 0.3s ease-out;
+  width: fit-content;
+  margin-left: 48px;
   p {
     margin: 0px;
     padding: 0px;
@@ -38,12 +40,12 @@
     font-size: 20px;
   }
   &:hover {
-    transform: scale(1.05, 1.05);
+    transform: scale(1.1, 1.1);
     opacity: 1;
-    font-size: 20px;
-    padding: 9px 10px;
+    // font-size: 20px;
+    // padding: 9px 10px;
     .submit-contact-btn {
-      font-size: 20px;
+      // font-size: 20px;
     }
   }
 }
