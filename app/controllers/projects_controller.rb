@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  after_action :delete_notif, only: :show
 
   def index
     # @languages = Language.pluck(:name)
@@ -75,13 +76,13 @@ class ProjectsController < ApplicationController
     @user = current_user
     @languages = Language.all
     @project = Project.new
+    @project.features.build
     authorize @project
   end
 
   def create #on créé un nouveau projet / une participation pour le current_user et des project_languages
     @project = Project.new(params_project)
     authorize @project
-
     @project.user = current_user
     if @project.save
       redirect_to project_path(@project)
@@ -99,6 +100,11 @@ class ProjectsController < ApplicationController
 
 
   private
+
+  def delete_notif
+    # raise
+    current_user.notifications.where(category_name: "manage").where(category_id: @project.user).destroy_all
+  end
 
   def params_project
     params.require(:project).permit(
@@ -118,4 +124,3 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 end
-
