@@ -13,12 +13,9 @@ class ProjectsController < ApplicationController
 
     @all_batch_number = User.joins(:projects).order(:batch_number).pluck(:batch_number).uniq
 
-
     if params[:search].present? && params[:search][:language].present?
       @projects = @projects.joins(project_languages: :language).where(languages: { id: params[:search][:language] })
-    # raise
     end
-
 
     # FILTERING
     # @projects_languages = []

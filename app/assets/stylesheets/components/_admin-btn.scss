@@ -11,7 +11,67 @@
   text-decoration: none;
   background-color: $browne;
   padding: 7px 13px;
-  border-radius: $border-radius;
+  border-radius: $border-radius-second;
 }
 
+.submit-contact-btn {
+  background: none;
+  border: none;
+  color: white;
+}
 
+.submtit-btn-box {
+  opacity: 0.9;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius;
+  background-color: $saumon;
+  color: white;
+  transition: all 0.3s ease-out;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  i {
+    font-size: 20px;
+  }
+  &:hover {
+    transform: scale(1.05, 1.05);
+    opacity: 1;
+    font-size: 20px;
+    padding: 9px 10px;
+    .submit-contact-btn {
+      font-size: 20px;
+    }
+  }
+}
+
+.infos-link-box {
+  opacity: 0.9;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius;
+  background-color: $saumon;
+  color: white;
+  transition: all 0.3s ease-out;
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+  i {
+    font-size: 20px;
+  }
+  &:hover {
+    transform: scale(1.05, 1.05);
+    opacity: 1;
+    font-size: 20px;
+    padding: 9px 10px;
+    .submit-contact-btn {
+      font-size: 20px;
+    }
+  }
+}
