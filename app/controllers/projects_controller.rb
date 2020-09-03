@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
   def update
     # @project = Project.find(params[:id])
     @project.assign_attributes(params_project)
-    @project.user = current_user
+    # @project.user = current_user
     @project.save
 
     redirect_to project_path
@@ -89,6 +89,10 @@ class ProjectsController < ApplicationController
         project_language = ProjectLanguage.new(project: @project, language: Language.find(language.to_i))
         project_language.save!
       end
+      part = Participation.new(admin: true, accepted: true)
+      part.user = current_user
+      part.project = @project
+      part.save!
       redirect_to project_path(@project)
     else
       render :new
@@ -115,7 +119,7 @@ class ProjectsController < ApplicationController
       :title, :description,
       :github_repository, :trello_link,
       :start_date, :website_link,
-      :tag, :tag_line,
+      :tag, :tag_line, :project_languages,
       photos: [],
       features_attributes: [
         :name, :description, :id
