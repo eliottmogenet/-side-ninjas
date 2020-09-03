@@ -1,5 +1,4 @@
 <div class="container-index">
-
   <div class="col-12">
    <div class="search-title-description">
       <div class="search-title">
@@ -17,7 +16,6 @@
           </div>
         </div>
       </div>
-
     <% @projects.uniq.each do |project|%>
       <div class="row mt-5">
         <div class="col-12" id="box-projects-index" >
@@ -28,8 +26,8 @@
                   <h5><%= project.title %></h5>
                 </div>
                 <div class="pending-request-btn">
-                  <i class="fas fa-hourglass-half"></i>
-                  <p><%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
+<!--                   <i class="fas fa-hourglass-half"></i> -->
+                  <p>Created <%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
                 </div>
               </div>
               <hr>
@@ -69,13 +67,11 @@
     <% end %>
   </div>
 </div>
-
 <style>
     .select2-container--default .select2-selection--multiple {
     border: none;
     background-color: #F2F7FC;
   }
-
   .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #F2F7FC;
     border-color: #514A5A;
@@ -83,10 +79,8 @@
     padding: 6px;
     color: #514A5A;
 }
-
   .row {
     width: 700px;
   }
-
 </style>
 
