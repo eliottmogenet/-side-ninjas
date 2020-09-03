@@ -27,10 +27,25 @@ Participation.destroy_all
 Project.destroy_all
 User.destroy_all
 
-user = User.new(email: "jack@wagon.org", password: "azerty", first_name: "Jack", last_name: "Sparro", batch_number: 440, city: "La Havane", pays: "Cuba", bootcamp_year: 2020)
-file_user = URI.open("https://stillmed.olympic.org/media/Images/OlympicOrg/Athletes/J/Jones_Jade/Jones_Jade_mugshot.jpg")
-user.photo.attach(io: file_user, filename: 'photo_user.jpg')
+user_nico = User.new(email: "nico@wagon.org", password: "azerty", first_name: "Nicolas", last_name: "Chevalier", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3dwPi9haVNoMFn21nLVszf-TwzUdDvTWDfizdWCNTEtjxVSwHRRxKW6F8NMD9g52nI0OguVWPLR5MXtk4Mw3obMFIcTdZHafu8bkiZcscoisTBqoXJ1ArwC-4qLINHl9FedDbYA_ujZCTGfZQIQr6Go=w2524-h1678-no?authuser=0")
+user_nico.photo.attach(io: file_user, filename: 'photo_user.jpg')
 user.save!
+
+user_jules = User.new(email: "jules@wagon.org", password: "azerty", first_name: "Jules", last_name: "Roussel", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3cqGdU_9HJcciS-jeB0rT9g1kTLilK7p8leYCr_y16Ek1l78iBhUaYd2Du-oEChqsvCCjPA628qE1rf-vIgCOEPaQsaOL4sRM798gFuOhOIitAhJQGLwDL0IXQoPspB8pi4Nf08isy_ofZtBNAI29xk=w2524-h1678-no?authuser=0")
+user_jules.photo.attach(io: file_user, filename: 'photo_user.jpg')
+user_jules.save!
+
+user_adrien = User.new(email: "adrien@wagon.org", password: "azerty", first_name: "Adrien", last_name: "Fort", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
+file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3dWpMHkeEy4OhiPwi8ek7MoC04_RXMZ-GUVB5X29EYP3e1HpB7cRbOV_xtJCjvqOxf1E3HaFbD_FBx_LqmjPO3jnOt5V_c4o0QsdiSnxxBz9s-qeN6RWjOlJF7x9L63gl-J1X5DGqYD7Cc9aFutn0lk=w2524-h1678-no?authuser=0")
+user_adrien.photo.attach(io: file_user, filename: 'photo_user.jpg')
+user_adrien.save!
+
+user_phil = User.new(email: "phil@wagon.org", password: "azerty", first_name: "Philippine", last_name: "Berton", batch_number: 200, city: "Paris", pays: "France", bootcamp_year: 2018)
+file_user = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594210501/qozhmk2g0oxtw1clksej.jpg")
+user_phil.photo.attach(io: file_user, filename: 'photo_user.jpg')
+user_phil.save!
 
 users_creator = {
   1 => ["Chloé", "Rihouay", "chloe.rihouay@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3cv5FUlROn-X_EVKJ8fArDvm4UVZSQA8WGPugiAXW7dSH64HgAfet7G7jQ9JsxTtcYu68ZVkQX1JlUyzL1eqbbqbMvHrRrUYG-c_iIvJ-J24QlZpn-jvfDLpyhkAdJcLaNO0r1pKKPYtuAOccn19bBo=w1748-h1162-no?authuser=0"],
@@ -43,14 +58,18 @@ users_creator = {
   8 => ["Thibault", "Morla", "thibault.morla@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3fFgOM3c3Wd8XbUGMonmhQegxHZAyFn9C_cQmTVcXB7qcm9HW1inMvtAgocnLxy3RK1dkCBsLVHcyfutkwd3iegW2wAeKiv2NISxSbaAxMYJQVcfLyWTfahrq8oQDe0Ry-Np7X2LCEiygQujG3uLN-b=w1894-h1260-no?authuser=0"],
   9 => ["Stephan", "Zé-Ogier", "Stephan.zeé-ogier@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3dPIgm46jglsOfz5t3zMOKmWRX3HvnJFEQUmkxdfMp8mm_YVE5uPlt3Wwvq4I1NfawsfTt_KPlvVsDJKFUdNFxPqX2EAUiIPsjwPxuTiYaEUbGmuEIqEBjcw5jJVoBDf3knCx6etxW8CpiEoDRo4N11=w1894-h1260-no?authuser=0"],
   10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3fZJmfzYC6Csw4ay3RZIuYc36DOJFP70evYbZZGvHH_BgDQgC3P9mK0UIyIofiAayB4VW3aAd1F5eTKeAU_D3dPZquSl7f62jv3nhI1zAONIebRufkYvk0TVcHfK62k1Pi6s_eJy4nysmdzTTRiv7zK=w1894-h1260-no?authuser=0"]
-  # 11 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  # 12 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  # 13 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  # 14 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594193819/yhixvbjokpulns5xipyt.jpg"],
-  # 15 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  # 16 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  # 17 => ["Farouk", "Rahmani", "Farouk.Rahmani@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597865657/snnrexr6qgbfhyotof4j.jpg"]
 }
+
+users_participation {
+  1 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  2 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  3 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  4 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594193819/yhixvbjokpulns5xipyt.jpg"],
+  5 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  6 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
+  7 => ["Farouk", "Rahmani", "Farouk.Rahmani@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597865657/snnrexr6qgbfhyotof4j.jpg"]
+}
+
 projects_creator = {
   1 => ["Cyclee 🚲", "appli GPS qui donne les trajets optimisés vélo + emplacements vélos à proximité + densité du trafic grâce à la communauté", "www.cyclee.fr", "La meilleure façon de se déplacer à vélo", "vélo"],
   2 => ["Wellbe 🤸", "Le user rentre le temps disponible et le type d'exercice souhaité (selon son niveau et ses objectifs). Un algo génère une session sur mesure.", "www.wellbe-fit.xyz", "Le fitness sur mesure", "sport"],
@@ -120,7 +139,27 @@ angular.save!
 
 puts "Finish !"
 
-LANGUAGES = [html, php, c, ruby, sql, python, react, swift, angular]
+LANGUAGES = [js, html, php, c, ruby, sql, python, react, swift, angular]
+
+puts "Creating participations to the batch project"
+
+USER_PARTICITANT = []
+
+users_participation.keys.each do |num|
+  infos = users_participation[num]
+  user = User.new(first_name: infos[0], last_name: infos[1], email: infos[2], password: "azerty", batch_number: infos[3], city: "Paris", pays: "France", bootcamp_year: "2020")
+  user_url = infos.last
+  file_user = URI.open(user_url)
+  p user_url
+  user.photo.attach(io: file_user, filename: 'photo_user.jpg')
+  user.save!
+
+  USER_PARTICITANT << user
+end
+
+p USER_PARTICITANT
+
+puts "Finish creating participations"
 
 puts "Creating the Barch 440 's projects"
 
@@ -150,7 +189,7 @@ users_creator.keys.each do |num|
   puts "fin file project"
 
   puts "debut langage"
-  LANGUAGES.sample(2).each do |language|
+  LANGUAGES.sample(rand(2..4)).each do |language|
     project_language = ProjectLanguage.new()
     project_language.language = language
     project_language.project = project
@@ -158,14 +197,22 @@ users_creator.keys.each do |num|
     puts "#{project_language}"
   end
   puts "fin langage"
+
+  puts "Giving participations to this project"
+  USER_PARTICITANT.sample(rand(2..4)).each do |user_part|
+    participation = Participation.new(project: project, user: user_part, accepted: true, admin: false)
+    participation.save!
+  end
+  puts "Finish giving participations"
+
 end
 
-puts "Add JS to the second project"
-  project_language_two = ProjectLanguage.new()
-  project_language_two.language = js
-  project_language_two.project = Project.second
-  project_language_two.save!
-puts "Done"
+# puts "Add JS to the second project"
+#   project_language_two = ProjectLanguage.new()
+#   project_language_two.language = js
+#   project_language_two.project = Project.second
+#   project_language_two.save!
+# puts "Done"
 
 puts "Finished!"
 
@@ -234,12 +281,12 @@ puts "Finished!"
 
 puts "Creating the project we have to visite"
 
-user_project = User.new(first_name: "Romain", last_name: "Roussel", email: "romain.roussel@wagon.com", password: "azerty", batch_number: 350, city: "Roma", pays: "Italie", bootcamp_year: 2014)
-user_project.save!
-file_user_one_project = URI.open("https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE5NTU2MzE2MzU1NzI0ODEx/keanu-reeves-9454211-1-402.jpg")
-user_project.photo.attach(io: file_user_one_project, filename: 'photo_user.jpg')
+user = User.new(first_name: "Juan", last_name: "Paulo", email: "juan@wagon.com", password: "azerty", batch_number: 150, city: "Mexico", pays: "Mexique", bootcamp_year: 2015)
+user.save!
+file_user = URI.open("https://gdb.voanews.com/277EE03C-B34D-4901-907D-5DCC5528482D_w408_r1_s.jpg")
+user.photo.attach(io: file_user, filename: 'photo_user.jpg')
 
-project_one_project = Project.new(title: "Bike Me Up", description: "Le Airbnb du vélo", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "https://bikemeup.herokuapp.com/", tag_line: "Louer votre vélo", tag: "sport")
+project_one_project = Project.new(title: "", description: "", github_repository: "", trello_link: "", start_date: Date.today-10.days, website_link: "", tag_line: "", tag: "")
 project_one_project.user = user_project
 LANGUAGES_OTHER.sample(3).each do |language|
   z_language = ProjectLanguage.new()

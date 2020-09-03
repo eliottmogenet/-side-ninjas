@@ -41,10 +41,12 @@
                 <div class="resum-project-images">
                   <div class="resum-project-pictures">
                     <% project.participations.each do |participation| %>
-                      <% if participation.user.photo.attached? %>
-                        <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
-                      <% else %>
-                        <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                      <% if participation.accepted %>
+                        <% if participation.user.photo.attached? %>
+                          <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
+                        <% else %>
+                          <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                        <% end %>
                       <% end %>
                     <% end %>
                   </div>
