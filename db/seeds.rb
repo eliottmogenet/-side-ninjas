@@ -143,8 +143,8 @@ users_creator.keys.each do |num|
   participation.save!
 
   puts "debut file project"
-  file_project_one = URI.open("https://lh3.googleusercontent.com/proxy/82NEKAPoX1uKcRz1FbBTn_P-TCpsjv8dnObv1TbHfzHysHpyI24zC1khoj8Ca6H7YUGp8iBfOlb70xQPn_1CqH-JrFyA_RQPzfZqCpI1q8fSZFCDZCDqrU4zybgs2rrNTYqvbnWdlyzkBV2FmNq0kKLBstogxgsnxSc")
-  project.photos.attach(io: file_project_one, filename: 'photo_user.png')
+  # file_project_one = URI.open("https://lh3.googleusercontent.com/proxy/82NEKAPoX1uKcRz1FbBTn_P-TCpsjv8dnObv1TbHfzHysHpyI24zC1khoj8Ca6H7YUGp8iBfOlb70xQPn_1CqH-JrFyA_RQPzfZqCpI1q8fSZFCDZCDqrU4zybgs2rrNTYqvbnWdlyzkBV2FmNq0kKLBstogxgsnxSc")
+  # project.photos.attach(io: file_project_one, filename: 'photo_user.png')
   file_project_two = URI.open("https://www.applicationiphone.info/wp-content/uploads/2016/04/7-minutes.png")
   project.photos.attach(io: file_project_two, filename: 'photo_user.png')
   puts "fin file project"
@@ -175,13 +175,13 @@ LANGUAGES_OTHER = [js, ruby, python]
 
 user_admin_one = User.new(first_name: "Jack", last_name: "Dawson", email: "jack.dawson@wagon.com", password: "azerty", batch_number: 399, city: "Sao Polo", pays: "Bresil", bootcamp_year: 2016)
 user_admin_one.save!
-file_user_one = URI.open("https://lh3.googleusercontent.com/proxy/q_ZjASD_zGc5WuNaanQ92BxTGUuOOcdHKOi2Mh_hM6o1bMWNvk-I1KCVe1yPaqRb9GL8YvvUBuBLicBgNwK6yUqvvfughbDtjfV1bag")
-user_admin_one.photo.attach(io: file_user_one, filename: 'photo_user.png')
+file_user_one = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3egWQUY-iohFw3y_7QTO6EED43EQO8w3ka8EvmWA1eZicz9nhmoKl0CHllhZzoOnME6Dcy2jcgo2JxN-E963D9B4bRM3sHugkhHR7WugcGkHCsFhN4pe7YEwzsHP-4ELYZAiuUpMn4dkOrFnk3oFK6U=w1894-h1260-no?authuser=0")
+user_admin_one.photo.attach(io: file_user_one, filename: 'photo_user.jpg')
 
 user_admin_two = User.new(first_name: "Nicolas", last_name: "Salar", email: "nicolas.salarkzit@wagon.com", password: "azerty", batch_number: 389, city: "Moscou", pays: "Russie", bootcamp_year: 2014)
 user_admin_two.save!
-file_user_two = URI.open("https://www.tourisme-valdemarne.com/espace-pro/wp-content/uploads/sites/3/2019/12/willy-ronis.jpg")
-user_admin_two.photo.attach(io: file_user_two, filename: 'photo_user.png')
+file_user_two = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3cv5FUlROn-X_EVKJ8fArDvm4UVZSQA8WGPugiAXW7dSH64HgAfet7G7jQ9JsxTtcYu68ZVkQX1JlUyzL1eqbbqbMvHrRrUYG-c_iIvJ-J24QlZpn-jvfDLpyhkAdJcLaNO0r1pKKPYtuAOccn19bBo=w1748-h1162-no?authuser=0")
+user_admin_two.photo.attach(io: file_user_two, filename: 'photo_user.jpg')
 
 
 project_one = Project.new(title: "ImagineR", description: "Logiciel de réalité virtuelle pour dédiés aux formations de pilote de l'air", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "www.air-france.fr", tag_line: "Changer la formation des pilotes de l'air", tag: "learning")
@@ -212,12 +212,12 @@ participation.save!
 
 user_participant_a = User.new(first_name: "Fabrice", last_name: "Touet", email: "fabrice.touet@wagon.com", password: "azerty", batch_number: 400, city: "Paris", pays: "France", bootcamp_year: 2019)
 file_user_c = URI.open("https://static.lexpress.fr/medias_2221/w_399,h_399,c_crop,x_42,y_0/w_600,h_600,c_fill,g_north/v1406705717/vin-diesel-gestures-as-he-arrives-for-a-screening-at-the-56th-berlinale-international-film-festival-in-berlin_1137417.jpg")
-user_participant_a.photo.attach(io: file_user_c, filename: 'photo_user.png')
+user_participant_a.photo.attach(io: file_user_c, filename: 'photo_user.jpg')
 user_participant_a.save!
 
 user_participant_b = User.new(first_name: "Khalil", last_name: "Man", email: "khalil.man@wagon.com", password: "azerty", batch_number: 409, city: "Ho-Chin-Minh", pays: "Vietnam", bootcamp_year: 2018)
 file_user_d = URI.open("https://blog-chasse.naturapass.com/wp-content/uploads/2017/06/Jean-Francois_Cope.jpg")
-user_participant_b.photo.attach(io: file_user_d, filename: 'photo_user.png')
+user_participant_b.photo.attach(io: file_user_d, filename: 'photo_user.jpg')
 user_participant_b.save!
 
 participation_a = Participation.new(accepted: true, motivation: Faker::Lorem.paragraph(sentence_count: 3), work_time: Faker::Lorem.paragraph(sentence_count: 1), admin: false)
@@ -237,7 +237,7 @@ puts "Creating the project we have to visite"
 user_project = User.new(first_name: "Romain", last_name: "Roussel", email: "romain.roussel@wagon.com", password: "azerty", batch_number: 350, city: "Roma", pays: "Italie", bootcamp_year: 2014)
 user_project.save!
 file_user_one_project = URI.open("https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE5NTU2MzE2MzU1NzI0ODEx/keanu-reeves-9454211-1-402.jpg")
-user_project.photo.attach(io: file_user_one_project, filename: 'photo_user.png')
+user_project.photo.attach(io: file_user_one_project, filename: 'photo_user.jpg')
 
 project_one_project = Project.new(title: "Bike Me Up", description: "Le Airbnb du vélo", github_repository: "https://github.com/nnico1000", trello_link: "https://trello.com/b/VrAHeTI5/side-ninjas", start_date: Date.today-14.days, website_link: "https://bikemeup.herokuapp.com/", tag_line: "Louer votre vélo", tag: "sport")
 project_one_project.user = user_project

@@ -7,6 +7,19 @@
   min-width: 610px;
 }
 
+#box-projects-index {
+  opacity: 0.7;
+  transition: all 0.3s ease-out;
+  &:hover {
+    transition: all 0.3s ease-out;
+    opacity: 1;
+    transform: scale(1.03, 1.03);
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
 .resum-project-description {
   height: 100px;
   overflow-y: scroll;
