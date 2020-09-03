@@ -120,9 +120,6 @@
   justify-content: space-between;
 }
 
-
-
-
 .btn-send {
   border-radius: 0px 50px 50px 0px;
   padding-bottom: 9px;
@@ -133,5 +130,24 @@
   color: white;
 }
 
+.current-user {
+  display: flex;
+}
 
+.receiver {
+  display: flex;
+}
 
+.container-current-user{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.message_content {
+  width: 100%;
+}
+
+.new_message input:focus {
+  box-shadow: none;
+}
