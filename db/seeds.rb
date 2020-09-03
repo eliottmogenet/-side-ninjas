@@ -61,13 +61,13 @@ users_creator = {
 }
 
 users_participation = {
-  1 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  2 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  3 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  4 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://lh3.googleusercontent.com/pw/ACtC-3ejNQ1uwdmhy0mg92scANBYSJ4e1ibVcQEuWRd7OpdAdRqciX8t8sd636UxcWcp-sJEKgqaGjDALp3WZDv5FVhNnrMGejXYzqSeucZ0N_x0h-B5tGerUhhC9b6Gc7U38YhTzGRCzWl0SbauxPyWQCcp=w2448-h1628-no?authuser=0"],
-  5 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  6 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  7 => ["Farouk", "Rahmani", "Farouk.Rahmani@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597865657/snnrexr6qgbfhyotof4j.jpg"]
+  1 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://avatars0.githubusercontent.com/u/62572114?v=4"],
+  2 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://avatars2.githubusercontent.com/u/66635406?v=4"],
+  3 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://avatars1.githubusercontent.com/u/63396358?v=4"],
+  4 => ["David", "Kuoch", "david.kuoch@wagon.com", 441, "https://avatars3.githubusercontent.com/u/46565318?v=4"],
+  5 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://avatars0.githubusercontent.com/u/66723589?v=4"],
+  6 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://avatars3.githubusercontent.com/u/63286070?v=4"],
+  7 => ["Stan", "Legrez", "stan.legrez@wagon.com", 441, "https://avatars3.githubusercontent.com/u/65570378?v=4"]
 }
 
 projects_creator = {
@@ -151,7 +151,7 @@ users_participation.keys.each do |num|
   user_url = infos.last
   file_user = URI.open(user_url)
   p user_url
-  user.photo.attach(io: file_user, filename: 'photo_user.jpg')
+  user.photo.attach(io: file_user, filename: 'photo_user.jpeg')
   user.save!
 
   USER_PARTICITANT << user
