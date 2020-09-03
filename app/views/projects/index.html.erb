@@ -27,8 +27,8 @@
                 <h5><%= project.title %></h5>
               </div>
               <div class="pending-request-btn">
-                <i class="fas fa-hourglass-half"></i>
-                <p><%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
+                <!-- <i class="fas fa-hourglass-half"></i> -->
+                <p>Created <%= distance_of_time_in_words(project.start_date, Date.today) %> ago </p>
               </div>
             </div>
             <hr>
