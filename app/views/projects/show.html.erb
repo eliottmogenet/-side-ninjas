@@ -58,7 +58,7 @@
   </div>
 
   <% if current_user != @project.user %>
-    <div class="first-important-btn" >
+<!--     <div class="first-important-btn" > -->
       <% if  @project.participations.map(&:user).include?(current_user) %>
         <% if @project.participations.accepted.map(&:user).include?(current_user) %>
           <%= link_to "Leave the project", participation_path(@request_participation),
@@ -67,13 +67,15 @@
         <% elsif @project.participations.refused.map(&:user).include?(current_user)%>
           <p>Refused</p>
         <% else %>
+        <div class="pending-request-page-title">
           <div class="pending-request-btn">
             <i class="fas fa-hourglass-half"></i>
             <p>PENDING REQUEST</p>
+          </div>
+          <%= link_to "Cancel my application", participation_path(@request_participation),
+                                method: :delete,
+                                data: { confirm: "Are you sure?" } %>
         </div>
-        <%= link_to "Cancel my application", participation_path(@request_participation),
-                              method: :delete,
-                              data: { confirm: "Are you sure?" } %>
         <% end %>
       <% else %>
         <button type="button" class="submtit-btn-box" data-toggle="modal" data-target="#exampleModal">
@@ -81,7 +83,7 @@
           Join the project
         </button>
       <% end %>
-    </div>
+<!--     </div> -->
   <% end %>
 </div>
 
