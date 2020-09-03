@@ -1,11 +1,11 @@
 <div class="new-participation">
   <div id="new-form">
     <%= simple_form_for [@project, @participation] do |f| %>
-    <%= f.input :motivation %>
+    <%= f.input :motivation, input_html: { class:"box-shadow-pink" } %>
     <%#= f.input :feature, input_html: {value: @project.features } %>
-    <%= f.input :work_time %>
+    <%= f.input :work_time, input_html: { class:"box-shadow-pink" } %>
     <%#= f.submit "Ask to join this project" %>
-    <%= button_tag class: "search-btn" do %>
+    <%= button_tag class: "search-btn mx-auto" do %>
         <i class="fas fa-search mr-2"></i>
         Ask to join this project
       <% end %>
