@@ -30,7 +30,7 @@ User.destroy_all
 user_nico = User.new(email: "nico@wagon.org", password: "azerty", first_name: "Nicolas", last_name: "Chevalier", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
 file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3dwPi9haVNoMFn21nLVszf-TwzUdDvTWDfizdWCNTEtjxVSwHRRxKW6F8NMD9g52nI0OguVWPLR5MXtk4Mw3obMFIcTdZHafu8bkiZcscoisTBqoXJ1ArwC-4qLINHl9FedDbYA_ujZCTGfZQIQr6Go=w2524-h1678-no?authuser=0")
 user_nico.photo.attach(io: file_user, filename: 'photo_user.jpg')
-user.save!
+user_nico.save!
 
 user_jules = User.new(email: "jules@wagon.org", password: "azerty", first_name: "Jules", last_name: "Roussel", batch_number: 440, city: "Paris", pays: "France", bootcamp_year: 2020)
 file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3cqGdU_9HJcciS-jeB0rT9g1kTLilK7p8leYCr_y16Ek1l78iBhUaYd2Du-oEChqsvCCjPA628qE1rf-vIgCOEPaQsaOL4sRM798gFuOhOIitAhJQGLwDL0IXQoPspB8pi4Nf08isy_ofZtBNAI29xk=w2524-h1678-no?authuser=0")
@@ -43,7 +43,7 @@ user_adrien.photo.attach(io: file_user, filename: 'photo_user.jpg')
 user_adrien.save!
 
 user_phil = User.new(email: "phil@wagon.org", password: "azerty", first_name: "Philippine", last_name: "Berton", batch_number: 200, city: "Paris", pays: "France", bootcamp_year: 2018)
-file_user = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594210501/qozhmk2g0oxtw1clksej.jpg")
+file_user = URI.open("https://lh3.googleusercontent.com/pw/ACtC-3cFLkoZcsqSCnwxhSdXFcKwN5M9x7PsL_HWOeI-WOb09YxJSLZoxEQzXbaP-sW3GZnSoZCiQX2jk4MnHDZOtbRlP38illoFbxSh3JnroHaWQGR-UoEz4xFNu3qaaIS1TlK2Lgy5KHEV9BNc6RPPWX5z=w2448-h1628-no?authuser=0")
 user_phil.photo.attach(io: file_user, filename: 'photo_user.jpg')
 user_phil.save!
 
@@ -60,11 +60,11 @@ users_creator = {
   10 => ["Stephanie", "Rousset", "stephanie.rousset@wagon.com", 440, "https://lh3.googleusercontent.com/pw/ACtC-3fZJmfzYC6Csw4ay3RZIuYc36DOJFP70evYbZZGvHH_BgDQgC3P9mK0UIyIofiAayB4VW3aAd1F5eTKeAU_D3dPZquSl7f62jv3nhI1zAONIebRufkYvk0TVcHfK62k1Pi6s_eJy4nysmdzTTRiv7zK=w1894-h1260-no?authuser=0"]
 }
 
-users_participation {
+users_participation = {
   1 => ["Matthieu", "Minier", "mathieu.Minier@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   2 => ["Mathilde", "Guyot", "mathilde.Guyot@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   3 => ["Abdelkrim", "Kiour", "Abdelkrim.Kiour@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
-  4 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594193819/yhixvbjokpulns5xipyt.jpg"],
+  4 => ["François", "Nguyen", "François.Nguyen@wagon.com", 441, "https://lh3.googleusercontent.com/pw/ACtC-3ejNQ1uwdmhy0mg92scANBYSJ4e1ibVcQEuWRd7OpdAdRqciX8t8sd636UxcWcp-sJEKgqaGjDALp3WZDv5FVhNnrMGejXYzqSeucZ0N_x0h-B5tGerUhhC9b6Gc7U38YhTzGRCzWl0SbauxPyWQCcp=w2448-h1628-no?authuser=0"],
   5 => ["Ségolène", "De La Taille", "Ségolène.de-la-taille@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   6 => ["Nicolas", "Kiger", "Nicolas.Kiger@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"],
   7 => ["Farouk", "Rahmani", "Farouk.Rahmani@wagon.com", 441, "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597865657/snnrexr6qgbfhyotof4j.jpg"]
@@ -218,7 +218,7 @@ puts "Finished!"
 
 puts "Creating 2 projects with teams"
 
-LANGUAGES_OTHER = [js, ruby, python]
+LANGUAGES_OTHER = [js, ruby, python, html]
 
 user_admin_one = User.new(first_name: "Jack", last_name: "Dawson", email: "jack.dawson@wagon.com", password: "azerty", batch_number: 399, city: "Sao Polo", pays: "Bresil", bootcamp_year: 2016)
 user_admin_one.save!
@@ -286,9 +286,9 @@ user.save!
 file_user = URI.open("https://gdb.voanews.com/277EE03C-B34D-4901-907D-5DCC5528482D_w408_r1_s.jpg")
 user.photo.attach(io: file_user, filename: 'photo_user.jpg')
 
-project_one_project = Project.new(title: "", description: "", github_repository: "", trello_link: "", start_date: Date.today-10.days, website_link: "", tag_line: "", tag: "")
-project_one_project.user = user_project
-LANGUAGES_OTHER.sample(3).each do |language|
+project_one_project = Project.new(title: "Startup In Mexico", description: "This an app to build, maintain and facilitate communications between Mexicans startups.", github_repository: "https://github.com/adrienfort/startupmexico", trello_link: "https://trello.com/b/yufjZHIh/starupmexico", start_date: Date.today-10.days, website_link: "https://www.startupmexico.com", tag_line: "The startups facebook.", tag: "communication")
+project_one_project.user = user
+LANGUAGES_OTHER.each do |language|
   z_language = ProjectLanguage.new()
   z_language.language = language
   z_language.project = project_one_project
@@ -296,8 +296,23 @@ LANGUAGES_OTHER.sample(3).each do |language|
 end
 project_one_project.save!
 
-participation = Participation.new(project: project_one_project, user: user_project, accepted: true, admin: true)
+file_project_one = URI.open("https://cms.jotform.com/uploads/image_upload/image_upload/beril/46816_how-to-build-a-startup-4.jpg")
+project_one_project.photos.attach(io: file_project_one, filename: 'photo_user.png')
+file_project_two = URI.open("https://www.le-blog-de-mathieu-janin.net/photo/art/large_x2_16_9/42638640-35472685.jpg?v=1581334676")
+project_one_project.photos.attach(io: file_project_two, filename: 'photo_user.png')
+
+participation = Participation.new(project: project_one_project, user: user, accepted: true, admin: true)
 participation.save!
+
+user_participant_d = User.new(first_name: "Maria", last_name: "Bianchi", email: "maria@wagon.com", password: "azerty", batch_number: 389, city: "Roma", pays: "Italie", bootcamp_year: 2020)
+file_user_d = URI.open("https://resize-parismatch.lanmedia.fr/r/901,,forcex/img/var/news/storage/images/paris-match/people/journee-internationale-des-femmes-50-icones-d-hier-et-d-aujourd-hui-1611084/emma-watson/26074758-1-fre-FR/Emma-Watson.jpg")
+user_participant_d.photo.attach(io: file_user_d, filename: 'photo_user.jpg')
+user_participant_d.save!
+
+participation_d = Participation.new(accepted: true, admin: false)
+participation_d.user = user_participant_d
+participation_d.project = project_one_project
+participation_d.save!
 
 
 puts "End!"
