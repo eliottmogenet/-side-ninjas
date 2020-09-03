@@ -58,7 +58,7 @@
   </div>
 
   <% if current_user != @project.user %>
-    <div class="first-important-btn" >
+<!--     <div class="first-important-btn" > -->
       <% if  @project.participations.map(&:user).include?(current_user) %>
         <% if @project.participations.accepted.map(&:user).include?(current_user) %>
           <%= link_to "Leave the project", participation_path(@request_participation),
@@ -67,13 +67,15 @@
         <% elsif @project.participations.refused.map(&:user).include?(current_user)%>
           <p>Refused</p>
         <% else %>
+        <div class="pending-request-page-title">
           <div class="pending-request-btn">
             <i class="fas fa-hourglass-half"></i>
             <p>PENDING REQUEST</p>
+          </div>
+          <%= link_to "Cancel my application", participation_path(@request_participation),
+                                method: :delete,
+                                data: { confirm: "Are you sure?" } %>
         </div>
-        <%= link_to "Cancel my application", participation_path(@request_participation),
-                              method: :delete,
-                              data: { confirm: "Are you sure?" } %>
         <% end %>
       <% else %>
         <button type="button" class="submtit-btn-box" data-toggle="modal" data-target="#exampleModal">
@@ -81,7 +83,7 @@
           Join the project
         </button>
       <% end %>
-    </div>
+<!--     </div> -->
   <% end %>
 </div>
 
@@ -98,25 +100,25 @@
           <p><%= @project.description %></p>
         </div>
         <div class="web-link">
-          <%= link_to "https://github.com/CorkiII/Bike_me_up", class: "github-link", target: "_blank" do %>
-            <div class="submtit-btn-box">
-                <p>See on Github </p>
+          <%= link_to "https://github.com/adrienfort/startupmexico", class: "github-link", target: "_blank" do %>
+            <div class="light-submtit-btn">
+                <p>Github </p>
                 <p><i class="fab fa-github ml-2"></i></p>
             </div>
           <% end %>
           <%# raise %>
           <% if (@project.participations.include?(current_user) && @project.participations.find(user_id: current_user).accepted == true) || @project.user = current_user  %>
-            <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
-              <div class="submtit-btn-box">
+            <%= link_to "https://trello.com/b/yufjZHIh/starupmexico", class: "github-link", target: "_blank" do %>
+              <div class="light-submtit-btn">
                   <p>See on Trello </p>
                   <p><i class="fab fa-trello ml-2"></i></p>
               </div>
             <% end %>
           <% end %>
-          <%= link_to "https://bikemeup.herokuapp.com/", class: "github-link", target: "_blank" do %>
-            <div class="submtit-btn-box">
-                <p>See the product </p>
-                <p><i class="fas fa-globe ml-2"></i></p>
+          <%= link_to "https://www.startupmexico.com", class: "github-link", target: "_blank" do %>
+            <div class="light-submtit-btn">
+              <p>Product </p>
+              <p><i class="fas fa-globe ml-2"></i></p>
             </div>
           <% end %>
         </div>
@@ -205,7 +207,7 @@
       </div>
       <div class="submtit-btn-box" id="submit-width-all">
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
-          <i class="fab fa-slack"></i>
+          <i class="far fa-comment mr-2"></i>
           <%= f.hidden_field :project, value: @project.id %>
           <%= f.submit "Contact #{@admin.first_name}", class: "submit-contact-btn" %>
         <% end %>
