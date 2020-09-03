@@ -1,4 +1,18 @@
 // c'est pour la recherche de projets --> adrien à faire
+.skills-list-container {
+  max-width: 250px;
+  height: auto;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.card-languages {
+  margin-right: 20px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+
+}
 
 .search-bar-box {
   margin-left: 220px;

@@ -94,6 +94,7 @@
   // left: 10px;
   // z-index: 0;
   width: calc(100% - 470px);
+  display: flex;
   .new-input-box {
     background-color: $light-blue;
     margin: 3px 10px;
@@ -109,9 +110,28 @@
   }
 }
 
+.new-input-box {
+  border-radius: 50px;
+  width: 100%;
+}
+
+#new_message {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 
+
+.btn-send {
+  border-radius: 0px 50px 50px 0px;
+  padding-bottom: 9px;
+  width: 60px;
+}
+
+.fa-paper-plane {
+  color: white;
+}
 
 
 

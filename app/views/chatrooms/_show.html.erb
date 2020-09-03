@@ -27,8 +27,17 @@
   </div>
 </div>
 
-<div class="new-message-input">
-  <div class="new-input-box">
-    <%= render 'chatrooms/message_form', user: current_user, chatroom: chatroom, message: message %>
+  <div class="new-message-input">
+    <div class="new-input-box">
+      <%= render 'chatrooms/message_form', user: current_user, chatroom: chatroom, message: message %>
+    </div>
   </div>
-</div>
+
+  <script>
+
+    document.querySelector('.btn-send').addEventListener('click', ()=>{
+        document.dispatchEvent(new KeyboardEvent('keypress', {'key': 'enter'}));
+        document.dispatchEvent(new KeyboardEvent('keypress', {'code': '13'}));
+    });
+
+  </script>
