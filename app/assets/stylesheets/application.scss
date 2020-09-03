@@ -23,8 +23,16 @@ body {
   color: $browne;
 }
 
+span:focus {
+  outline: none;
+}
+
 .pending-request-page-title {
   padding: 0;
+  text-decoration: none;
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .box-shadow-pink {
