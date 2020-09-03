@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
   def update
     # @project = Project.find(params[:id])
     @project.assign_attributes(params_project)
-    @project.user = current_user
+    # @project.user = current_user
     @project.save
 
     redirect_to project_path

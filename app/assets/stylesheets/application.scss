@@ -23,7 +23,13 @@ body {
   color: $browne;
 }
 
+.pending-request-page-title {
+  padding: 0;
+}
 
+.box-shadow-pink {
+    box-shadow: 0 0 0 0.2rem rgba(250, 145, 164, 0.25);
+}
 
 .dropdown-menu {
   overflow: hidden;

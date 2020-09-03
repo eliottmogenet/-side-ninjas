@@ -21,7 +21,8 @@
 }
 
 .resum-project-description {
-  height: 100px;
+  margin-bottom: 10px;
+  // height: 100px;
   overflow-y: scroll;
   // overflow: scroll;
   // max-width: 600px;
@@ -34,9 +35,9 @@
 
 .resum-project-title {
   display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  h5, h6 {
+  align-items: center;
+  justify-content: space-between;
+  h5 {
     padding: 0px;
     margin: 0px;
     margin-top: 10px;
@@ -44,7 +45,14 @@
   }
 
   h6 {
-    margin-top: 10px;
+    color: $browne;
+    background-color: #e8e8e8;
+    padding: 4px 9px;
+    border-radius: 5px;
+    margin: 0px;
+    // margin-top: 20px;
+    font-size: 20px;
+    height: min-content;
   }
   i {
     margin: 0px 5px;
@@ -83,10 +91,17 @@
 }
 
 .resum-member {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  &.pending {
+    opacity: .5;
+    .pending-request-btn * {
+    font-size: 12px;
+    color: darkgoldenrod;
+    }
+  }
 }
 
 .skills-btn {
@@ -95,13 +110,20 @@
 
 .web-link {
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   margin-bottom: 20px;
   i {
     font-size: 30px;
   }
   a {
     text-decoration: none;
+    color: $browne;
+    opacity: .8;
+    transition: transform 0.3s ease;
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
   }
 }
 
@@ -110,4 +132,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.modal-content {
+  border-radius: $border-radius;
 }

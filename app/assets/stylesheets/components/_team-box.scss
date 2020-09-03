@@ -1,18 +1,29 @@
 // c'est la box de présentation de la team --> adrien
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
 .members-container {
-  height: 350px;
-  // overflow-y: scroll;
+  max-height: 425px;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .team-box {
+  // height: min-content;
   background-color: $white;
   padding: 30px;
   border-radius: $border-radius;
   box-shadow: 0px 0px 10px 0px rgba(10, 10, 10, 0.1);
-  height: 548px;
+  max-height: 646px;
+}
+
+.normal-box {
+  height: 91%;
 }
 
 .team-box-title {
@@ -53,6 +64,15 @@
   p {
     padding: 0px;
     margin: 0px;
+  }
+}
+
+.admin {
+  letter-spacing: 1px;
+  color: grey;
+  align-items: center;
+  * {
+    font-size: 12px;
   }
 }
 
