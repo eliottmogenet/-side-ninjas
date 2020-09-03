@@ -100,23 +100,23 @@
         <div class="web-link">
           <%= link_to "https://github.com/CorkiII/Bike_me_up", class: "github-link", target: "_blank" do %>
             <div class="submtit-btn-box">
-                <p>See on Github </p>
-                <p><i class="fab fa-github ml-2"></i></p>
+                <p>Github </p>
+                <i class="fab fa-github ml-2"></i>
             </div>
           <% end %>
           <%# raise %>
           <% if (@project.participations.include?(current_user) && @project.participations.find(user_id: current_user).accepted == true) || @project.user = current_user  %>
             <%= link_to "https://trello.com/b/VrAHeTI5/side-ninjas", class: "github-link", target: "_blank" do %>
               <div class="submtit-btn-box">
-                  <p>See on Trello </p>
-                  <p><i class="fab fa-trello ml-2"></i></p>
+                  <p>Trello </p>
+                  <i class="fab fa-trello ml-2"></i>
               </div>
             <% end %>
           <% end %>
           <%= link_to "https://bikemeup.herokuapp.com/", class: "github-link", target: "_blank" do %>
             <div class="submtit-btn-box">
-                <p>See the product </p>
-                <p><i class="fas fa-globe ml-2"></i></p>
+                <p>Product </p>
+                <i class="fas fa-globe ml-2"></i>
             </div>
           <% end %>
         </div>
@@ -205,7 +205,7 @@
       </div>
       <div class="submtit-btn-box" id="submit-width-all">
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
-          <i class="fab fa-slack"></i>
+          <i class="far fa-comment mr-2"></i>
           <%= f.hidden_field :project, value: @project.id %>
           <%= f.submit "Contact #{@admin.first_name}", class: "submit-contact-btn" %>
         <% end %>
