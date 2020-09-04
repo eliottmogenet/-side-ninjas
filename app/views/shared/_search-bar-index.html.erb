@@ -22,7 +22,7 @@
       <%= f.input :batch, collection: @all_batch_number, label: false, input_html: { class: 'select2-multiple-batch' } %>
 
       <div class="filter-btns" style="padding-right: 65px;">
-        <div class="reset-btn">
+        <div class="reset-btn" id="rest-none">
           <%= link_to projects_path do %>
             <i class="fas fa-undo-alt"></i>
             <span>Reset</span>
