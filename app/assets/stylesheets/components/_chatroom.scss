@@ -46,8 +46,22 @@
   }
 }
 
+
 .message-container {
   display: flex;
+  > div > div {
+    flex-direction: row-reverse;
+  }
+  &.is-author {
+    > div {
+      width: 100%;
+      justify-content: flex-end;
+    }
+    > div > div {
+      text-align: right;
+      flex-direction: row !important;
+    }
+  }
 }
 
 .list-contacts {
