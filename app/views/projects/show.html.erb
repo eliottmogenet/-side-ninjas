@@ -37,7 +37,7 @@
                   <%= participation.user.first_name %> <%= participation.user.last_name %>
                 </div>
                 <div class="acceptations-yes-no">
-                  <%= link_to 'Accept', accept_participation_path(participation), method: :post  %>
+                  <%= link_to 'Accept', accept_participation_path(participation), method: :post, class: "mr-5"  %>
                   <%= link_to 'Refuse', refuse_participation_path(participation), method: :post, remote: true %>
                 </div>
               </div>
