@@ -20,9 +20,9 @@
   </div>
   <p>This is the start of your conversation with <%= chatroom.users.find { |u| u != @user }.first_name.capitalize %>. Your are the only two people in this private chatroom.</p>
   <hr>
-  <div class="mt-3" id="messages" data-chatroom-id="<%= chatroom.id %>">
+  <div class="mt-3" id="messages" data-chatroom-id="<%= chatroom.id %>" data-user-id="<%= current_user.id %>">
     <% chatroom.messages.each_with_index do |message, i| %>
-      <%= render 'chatrooms/chatroom_message', message: message %>
+      <%= render 'chatrooms/chatroom_message_new', message: message %>
     <% end %>
   </div>
 </div>

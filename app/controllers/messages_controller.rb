@@ -10,9 +10,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
-      ChatroomChannel.broadcast_to(
-        @chatroom,
-        render_to_string(partial: "chatrooms/chatroom_message", locals: { message: @message })
+      ChatroomChannel.broadcast_to(@chatroom, {
+          message: render_to_string(partial: "chatrooms/chatroom_message_new", locals: { message: @message }),
+          author_id: current_user.id
+        }
       )
     else
       render "chatrooms/show"
