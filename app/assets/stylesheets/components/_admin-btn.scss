@@ -44,13 +44,16 @@
     font-size: 20px;
   }
   &:hover {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.04);
     opacity: 1;
     // font-size: 20px;
     // padding: 9px 10px;
     .submit-contact-btn {
       // font-size: 20px;
     }
+  }
+  &.join {
+    background-color: $browne;
   }
 }
 

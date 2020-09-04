@@ -1,5 +1,5 @@
 <%= simple_form_for [ user, chatroom, message ], remote: true do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message # #{chatroom.users.find { |u| u != @user }.first_name.capitalize}" %>
+  <%= f.input :content, label: false, autocomplete: :off, placeholder: "Message # #{chatroom.users.find { |u| u != @user }.first_name.capitalize}" %>
   <div class="btn-send">
     <button class="btn btn-primary btn-send"> <i class="fas fa-paper-plane"></i> </button>
   </div>

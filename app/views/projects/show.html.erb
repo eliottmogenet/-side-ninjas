@@ -1,8 +1,23 @@
-<div class="back-btn">
-  <%= link_to projects_path do%>
-    <i class="fas fa-long-arrow-alt-left"></i>
-    <p>Back</p>
-  <% end %>
+<div class="d-flex justify-content-between">
+  <div class="back-btn">
+    <%= link_to projects_path do%>
+      <i class="fas fa-long-arrow-alt-left"></i>
+      <p>Back</p>
+    <% end %>
+  </div>
+  <div class="col-4 pending-request-page-title">
+    <% if @project.participations.pending.map(&:user).include?(current_user) %>
+      <%= link_to "Cancel my application", participation_path(@request_participation),
+        method: :delete,
+        class: "d-block text-center",
+        data: { confirm: "Are you sure?" } %>
+    <% elsif @project.participations.accepted.map(&:user).include?(current_user) %>
+      <%= link_to "Leave the project", participation_path(@request_participation),
+        method: :delete,
+        class: "d-block text-center",
+        data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
 </div>
 
 <% @project.participations.each do |participation| %>
@@ -34,19 +49,7 @@
 <% end %>
 
 
-<div class="page-title-box">
-  <div class="page-title-description">
-    <div class="page-title">
-      <!-- if participation est accepted = true -->
-      <!-- <h1>Join</h1> -->
-      <div class="project-name">
-        <h1><%= @project.title %></h1>
-      </div>
-    </div>
-    <div class="under-title">
-      <div class="project-tag-line">
-        <p><%= @project.tag_line %></p>
-      </div>
+
       <% if policy(@project).destroy? %>
         <%= link_to "Delete #{@project.title}",
                         project_path(@project),
@@ -54,40 +57,9 @@
                         data: { confirm: "Are you sure?" } %>
         <%= link_to "Edit #{@project.title}",edit_project_path(@project)%>
       <% end %>
-    </div>
-  </div>
 
-  <% if current_user != @project.user %>
-<!--     <div class="first-important-btn" > -->
-      <% if  @project.participations.map(&:user).include?(current_user) %>
-        <% if @project.participations.accepted.map(&:user).include?(current_user) %>
-          <%= link_to "Leave the project", participation_path(@request_participation),
-                              method: :delete,
-                              data: { confirm: "Are you sure?" } %>
-        <% elsif @project.participations.refused.map(&:user).include?(current_user)%>
-          <p>Refused</p>
-        <% else %>
-        <div class="pending-request-page-title">
-          <div class="pending-request-btn">
-            <i class="fas fa-hourglass-half"></i>
-            <p>PENDING REQUEST</p>
-          </div>
-          <%= link_to "Cancel my application", participation_path(@request_participation),
-                                method: :delete,
-                                data: { confirm: "Are you sure?" } %>
-        </div>
-        <% end %>
-      <% else %>
-        <button type="button" class="submtit-btn-box" data-toggle="modal" data-target="#exampleModal">
-          <i class="fas fa-plus mr-2"></i>
-          Join the project
-        </button>
-      <% end %>
-<!--     </div> -->
-  <% end %>
-</div>
 
-<div class="row mt-5">
+<div class="row mt-3">
   <div class="col-8">
     <div class="resum-project-box">
       <div class="resum-project-title">
@@ -95,30 +67,33 @@
         <h6><%= @project.tag %></h6>
       </div>
       <hr>
+      <div class="project-tag-line">
+        <p><%= @project.tag_line %></p>
+      </div>
       <div class="resum-project-content">
         <div class="resum-project-description">
           <p><%= @project.description %></p>
         </div>
-        <div class="web-link">
+        <div class="web-link" id="link-center">
           <%= link_to "https://github.com/adrienfort/startupmexico", class: "github-link", target: "_blank" do %>
-            <div class="light-submtit-btn">
+            <div class="d-flex align-items-center">
+                <p><i class="fab fa-github mr-2"></i></p>
                 <p>Github </p>
-                <p><i class="fab fa-github ml-2"></i></p>
             </div>
           <% end %>
           <%# raise %>
-          <% if (@project.participations.include?(current_user) && @project.participations.find(user_id: current_user).accepted == true) || @project.user = current_user  %>
+          <% if (@project.participations.map {|u| u.user }.include?(current_user) && @project.participations.select {|u| u.user == current_user }.first.accepted) || @project.user == current_user  %>
             <%= link_to "https://trello.com/b/yufjZHIh/starupmexico", class: "github-link", target: "_blank" do %>
-              <div class="light-submtit-btn">
-                  <p>See on Trello </p>
-                  <p><i class="fab fa-trello ml-2"></i></p>
+              <div class="d-flex align-items-center">
+                  <p><i class="fab fa-trello mr-2"></i></p>
+                  <p>Trello </p>
               </div>
             <% end %>
           <% end %>
           <%= link_to "https://www.startupmexico.com", class: "github-link", target: "_blank" do %>
-            <div class="light-submtit-btn">
+            <div class="d-flex align-items-center">
+              <p><i class="fas fa-globe mr-2"></i></p>
               <p>Product </p>
-              <p><i class="fas fa-globe ml-2"></i></p>
             </div>
           <% end %>
         </div>
@@ -145,12 +120,26 @@
     </div>
   </div>
   <div class="col-4">
+    <div class="d-flex">
+      <% if current_user != @project.user %>
+        <% if  @project.participations.map(&:user).include?(current_user) %>
+          <% if @project.participations.refused.map(&:user).include?(current_user) %>
+            <p>Refused</p>
+          <% end %>
+        <% else %>
+          <button type="button" class="submtit-btn-box join mb-3 flex-grow-1" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-plus mr-2"></i>
+            Join the project
+          </button>
+        <% end %>
+      <% end %>
+    </div>
     <div class="team-box">
       <div class="team-box-title">
         <h5>Team</h5>
       </div>
       <hr>
-      <div class="team-members">
+      <div class="">
         <div class="members-container">
           <% @project.participations.accepted.each do |participation| %>
             <div class="resum-member">
@@ -161,51 +150,42 @@
                   <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
                 <% end %>
                 <div class="member-name-batch">
-                  <h5><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
+                  <h5 class="m-0"><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
                   <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
+                  <% if participation.admin %>
+                  <div class="admin d-flex">
+                    <i class="fas fa-crown mr-1"></i>
+                    <p class="m-0 text-uppercase">Admin</p>
+                  </div>
+                  <% end %>
                 </div>
-                <div class="admin-btn">
-                  <% if @project.user.id == participation.user.id %>
-                    <p>Admin</p>
+              </div>
+            </div>
+          <% end %>
+          <% @project.participations.pending.each do |participation| %>
+            <div class="resum-member pending">
+              <div class="d-flex">
+                <div class="member-infos">
+                  <% if participation.user.photo.attached? %>
+                    <%= cl_image_tag participation.user.photo.key, class: "avatar-large mr-3" %>
                   <% else %>
-                    <p>Member</p>
+                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
                   <% end %>
-                </div>
-                <div class="member-skills">
-                  <% participation.user.user_languages.each do |language| %>
-                    <% if language.language.frameworks.nil? %>
-                      <div class="one-skill">
-                        <div class="skills-btn">
-                          <i class="fab fa-js-square"></i>
-                          <p><%= language.languages.name %></p>
-                        </div>
-                        <div class="skills-btn">
-                          <i class="fab fa-js-square"></i>
-                          <p><%= language.level %></p>
-                        </div>
-                      </div>
-                    <% else %>
-                      <% language.language.frameworks.each do |framework| %>
-                        <div class="one-skill">
-                          <div class="skills-btn">
-                            <i class="fab fa-js-square"></i>
-                            <p><%= language.languages.name %> <%= language.language.framework.name %></p>
-                          </div>
-                          <div class="skills-btn">
-                            <i class="fab fa-js-square"></i>
-                            <p><%= language.level %></p>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+                  <div class="member-name-batch">
+                    <h5 class="m-0"><%= participation.user.first_name.capitalize %> <%= participation.user.last_name.capitalize %></h5>
+                    <p>#Batch <%= participation.user.batch_number %> (<%= participation.user.city %>)</p>
+                    <div class="pending-request-btn d-flex">
+                      <i class="fas fa-hourglass-half mr-2"></i>
+                      <p>PENDING</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="submtit-btn-box" id="submit-width-all">
+      <div class="submtit-btn-box" id="submit-width-all" style="margin-top: 30px;">
         <%= simple_form_for([@project.user, @chatroom]) do |f| %>
           <i class="far fa-comment mr-2"></i>
           <%= f.hidden_field :project, value: @project.id %>
@@ -263,8 +243,6 @@
       </div>
       <div class="modal-body">
         <%= render 'participations/new' %>
-      </div>
-      <div class="modal-footer">
       </div>
     </div>
   </div>

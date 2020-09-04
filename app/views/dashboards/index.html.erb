@@ -28,67 +28,63 @@
   <% @participations.each do |participation|%>
     <% if participation.accepted != false %>
       <div class="row mt-5">
-        <div class="col-12">
-          <div class="resum-project-box">
-            <div class="project-header">
-              <div class="resum-project-title">
-                <h5><%= participation.project.title %> </h5>
-                <% if participation.admin? %>
-                  <div class="admin-btn"> <p>Admin</p> </div>
-                <% elsif participation.accepted.nil? %>
-                  <div class="pending-request-btn"><i class="fas fa-hourglass-half"></i><p>Pending request</p></div>
-                <% else %>
-                  <div class="admin-btn"><p>Member</p> </div>
-                <% end %>
-
-              </div>
-              <div class="pending-request-btn">
-                <i class="fas fa-hourglass-half"></i>
-                <p><%= distance_of_time_in_words(participation.project.start_date, Date.today) %> ago</p>
-              </div>
-            </div>
-            <hr>
-            <div class="resum-project-content">
-              <div class="search-project-description">
-                <h5><%= participation.project.tag_line %></h5>
-                <p><%= participation.project.description %></p>
-              </div>
-              <div class="resum-project-images">
-                <div class="resum-project-pictures">
-                  <% participation.project.participations.each do |other_participation| %>
-                    <% if other_participation.user.photo.attached? %>
-                      <%= cl_image_tag other_participation.user.photo.key, class: "avatar-large mr-3" %>
-                    <% else %>
-                      <%= image_tag 'https://tel.img.pmdstatic.net/fit/https.3A.2F.2Fprd2-tel-epg-img.2Es3-eu-west-1.2Eamazonaws.2Ecom.2FproviderPerson.2Fg70096985ac51ebe8.2Ejpeg/300x300/quality/80/eric-zemmour.jpeg', class: "avatar-large mr-3" %>
-                    <% end %>
+        <div class="col-12 box-projects-index">
+          <%= link_to project_path(participation.project) do %>
+            <div class="resum-project-box">
+              <div class="project-header">
+                <div class="resum-project-title">
+                  <h5><%= participation.project.title %> </h5>
+                  <% if participation.admin? %>
+                    <div class="admin-btn ml-3 alignement-titre"> <p>Admin</p> </div>
+                  <% elsif participation.accepted.nil? %>
+                    <div class="pending-request-btn ml-3 alignement-titre"><i class="fas fa-hourglass-half"></i><p>Pending request</p></div>
+                  <% else %>
+                    <div class="admin-btn ml-3 alignement-titre"><p>Member</p> </div>
                   <% end %>
                 </div>
+                <div class="pending-request-btn para">
+                  <p>Created <%= distance_of_time_in_words(participation.project.start_date, Date.today) %> ago</p>
+                </div>
               </div>
-              <div class="bottom-search-project">
-                <div class="resum-project-tags-show justify-content-between w-100">
-                  <div class="skills d-flex">
-                    <% participation.project.project_languages.each do |project_language| %>
-                      <div class="skills-btn">
-                        <%= cl_image_tag project_language.language.photo.key, class: "language-tag-img" %>
-                        <p><%= project_language.language.name %></p>
-                      </div>
+              <hr>
+              <div class="resum-project-content">
+                <div class="search-project-description">
+                  <h5><%= participation.project.tag_line %></h5>
+                  <p><%= participation.project.description %></p>
+                </div>
+                <div class="resum-project-images">
+                  <div class="resum-project-pictures">
+                    <% participation.project.participations.each do |other_participation| %>
+                      <% if other_participation.user.photo.attached? %>
+                        <%= cl_image_tag other_participation.user.photo.key, class: "avatar-large mr-3" %>
+                      <% else %>
+                        <%= image_tag 'https://tel.img.pmdstatic.net/fit/https.3A.2F.2Fprd2-tel-epg-img.2Es3-eu-west-1.2Eamazonaws.2Ecom.2FproviderPerson.2Fg70096985ac51ebe8.2Ejpeg/300x300/quality/80/eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                      <% end %>
                     <% end %>
                   </div>
-                    <%# if participation.admin? %>
-               <!--        <div class="skills-btn modify-btn mt-3">
-                        <%#= link_to edit_project_path(participation.project) do%>
-                          <i class="fas fa-pen"></i>
-                        <%# end %>
-                      </div> -->
-                    <%# else %>
-                    <div class="second-important-btn">
-                      <i class="fas fa-search"></i>
-                        <%= link_to "See details", project_path(participation.project) %>
+                </div>
+                <div class="bottom-search-project">
+                  <div class="resum-project-tags-show justify-content-between w-100">
+                    <div class="skills d-flex">
+                      <% participation.project.project_languages.each do |project_language| %>
+                        <div class="skills-btn">
+                          <%= cl_image_tag project_language.language.photo.key, class: "language-tag-img" %>
+                          <p><%= project_language.language.name %></p>
+                        </div>
+                      <% end %>
                     </div>
+                      <%# if participation.admin? %>
+                 <!--        <div class="skills-btn modify-btn mt-3">
+                          <%#= link_to edit_project_path(participation.project) do%>
+                            <i class="fas fa-pen"></i>
+                          <%# end %>
+                        </div> -->
+                      <%# else %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     <% end %>

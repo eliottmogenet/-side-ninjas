@@ -1,13 +1,33 @@
 // Specific CSS for your home-page
+#pages-home {
+  .main-info {
+    padding: 0;
+  }
+  .first-important-btn {
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 50px;
+    margin: 0;
+  }
+}
+
 .title-home {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-  margin-top: 50px;
+  // display: flex;
+  // justify-content: center;
+  // flex-direction: column;
+  // align-items: center;
+  margin-bottom: 75px;
+  margin-top: 0px;
   h1 {
     color: #fc536f;
+    font-size: 90px;
+    margin-bottom: 20px;
+    strong {
+      color: $browne;
+    }
+  }
+  p {
+    font-size: 25px;
   }
 }
 
@@ -46,14 +66,23 @@
 
 .background-title-home {
   background-color: white;
-  padding-top: 10px;
-  padding-bottom: 50px;
+  padding: 150px 120px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .background-items-homes {
-  background-color: #ffdee4;
-  height: 300px;
+  background: url("sideninjas.png");
+  background-size: cover;
+  width: 40%;
+  // height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: right;
+
 }
