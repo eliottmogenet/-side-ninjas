@@ -1,4 +1,14 @@
 // boutton admin --> adrien à faire
+.submit-contact-btn:focus {
+  outline: none;
+}
+
+#rest-none {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 .admin-btn {
   p {
     margin: 0px;
