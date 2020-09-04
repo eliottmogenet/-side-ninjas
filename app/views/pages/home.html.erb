@@ -1,20 +1,17 @@
-<div class="home-container">
+<div class="home-container d-flex h-100">
 
-  <div class="background-title-home">
+  <div class="background-title-home flex-shrink-0">
     <div class="title-home">
-      <h1><strong style="color: black"><%= "<Side" %></strong> Ninjas/></h1>
+      <h1><<strong>Side</strong> Ninjas/></h1>
       <p>Start your side project with Le Wagon alumni.</p>
-      <p>
+      <!-- <p>
         <span id="banner-typed-text"></span>
-      </p>
+      </p> -->
     </div>
+    <%= link_to "Discover Side Ninjas ", projects_path, class:"first-important-btn" %>
 
-    <div class="discover-side">
-      <%= link_to "Discover Side Ninjas ", projects_path, class:"first-important-btn" %>
+    <!-- <div class="discover-side">
     </div>
-  </div>
-
-  <div class="background-items-homes">
     <div class="items-home">
 
       <div class="item-home">
@@ -32,7 +29,10 @@
         <p>your project and work together</p>
       </div>
 
-    </div>
+    </div> -->
+  </div>
+
+  <div class="background-items-homes h-100 flex-shrink-0">
   </div>
 </div>
 
