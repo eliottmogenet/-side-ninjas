@@ -7,7 +7,12 @@
   min-width: 610px;
 }
 
-#box-projects-index {
+.para {
+  margin-top: 10px;
+  margin-bottom: 5px !important;
+}
+
+.box-projects-index {
   opacity: 0.8;
   transition: all 0.3s ease-out;
   &:hover {
