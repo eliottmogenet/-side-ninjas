@@ -100,7 +100,11 @@
             <%# @project.participations.each do |participation| %>
               <div class="resum-member">
                 <div class="member-infos">
-                  <%= cl_image_tag @user.photo.key, class:"avatar-large" %>
+                  <% if @user.photo.attached? %>
+                    <%= cl_image_tag @user.photo.key, class: "avatar-large" %>
+                  <% else %>
+                    <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                  <% end %>
                   <div class="member-name-batch">
                     <h5><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h5>
                     <p>#Batch <%= @user.batch_number %> <%#= @user.bootcamp_year %> (<%= @user.city %>)</p>
@@ -163,7 +167,11 @@
             <hr>
             <div class="features-logos">
               <div class="features-avatars">
-                 <%= cl_image_tag @user.photo.key, crop: :fill, class: "features-avatars" %>
+                <% if @user.photo.attached? %>
+                  <%= cl_image_tag @user.photo.key, crop: :fill, class: "features-avatars" %>
+                <% else %>
+                  <%= image_tag 'eric-zemmour.jpeg', class: "avatar-large mr-3" %>
+                <% end %>
               </div>
             </div>
             <div class="features-description">
@@ -195,4 +203,3 @@
       </div>
     </div>
   </div>
-
