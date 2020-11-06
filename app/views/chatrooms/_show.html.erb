@@ -2,7 +2,11 @@
 <div id="chat-content">
   <div class="start-chat d-flex align-items-center mb-3">
     <div class="contact-photo mr-3">
-      <%= cl_image_tag chatroom.users.find { |u| u != @user }.photo.key, class: "big-avatar-semi-square" %>
+      <%if chatroom.users.find { |u| u != @user }.photo.attached? %>
+        <%= cl_image_tag chatroom.users.find { |u| u != @user }.photo.key, class: "big-avatar-semi-square" %>
+      <%else%>
+        <%= image_tag 'eric-zemmour.jpeg', class: "big-avatar-semi-square" %>
+      <%end%>
     </div>
     <div class="contact-infos">
       <h5><%= chatroom.users.find { |u| u != @user }.first_name.capitalize %> <%= chatroom.users.find { |u| u != @user }.last_name.capitalize %></h5>
