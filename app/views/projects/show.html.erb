@@ -185,13 +185,20 @@
           <% end %>
         </div>
       </div>
-      <div class="submtit-btn-box" id="submit-width-all" style="margin-top: 30px;">
-        <%= simple_form_for([@project.user, @chatroom]) do |f| %>
-          <i class="far fa-comment mr-2"></i>
-          <%= f.hidden_field :project, value: @project.id %>
-          <%= f.submit "Contact #{@admin.first_name}", class: "submit-contact-btn" %>
-        <% end %>
-      </div>
+      <% if current_user != @admin %>
+        <div class="submtit-btn-box" id="submit-width-all" style="margin-top: 30px;">
+          <%= simple_form_for([@project.user, @chatroom]) do |f| %>
+            <i class="far fa-comment mr-2"></i>
+            <%= f.hidden_field :project, value: @project.id %>
+            <%= f.submit "Contact #{@admin.first_name}", class: "submit-contact-btn" %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="second-important-btn">
+          <i class="fas fa-plus"></i>
+          <%= link_to "Add a member", root_path %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
