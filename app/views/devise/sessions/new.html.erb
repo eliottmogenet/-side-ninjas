@@ -1,5 +1,6 @@
 <h2>Log in</h2>
 
+
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email,
@@ -16,5 +17,8 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
+<div>
+  <%= link_to "Sign in with your GitHub account", user_github_omniauth_authorize_path %>
+</div>
 
 <%= render "devise/shared/links" %>
